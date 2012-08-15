@@ -7,9 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MainWindowController.h"
+#import "OAuthWindowController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+
+@property (strong) MainWindowController *mainController;
+@property (strong) OAuthWindowController *oauthController;
 
 @end

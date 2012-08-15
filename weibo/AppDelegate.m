@@ -12,7 +12,18 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    
+    self.mainController = [[MainWindowController alloc] init];
+    
+    self.oauthController = [[OAuthWindowController alloc] init];
+    if (!self.oauthController.isAuthorized) {
+        
+        //[self.mainController.window orderOut:nil];
+        
+        [self.oauthController showWindow:nil];
+    }else{
+        [self.mainController showWindow:nil];
+    }
 }
 
 @end
