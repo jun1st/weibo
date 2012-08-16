@@ -66,7 +66,7 @@
 		4C5F9AB315DBE0A100B804F1 /* twitter.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = twitter.ico; sourceTree = "<group>"; };
 		4C5F9AB815DBF70C00B804F1 /* twitter.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = twitter.icns; sourceTree = "<group>"; };
 		4C5F9ABA15DBF93000B804F1 /* drink_twitter.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = drink_twitter.icns; sourceTree = "<group>"; };
-		4C8FAB2815D24AF7004EBBC5 /* weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C8FAB2815D24AF7004EBBC5 /* iwei4mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iwei4mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8FAB2C15D24AF7004EBBC5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4C8FAB2F15D24AF7004EBBC5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		4C8FAB3015D24AF7004EBBC5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -181,7 +181,7 @@
 		4C8FAB2915D24AF7004EBBC5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4C8FAB2815D24AF7004EBBC5 /* weibo.app */,
+				4C8FAB2815D24AF7004EBBC5 /* iwei4mac.app */,
 				4C8FAB4915D24AF7004EBBC5 /* weiboTests.octest */,
 			);
 			name = Products;
@@ -329,7 +329,7 @@
 			);
 			name = weibo;
 			productName = weibo;
-			productReference = 4C8FAB2815D24AF7004EBBC5 /* weibo.app */;
+			productReference = 4C8FAB2815D24AF7004EBBC5 /* iwei4mac.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4C8FAB4815D24AF7004EBBC5 /* weiboTests */ = {
@@ -551,7 +551,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "weibo/weibo-Prefix.pch";
 				INFOPLIST_FILE = "weibo/weibo-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = iwei4mac;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -563,7 +563,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "weibo/weibo-Prefix.pch";
 				INFOPLIST_FILE = "weibo/weibo-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = iwei4mac;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

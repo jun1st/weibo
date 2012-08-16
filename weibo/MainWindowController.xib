@@ -116,7 +116,7 @@
 														<int key="NSCellFlags">337641536</int>
 														<int key="NSCellFlags2">2048</int>
 														<string key="NSContents">Text Cell</string>
-														<object class="NSFont" key="NSSupport">
+														<object class="NSFont" key="NSSupport" id="357435851">
 															<string key="NSName">LucidaGrande</string>
 															<double key="NSSize">13</double>
 															<int key="NSfFlags">1044</int>
@@ -254,6 +254,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">scrollView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="483467743"/>
+					</object>
+					<int key="connectionID">274</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="1005"/>
 						<reference key="destination" ref="1001"/>
@@ -363,6 +371,25 @@
 									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 									<bool key="NSEditable">YES</bool>
 								</object>
+								<object class="NSTextField" id="237306257">
+									<reference key="NSNextResponder" ref="696948163"/>
+									<int key="NSvFlags">268</int>
+									<string key="NSFrame">{{445, 89}, {38, 17}}</string>
+									<reference key="NSSuperview" ref="696948163"/>
+									<string key="NSReuseIdentifierKey">_NS:1535</string>
+									<bool key="NSEnabled">YES</bool>
+									<object class="NSTextFieldCell" key="NSCell" id="1031006245">
+										<int key="NSCellFlags">68157504</int>
+										<int key="NSCellFlags2">272630784</int>
+										<string key="NSContents">Label</string>
+										<reference key="NSSupport" ref="357435851"/>
+										<string key="NSCellIdentifier">_NS:1535</string>
+										<reference key="NSControlView" ref="237306257"/>
+										<reference key="NSBackgroundColor" ref="859555857"/>
+										<reference key="NSTextColor" ref="17128066"/>
+									</object>
+									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+								</object>
 							</array>
 							<string key="NSFrame">{{1, 1}, {486, 109}}</string>
 							<reference key="NSNextKeyView" ref="92976"/>
@@ -378,6 +405,14 @@
 						<reference key="destination" ref="766297276"/>
 					</object>
 					<int key="connectionID">273</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">createdTime</string>
+						<reference key="source" ref="696948163"/>
+						<reference key="destination" ref="237306257"/>
+					</object>
+					<int key="connectionID">279</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -552,6 +587,38 @@
 						<int key="objectID">238</int>
 						<reference key="object" ref="696948163"/>
 						<array class="NSMutableArray" key="children">
+							<object class="IBNSLayoutConstraint" id="260486612">
+								<reference key="firstItem" ref="237306257"/>
+								<int key="firstAttribute">3</int>
+								<int key="relation">0</int>
+								<reference key="secondItem" ref="696948163"/>
+								<int key="secondAttribute">3</int>
+								<float key="multiplier">1</float>
+								<object class="IBLayoutConstant" key="constant">
+									<double key="value">3</double>
+								</object>
+								<float key="priority">1000</float>
+								<reference key="containingView" ref="696948163"/>
+								<int key="scoringType">8</int>
+								<float key="scoringTypeFloat">29</float>
+								<int key="contentType">3</int>
+							</object>
+							<object class="IBNSLayoutConstraint" id="985224820">
+								<reference key="firstItem" ref="696948163"/>
+								<int key="firstAttribute">6</int>
+								<int key="relation">0</int>
+								<reference key="secondItem" ref="237306257"/>
+								<int key="secondAttribute">6</int>
+								<float key="multiplier">1</float>
+								<object class="IBLayoutConstant" key="constant">
+									<double key="value">6</double>
+								</object>
+								<float key="priority">1000</float>
+								<reference key="containingView" ref="696948163"/>
+								<int key="scoringType">3</int>
+								<float key="scoringTypeFloat">9</float>
+								<int key="contentType">3</int>
+							</object>
 							<object class="IBNSLayoutConstraint" id="31363517">
 								<reference key="firstItem" ref="748731792"/>
 								<int key="firstAttribute">5</int>
@@ -651,6 +718,7 @@
 							<reference ref="92976"/>
 							<reference ref="766297276"/>
 							<reference ref="748731792"/>
+							<reference ref="237306257"/>
 						</array>
 						<reference key="parent" ref="726356631"/>
 					</object>
@@ -807,6 +875,29 @@
 						<reference key="object" ref="583773451"/>
 						<reference key="parent" ref="748731792"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">275</int>
+						<reference key="object" ref="237306257"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="1031006245"/>
+						</array>
+						<reference key="parent" ref="696948163"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">276</int>
+						<reference key="object" ref="1031006245"/>
+						<reference key="parent" ref="237306257"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">277</int>
+						<reference key="object" ref="985224820"/>
+						<reference key="parent" ref="696948163"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">278</int>
+						<reference key="object" ref="260486612"/>
+						<reference key="parent" ref="696948163"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -836,13 +927,15 @@
 				<string key="236.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="237.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="238.CustomClassName">WBMessageTableCellView</string>
-				<array class="NSMutableArray" key="238.IBNSViewMetadataConstraints">
+				<array key="238.IBNSViewMetadataConstraints">
 					<reference ref="693681226"/>
 					<reference ref="262310107"/>
 					<reference ref="1013461876"/>
 					<reference ref="784100050"/>
 					<reference ref="514008274"/>
 					<reference ref="31363517"/>
+					<reference ref="985224820"/>
+					<reference ref="260486612"/>
 				</array>
 				<string key="238.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="238.userInterfaceItemIdentifier">wbCell</string>
@@ -873,6 +966,11 @@
 				<string key="267.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="268.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="269.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<boolean value="NO" key="275.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
+				<string key="275.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="276.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="277.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="278.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="5.CustomClassName">EQSTRScrollView</string>
 				<boolean value="NO" key="5.IBNSViewMetadataTranslatesAutoresizingMaskIntoConstraints"/>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -885,7 +983,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">273</int>
+			<int key="maxID">279</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -901,13 +999,13 @@
 					<string key="className">MainWindowController</string>
 					<string key="superclassName">NSWindowController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="cellView">WBMessageTableCellView</string>
+						<string key="scrollView">EQSTRScrollView</string>
 						<string key="timelineTable">NSTableView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="cellView">
-							<string key="name">cellView</string>
-							<string key="candidateClassName">WBMessageTableCellView</string>
+						<object class="IBToOneOutletInfo" key="scrollView">
+							<string key="name">scrollView</string>
+							<string key="candidateClassName">EQSTRScrollView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="timelineTable">
 							<string key="name">timelineTable</string>
@@ -929,18 +1027,21 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">WBMessageTableCellView</string>
-					<string key="superclassName">NSView</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">label</string>
-						<string key="NS.object.0">NSTextField</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">label</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">label</string>
+					<string key="superclassName">NSTableCellView</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="authName">NSTextField</string>
+						<string key="createdTime">NSTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="authName">
+							<string key="name">authName</string>
 							<string key="candidateClassName">NSTextField</string>
 						</object>
-					</object>
+						<object class="IBToOneOutletInfo" key="createdTime">
+							<string key="name">createdTime</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/WBMessageTableCellView.h</string>

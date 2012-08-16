@@ -10,6 +10,7 @@
 
 @interface WBMessageTableCellView : NSTableCellView
 
-@property (nonatomic, weak) IBOutlet NSTextField *authName;
+@property (weak) IBOutlet NSTextField *authName;
+@property (weak) IBOutlet NSTextField *createdTime;
 
 @end

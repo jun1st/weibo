@@ -8,6 +8,10 @@
 
 #import "WBMessageTableCellView.h"
 
+@interface WBMessageTableCellView()
+
+@end;
+
 @implementation WBMessageTableCellView
 
 

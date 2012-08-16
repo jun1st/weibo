@@ -10,11 +10,13 @@
 #import "WBRequest.h"
 #import "WBEngine.h"
 #import "WBMessageTableCellView.h"
+#import "EQSTRScrollView.h"
 
 @interface MainWindowController : NSWindowController<NSTableViewDataSource, NSTableViewDelegate>
 
 @property(nonatomic, strong) WBEngine *engine;
 @property (weak) IBOutlet NSTableView *timelineTable;
+@property (weak) IBOutlet EQSTRScrollView *scrollView;
 
 
 

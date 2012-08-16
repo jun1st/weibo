@@ -7,19 +7,39 @@
 //
 
 #import "MainWindowController.h"
+#import "EQSTRScrollView.h"
 
 #define OAuthConsumerKey @"4116306678"
 #define OAuthConsumerSecret @"630c48733d7f6c717ad6dec31bf50895"
 
 @interface MainWindowController ()<WBEngineDelegate>
 
+@property(strong, readonly, nonatomic) NSDateFormatter *utcDateFormatter;
 @property(nonatomic, strong) NSMutableArray *timeline;
 -(void)refreshTimelime;
 
 @end
 
 @implementation MainWindowController
+
 @synthesize timelineTable = _timelineTable;
+@synthesize utcDateFormatter = _utcDateFormatter;
+
+-(NSDateFormatter *)utcDateFormatter
+{
+    if (_utcDateFormatter == nil) {
+        _utcDateFormatter = [[NSDateFormatter alloc] init];
+        _utcDateFormatter.dateFormat = @"EEE MMM d H:mm:ss zzzz yyyy";
+    }
+    
+    return _utcDateFormatter;
+}
+
+-(NSTimeZone *)localTimeZone
+{
+    return [NSTimeZone localTimeZone];
+}
+
 
 
 -(WBEngine *)engine
@@ -63,10 +83,13 @@
 }
 
 - (void)windowDidLoad
-{
-    [NSBundle loadNibNamed:@"wbCellView" owner:self];
-    
+{    
     [super windowDidLoad];
+    
+    self.scrollView.refreshBlock = ^(EQSTRScrollView *view){
+        [self refreshTimelime];
+    };
+    
     [self refreshTimelime];
     
 }
@@ -78,6 +101,7 @@
 
 -(void)refreshTimelime
 {
+    [self.timeline removeAllObjects];
     [self.engine loadRequestWithMethodName:@"statuses/home_timeline.json"
                            httpMethod:@"GET"
                                params:nil
@@ -91,6 +115,8 @@
         NSDictionary *dict = (NSDictionary *)result;
         [self.timeline addObjectsFromArray:[dict objectForKey:@"statuses"]];
         [self.timelineTable reloadData];
+        
+        [self.scrollView stopLoading];
     }
 }
 
@@ -99,13 +125,6 @@
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
 {
     return [self.timeline count];
-}
-
--(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
-{
-    NSDictionary *detail = [self.timeline objectAtIndex:row];
-    
-    return [detail objectForKey:@"text"];
 }
 
 -(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
@@ -117,31 +136,47 @@
     NSString *screen_name = [userInfo objectForKey:@"screen_name"];
     result.authName.stringValue = screen_name;
     
+    NSString *createdAt = [[self.timeline objectAtIndex:row] objectForKey:@"created_at"];
+    
+    NSDate *createdDate = [self.utcDateFormatter dateFromString:createdAt];
+    //NSLog(@"%@", createdAt);
+    //NSLog(@"%@", createdDate);
+    NSTimeInterval intervalSince1970 = [createdDate timeIntervalSince1970];
+    
     NSString *message = [[self.timeline objectAtIndex:row] objectForKey:@"text"];
-    NSLog(@"%@", message);
     
-    NSRect rect = result.textField.frame;
-    NSTextStorage *textStorage = [[NSTextStorage alloc]
-                                   initWithString:message];
-    NSTextContainer *textContainer = [[NSTextContainer alloc]
-                                       initWithContainerSize: NSMakeSize(400, 1000.0)];
-    NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
+    NSDate *localDate = [NSDate dateWithTimeIntervalSince1970:intervalSince1970];
+    NSDateFormatter *relativeFormatter = [[NSDateFormatter alloc] init];
+    relativeFormatter.timeZone = [self localTimeZone];
+    relativeFormatter.dateFormat = @"H:mm";
     
-    [layoutManager addTextContainer:textContainer];
-    [textStorage addLayoutManager:layoutManager];
+    result.createdTime.stringValue = [relativeFormatter stringFromDate:localDate];
     
-    [textStorage addAttribute:NSFontAttributeName value:[NSFont userFontOfSize:13] range:NSMakeRange(0, [textStorage length])];
-    [textContainer setLineFragmentPadding:0.0];
-    
-    (void) [layoutManager glyphRangeForTextContainer:textContainer];
-    NSRect rct = [layoutManager usedRectForTextContainer:textContainer];
+    //NSLog(@"%@", result.createdTime.stringValue);
+//    NSRect rect = result.textField.frame;
+//    NSTextStorage *textStorage = [[NSTextStorage alloc]
+//                                   initWithString:message];
+//    NSTextContainer *textContainer = [[NSTextContainer alloc]
+//                                       initWithContainerSize: NSMakeSize(400, 1000.0)];
+//    NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
+//    
+//    [layoutManager addTextContainer:textContainer];
+//    [textStorage addLayoutManager:layoutManager];
+//    
+//    [textStorage addAttribute:NSFontAttributeName
+//                        value:[NSFont userFontOfSize:13]
+//                        range:NSMakeRange(0, [textStorage length])];
+//    [textContainer setLineFragmentPadding:0.0];
+//    
+//    (void) [layoutManager glyphRangeForTextContainer:textContainer];
+//    NSRect rct = [layoutManager usedRectForTextContainer:textContainer];
 
     NSMutableAttributedString *rString =
-    [[NSMutableAttributedString alloc] initWithString:message];
+        [[NSMutableAttributedString alloc] initWithString:message];
     
     [result.textField setAttributedStringValue:rString];
     //[result.textField setStringValue:message];
-    result.textField.frame = CGRectMake(rect.origin.x, rect.origin.y, rct.size.width, rct.size.height);
+    //result.textField.frame = CGRectMake(rect.origin.x, rect.origin.y, rct.size.width, rct.size.height);
     return result;
 }
 
@@ -164,7 +199,7 @@
     (void) [layoutManager glyphRangeForTextContainer:textContainer];
     NSRect rct = [layoutManager usedRectForTextContainer:textContainer];
     
-    return rct.size.height + 60 > 68 ? rct.size.height + 60 : 68;
+    return rct.size.height + 40 > 68 ? rct.size.height + 40 : 68;
 }
 
 @end
