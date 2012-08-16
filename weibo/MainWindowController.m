@@ -164,7 +164,7 @@
     (void) [layoutManager glyphRangeForTextContainer:textContainer];
     NSRect rct = [layoutManager usedRectForTextContainer:textContainer];
     
-    return rct.size.height + 40 > 68 ? rct.size.height + 40 : 68;
+    return rct.size.height + 60 > 68 ? rct.size.height + 60 : 68;
 }
 
 @end

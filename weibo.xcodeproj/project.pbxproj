@@ -38,6 +38,9 @@
 		4CCB88D615D5287100231E13 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88D015D5287100231E13 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4CCB88DC15D5289500231E13 /* WBAuthorize.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88D815D5289400231E13 /* WBAuthorize.m */; };
 		4CCB88DD15D5289500231E13 /* WBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88DA15D5289400231E13 /* WBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6517CBEA15DCDE3D007BAB00 /* EQSTRClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6517CBE715DCDE3D007BAB00 /* EQSTRClipView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6517CBEB15DCDE3D007BAB00 /* EQSTRScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6517CBE915DCDE3D007BAB00 /* EQSTRScrollView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6517CBEF15DCDED2007BAB00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6517CBEE15DCDED2007BAB00 /* QuartzCore.framework */; };
 		65A425BF15DB908C00861D3B /* WBMessageTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +112,11 @@
 		4CCB88D915D5289400231E13 /* WBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBRequest.h; sourceTree = "<group>"; };
 		4CCB88DA15D5289400231E13 /* WBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBRequest.m; sourceTree = "<group>"; };
 		4CCB88DB15D5289400231E13 /* WBSDKGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKGlobal.h; sourceTree = "<group>"; };
+		6517CBE615DCDE3D007BAB00 /* EQSTRClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EQSTRClipView.h; sourceTree = "<group>"; };
+		6517CBE715DCDE3D007BAB00 /* EQSTRClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EQSTRClipView.m; sourceTree = "<group>"; };
+		6517CBE815DCDE3D007BAB00 /* EQSTRScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EQSTRScrollView.h; sourceTree = "<group>"; };
+		6517CBE915DCDE3D007BAB00 /* EQSTRScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EQSTRScrollView.m; sourceTree = "<group>"; };
+		6517CBEE15DCDED2007BAB00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		65A425BD15DB908C00861D3B /* WBMessageTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageTableCellView.h; sourceTree = "<group>"; };
 		65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageTableCellView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6517CBEF15DCDED2007BAB00 /* QuartzCore.framework in Frameworks */,
 				4C15276215D604C3000F9E93 /* Security.framework in Frameworks */,
 				4CCB88BC15D3EDEF00231E13 /* WebKit.framework in Frameworks */,
 				4C8FAB2D15D24AF7004EBBC5 /* Cocoa.framework in Frameworks */,
@@ -158,6 +167,7 @@
 		4C8FAB1D15D24AF7004EBBC5 = {
 			isa = PBXGroup;
 			children = (
+				6517CBEE15DCDED2007BAB00 /* QuartzCore.framework */,
 				4C15276115D604C3000F9E93 /* Security.framework */,
 				4CCB88BB15D3EDEF00231E13 /* WebKit.framework */,
 				4C5F9AB615DBF63000B804F1 /* Resources */,
@@ -200,6 +210,7 @@
 		4C8FAB3215D24AF7004EBBC5 /* weibo */ = {
 			isa = PBXGroup;
 			children = (
+				6517CBED15DCDE42007BAB00 /* ScrollToRefreshView */,
 				4C15277815D69601000F9E93 /* SSKeychain.h */,
 				4C15277915D69601000F9E93 /* SSKeychain.m */,
 				4CCB88AE15D3EA4300231E13 /* weiboSDK */,
@@ -288,6 +299,17 @@
 				4CCB88D015D5287100231E13 /* SBJsonWriter.m */,
 			);
 			path = SBJSON;
+			sourceTree = "<group>";
+		};
+		6517CBED15DCDE42007BAB00 /* ScrollToRefreshView */ = {
+			isa = PBXGroup;
+			children = (
+				6517CBE615DCDE3D007BAB00 /* EQSTRClipView.h */,
+				6517CBE715DCDE3D007BAB00 /* EQSTRClipView.m */,
+				6517CBE815DCDE3D007BAB00 /* EQSTRScrollView.h */,
+				6517CBE915DCDE3D007BAB00 /* EQSTRScrollView.m */,
+			);
+			name = ScrollToRefreshView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,6 +444,8 @@
 				4C15276C15D67A1F000F9E93 /* MainWindowController.m in Sources */,
 				4C15277A15D69601000F9E93 /* SSKeychain.m in Sources */,
 				65A425BF15DB908C00861D3B /* WBMessageTableCellView.m in Sources */,
+				6517CBEA15DCDE3D007BAB00 /* EQSTRClipView.m in Sources */,
+				6517CBEB15DCDE3D007BAB00 /* EQSTRScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
