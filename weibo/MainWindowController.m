@@ -29,7 +29,8 @@
 {
     if (_utcDateFormatter == nil) {
         _utcDateFormatter = [[NSDateFormatter alloc] init];
-        _utcDateFormatter.dateFormat = @"EEE MMM d H:mm:ss zzzz yyyy";
+        _utcDateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+        _utcDateFormatter.dateFormat = @"EEE MMM d HH:mm:ss ZZZ yyyy";
     }
     
     return _utcDateFormatter;
@@ -139,8 +140,8 @@
     NSString *createdAt = [[self.timeline objectAtIndex:row] objectForKey:@"created_at"];
     
     NSDate *createdDate = [self.utcDateFormatter dateFromString:createdAt];
-    //NSLog(@"%@", createdAt);
-    //NSLog(@"%@", createdDate);
+    NSLog(@"%@", createdAt);
+    NSLog(@"%@", createdDate);
     NSTimeInterval intervalSince1970 = [createdDate timeIntervalSince1970];
     
     NSString *message = [[self.timeline objectAtIndex:row] objectForKey:@"text"];
@@ -187,7 +188,7 @@
     NSTextStorage *textStorage = [[NSTextStorage alloc]
                                   initWithString:message];
     NSTextContainer *textContainer = [[NSTextContainer alloc]
-                                      initWithContainerSize: NSMakeSize(400, 1000.0)];
+                                      initWithContainerSize: NSMakeSize(360, 1000.0)];
     NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
     
     [layoutManager addTextContainer:textContainer];
@@ -199,7 +200,7 @@
     (void) [layoutManager glyphRangeForTextContainer:textContainer];
     NSRect rct = [layoutManager usedRectForTextContainer:textContainer];
     
-    return rct.size.height + 40 > 68 ? rct.size.height + 40 : 68;
+    return rct.size.height + 60 > 68 ? rct.size.height + 60 : 68;
 }
 
 @end
