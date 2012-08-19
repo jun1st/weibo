@@ -86,7 +86,9 @@
 -(WBAuthorize *)wbAuthorize
 {
     if (!_wbAuthorize) {
-        _wbAuthorize = [[WBAuthorize alloc] initWithAppKey:OAuthConsumerKey appSecret:OAuthConsumerSecret redirectURL:kWBRedirectURL];
+        _wbAuthorize = [[WBAuthorize alloc] initWithAppKey:OAuthConsumerKey
+                                                 appSecret:OAuthConsumerSecret
+                                               redirectURL:kWBRedirectURL];
         _wbAuthorize.delegate = self;
     }
     
@@ -98,18 +100,20 @@
 -(NSURLRequest *)webView:(WebView *)sender resource:(id)identifier willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)redirectResponse fromDataSource:(WebDataSource *)dataSource
 {
 
-    NSRange range = [request.URL.absoluteString rangeOfString:@"http://localhost/?code="];
-    if (range.location != NSNotFound ) {
-        NSString *code = [request.URL.absoluteString substringFromIndex:range.location + range.length];
+    NSRange authorizedScope = [request.URL.absoluteString rangeOfString:@"http://localhost/?code="];
+    if (authorizedScope.location != NSNotFound ) {
+        NSString *code = [request.URL.absoluteString substringFromIndex:authorizedScope.location + authorizedScope.length];
         NSLog(@"%@", code);
         
         //user cancel
         if (![code isEqualToString:@"21330"]) {
             [self.wbAuthorize requestAccessTokenWithAuthorizeCode:code];
         }
-        else{
-            [self close];
-        }
+    }
+    
+    NSRange errorScope = [request.URL.absoluteString rangeOfString:@"error_code"];
+    if (errorScope.location != NSNotFound) {
+        [NSApp terminate:nil];
     }
     
     return request;

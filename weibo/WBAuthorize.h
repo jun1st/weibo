@@ -23,7 +23,7 @@
 
 @protocol WBAuthorizeDelegate <NSObject>
 
-@required
+@optional
 
 - (void)authorize:(WBAuthorize *)authorize didSucceedWithAccessToken:(NSString *)accessToken userID:(NSString *)userID expiresIn:(NSInteger)seconds;
 
@@ -41,11 +41,14 @@
 @property (nonatomic, strong) WBRequest *request;
 @property (nonatomic, weak) id<WBAuthorizeDelegate> delegate;
 
++(WBAuthorize *)sharedInstance;
+
 - (id)initWithAppKey:(NSString *)theAppKey appSecret:(NSString *)theAppSecret redirectURL:(NSString *)redirectURL;
 - (NSURLRequest *)getAuthorizeUrl;
 - (void)requestAccessTokenWithAuthorizeCode:(NSString *)code;
--(void)logout;
--(BOOL)isLoggedIn;
--(BOOL)isAuthorizationExpired;
+- (void)requestUserInfo;
+- (void)logout;
+- (BOOL)isLoggedIn;
+- (BOOL)isAuthorizationExpired;
 
 @end

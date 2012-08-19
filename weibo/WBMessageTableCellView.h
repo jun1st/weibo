@@ -12,5 +12,6 @@
 
 @property (weak) IBOutlet NSTextField *authName;
 @property (weak) IBOutlet NSTextField *createdTime;
+@property (weak) IBOutlet NSImageView *userProfileImageView;
 
 @end

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4C8FAB2715D24AF7004EBBC5"
-               BuildableName = "weibo.app"
+               BuildableName = "iwei4mac.app"
                BlueprintName = "weibo"
                ReferencedContainer = "container:weibo.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4C8FAB2715D24AF7004EBBC5"
-            BuildableName = "weibo.app"
+            BuildableName = "iwei4mac.app"
             BlueprintName = "weibo"
             ReferencedContainer = "container:weibo.xcodeproj">
          </BuildableReference>
@@ -62,12 +62,17 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4C8FAB2715D24AF7004EBBC5"
-            BuildableName = "weibo.app"
+            BuildableName = "iwei4mac.app"
             BlueprintName = "weibo"
             ReferencedContainer = "container:weibo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
+         <AdditionalOption
+            key = "NSZombieEnabled"
+            value = "YES"
+            isEnabled = "YES">
+         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
@@ -80,7 +85,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4C8FAB2715D24AF7004EBBC5"
-            BuildableName = "weibo.app"
+            BuildableName = "iwei4mac.app"
             BlueprintName = "weibo"
             ReferencedContainer = "container:weibo.xcodeproj">
          </BuildableReference>

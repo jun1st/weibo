@@ -20,6 +20,12 @@
 #import "WBSDKGlobal.h"
 #import "WBUtil.h"
 #import "SSKeychain.h"
+#import "WBUser.h"
+
+#define OAuthConsumerKey @"4116306678"
+#define OAuthConsumerSecret @"630c48733d7f6c717ad6dec31bf50895"
+
+#define kWBRedirectURL @"http://"
 
 #define kKeychainServiceName   @"iweb4Mac"
 #define kWBKeychainUserID               @"WeiBoUserID"
@@ -32,11 +38,15 @@
 #define kKeychainName @"iweb4mac"
 #define kKeychainKind @"OAuthLogin"
 
+#define kUId @"WeiBoExpireTime"
+#define kUExpireTime @"WeiBoExpireTime"
+
 @interface WBAuthorize ()
 
 @property(nonatomic, strong) NSString *userId;
 @property(nonatomic) NSTimeInterval expireTime;
 @property(nonatomic, strong) NSString *serviceName;
+@property(nonatomic, strong) WBUser *authorizingUser;
 
 -(void)saveAuthorizationDataToKeychain;
 -(void)readAuthorizationDataFromKeychain;
@@ -54,6 +64,11 @@
 @synthesize serviceName = _serviceName;
 
 #pragma mark - WBAuthorize Life Circle
+
++(WBAuthorize *)sharedInstance
+{
+    return [[WBAuthorize alloc] initWithAppKey:OAuthConsumerKey appSecret:OAuthConsumerSecret redirectURL:kWBRedirectURL];
+}
 
 - (id)initWithAppKey:(NSString *)theAppKey appSecret:(NSString *)theAppSecret redirectURL:(NSString *)redirectURL
 {
@@ -86,6 +101,18 @@
     }
     
     return _accessToken;
+}
+
+- (void)requestUserInfo
+{
+    if (self.accessToken && self.userId) {
+        
+    }
+}
+
+-(NSUserDefaults *)userDefaults
+{
+    return [NSUserDefaults standardUserDefaults];
 }
 
 #pragma mark - WBAuthorize Private Methods
@@ -130,19 +157,24 @@
 
 -(void)saveAuthorizationDataToKeychain
 {
+    [[self userDefaults] setObject:self.userId forKey:kUId];
+    [[self userDefaults] setDouble:self.expireTime forKey:kUExpireTime];
     
     [SSKeychain setPassword:self.accessToken forService:kKeychainServiceName account:kWBKeychainAccessToken];
-    [SSKeychain setPassword:self.userId forService:kKeychainServiceName account:kWBKeychainUserID];
-    [SSKeychain setPassword:[NSString stringWithFormat:@"%f", self.expireTime] forService:kKeychainServiceName account:kWBKeychainExpireTime];
+    //[SSKeychain setPassword:self.userId forService:kKeychainServiceName account:kWBKeychainUserID];
+    //[SSKeychain setPassword:[NSString stringWithFormat:@"%f", self.expireTime] forService:kKeychainServiceName account:kWBKeychainExpireTime];
 
 }
 
 -(void)readAuthorizationDataFromKeychain
 {
-    self.userId = [SSKeychain passwordForService:kKeychainServiceName account:kWBKeychainUserID];
+    //self.userId = [SSKeychain passwordForService:kKeychainServiceName account:kWBKeychainUserID];
+    
+    self.userId = [[self userDefaults] objectForKey:kUId];
+    self.expireTime = [[self userDefaults] doubleForKey:kUExpireTime];
     
     self.accessToken = [SSKeychain passwordForService:kKeychainServiceName account:kWBKeychainAccessToken];
-    self.expireTime = [[SSKeychain passwordForService:kKeychainServiceName account:kWBKeychainExpireTime] doubleValue];
+    //self.expireTime = [[SSKeychain passwordForService:kKeychainServiceName account:kWBKeychainExpireTime] doubleValue];
 }
 
 -(void)deleteAuthorizationDataFromKeychain
@@ -151,9 +183,12 @@
     self.userId = nil;
     self.expireTime = 0;
     
+    [[self userDefaults] removeObjectForKey:kUId];
+    [[self userDefaults] removeObjectForKey:kUExpireTime];
+    
     [SSKeychain deletePasswordForService:kKeychainServiceName account:kWBKeychainAccessToken];
-    [SSKeychain deletePasswordForService:kKeychainServiceName account:kWBKeychainUserID];
-    [SSKeychain deletePasswordForService:kKeychainServiceName account:kWBKeychainExpireTime];
+    //[SSKeychain deletePasswordForService:kKeychainServiceName account:kWBKeychainUserID];
+    //[SSKeychain deletePasswordForService:kKeychainServiceName account:kWBKeychainExpireTime];
     
 }
 
@@ -169,7 +204,7 @@
 
 -(BOOL)isAuthorizationExpired
 {
-    if (![[NSDate date] timeIntervalSince1970] > self.expireTime) {
+    if ([[NSDate date] timeIntervalSince1970] > self.expireTime) {
         [self deleteAuthorizationDataFromKeychain];
         return YES;
     }
@@ -195,9 +230,14 @@
         
         if (success) {
             [self saveAuthorizationDataToKeychain];
+            self.authorizingUser = [[WBUser alloc] initWithUserId:self.userId accessToken:self.accessToken];
+            [self.authorizingUser requestAuthorizingUser];
             
             if ([self.delegate respondsToSelector:@selector(authorize:didSucceedWithAccessToken:userID:expiresIn:)]) {
-                [self.delegate authorize:self didSucceedWithAccessToken:self.accessToken userID:self.userId expiresIn:seconds];
+                [self.delegate authorize:self
+               didSucceedWithAccessToken:self.accessToken
+                                  userID:self.userId
+                               expiresIn:seconds];
             }
         }
         
