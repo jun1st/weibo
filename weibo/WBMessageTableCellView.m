@@ -14,5 +14,17 @@
 
 @implementation WBMessageTableCellView
 
+-(void)mouseDown:(NSEvent *)theEvent
+{
+    [super mouseDown:theEvent];
+    
+    // Only take effect for double clicks; remove to allow for single clicks
+    if (theEvent.clickCount == 1) {
+        NSLog(@"clicked");
+        [self.window makeFirstResponder:self.textField];
+    }
+    
+    
+}
 
 @end

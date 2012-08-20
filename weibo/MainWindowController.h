@@ -17,7 +17,7 @@
 @property(nonatomic, strong) WBEngine *engine;
 @property (weak) IBOutlet NSTableView *timelineTable;
 @property (weak) IBOutlet EQSTRScrollView *scrollView;
-@property (weak) IBOutlet NSImageView *authorizingUserProfileImage;
+@property (assign) IBOutlet NSImageView *authorizingUserProfileImage;
 
 
 @end

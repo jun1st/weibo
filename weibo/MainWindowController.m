@@ -235,7 +235,8 @@
     
     NSString *text;
     text = [self populateText:row];
-
+    
+    [result.textField setAllowsEditingTextAttributes:YES];
     NSMutableAttributedString *rString =
         [[NSMutableAttributedString alloc] initWithString:text];
     [rString addAttribute:NSFontAttributeName value:[NSFont userFontOfSize:13] range: NSMakeRange(0, rString.length)];
@@ -249,25 +250,25 @@
         NSRange matchRange = [match range];
         NSFont *font = [NSFont userFontOfSize:12];
         NSFont *boldFont = [[NSFontManager sharedFontManager] fontWithFamily:font.familyName
-                                                                      traits:NSBoldFontMask weight:0 size:12];
+                                                                      traits:NSBoldFontMask weight:0 size:13];
         [rString addAttribute:NSFontAttributeName value:boldFont range:matchRange];
         [rString addAttribute:NSForegroundColorAttributeName value:[NSColor darkGrayColor] range:matchRange];
     }
     
     //match urls
-//    NSArray *urlMatches = [self.urlRegularExpression matchesInString:text options:0 range:NSMakeRange(0, text.length)];
-//    for (NSTextCheckingResult  *match in urlMatches) {
-//        NSRange matchRange = [match range];
-//        NSString *subString = [text substringWithRange:matchRange];
-//        
-//        //NSURL* url = [NSURL URLWithString: subString];
-//        [rString addAttribute:NSLinkAttributeName value:subString range:matchRange];
-//        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:matchRange];
-//        [rString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSSingleUnderlineStyle] range:matchRange];
-//    }
+    NSArray *urlMatches = [self.urlRegularExpression matchesInString:text options:0 range:NSMakeRange(0, text.length)];
+    for (NSTextCheckingResult  *match in urlMatches) {
+        NSRange matchRange = [match range];
+        NSString *subString = [text substringWithRange:matchRange];
+        
+        //NSURL* url = [NSURL URLWithString: subString];
+        [rString addAttribute:NSLinkAttributeName value:subString range:matchRange];
+        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:matchRange];
+        [rString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSSingleUnderlineStyle] range:matchRange];
+    }
     
-    [result.textField setAttributedStringValue:rString];
-
+    [result.statusTextView.textStorage setAttributedString:rString];
+    
     return result;
 }
 
