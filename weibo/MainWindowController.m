@@ -21,6 +21,7 @@
 @property(strong, readonly, nonatomic) NSDateFormatter *utcDateFormatter;
 @property(nonatomic, strong) NSMutableArray *timeline;
 @property(readonly, nonatomic) NSRegularExpression *userRegularExpression;
+@property(readonly, nonatomic) NSRegularExpression *urlRegularExpression;
 @property(readonly, strong) WBUser *authorizingUser;
 
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
@@ -34,6 +35,7 @@
 @synthesize timelineTable = _timelineTable;
 @synthesize utcDateFormatter = _utcDateFormatter;
 @synthesize userRegularExpression = _userRegularExpression;
+@synthesize urlRegularExpression = _urlRegularExpression;
 @synthesize authorizingUser = _authorizingUser;
 
 -(NSDateFormatter *)utcDateFormatter
@@ -63,6 +65,18 @@
     return _userRegularExpression;
 }
 
+-(NSRegularExpression *)urlRegularExpression
+    {
+        if (!_urlRegularExpression) {
+            _urlRegularExpression =
+            [NSRegularExpression regularExpressionWithPattern:@"(http://|https://)([a-zA-Z0-9]+\\.[a-zA-Z0-9\\-]+|[a-zA-Z0-9\\-]+)\\.[a-zA-Z\\.]{2,6}(/[a-zA-Z0-9\\.\\?=/#%&\\+-]+|/|)"
+                                                                               options:NSRegularExpressionCaseInsensitive
+                                                                                 error:nil];
+        }
+        
+        return _urlRegularExpression;
+                                       }
+                                   
 -(WBEngine *)engine
 {
     if (!_engine) {
@@ -226,6 +240,7 @@
         [[NSMutableAttributedString alloc] initWithString:text];
     [rString addAttribute:NSFontAttributeName value:[NSFont userFontOfSize:13] range: NSMakeRange(0, rString.length)];
     
+    //match user names
     NSArray *matches = [self.userRegularExpression matchesInString:text
                                                            options:0
                                                              range:NSMakeRange(0, [text length])];
@@ -238,6 +253,18 @@
         [rString addAttribute:NSFontAttributeName value:boldFont range:matchRange];
         [rString addAttribute:NSForegroundColorAttributeName value:[NSColor darkGrayColor] range:matchRange];
     }
+    
+    //match urls
+//    NSArray *urlMatches = [self.urlRegularExpression matchesInString:text options:0 range:NSMakeRange(0, text.length)];
+//    for (NSTextCheckingResult  *match in urlMatches) {
+//        NSRange matchRange = [match range];
+//        NSString *subString = [text substringWithRange:matchRange];
+//        
+//        //NSURL* url = [NSURL URLWithString: subString];
+//        [rString addAttribute:NSLinkAttributeName value:subString range:matchRange];
+//        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:matchRange];
+//        [rString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSSingleUnderlineStyle] range:matchRange];
+//    }
     
     [result.textField setAttributedStringValue:rString];
 

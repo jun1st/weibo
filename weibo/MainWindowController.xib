@@ -161,14 +161,15 @@
 												</object>
 											</object>
 											<double key="NSRowHeight">109</double>
-											<int key="NSTvFlags">845152256</int>
+											<int key="NSTvFlags">576716800</int>
 											<reference key="NSDelegate"/>
 											<reference key="NSDataSource"/>
 											<int key="NSGridStyleMask">2</int>
 											<int key="NSColumnAutoresizingStyle">0</int>
 											<int key="NSDraggingSourceMaskForLocal">15</int>
 											<int key="NSDraggingSourceMaskForNonLocal">0</int>
-											<bool key="NSAllowsTypeSelect">YES</bool>
+											<bool key="NSAllowsTypeSelect">NO</bool>
+											<int key="NSTableViewSelectionHighlightStyle">-1</int>
 											<int key="NSTableViewDraggingDestinationStyle">0</int>
 											<int key="NSTableViewGroupRowStyle">1</int>
 										</object>
@@ -453,7 +454,7 @@
 										<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
 										<string>NeXT TIFF v4.0 pasteboard type</string>
 									</set>
-									<string key="NSFrame">{{8, 51}, {50, 50}}</string>
+									<string key="NSFrame">{{11, 54}, {44, 44}}</string>
 									<reference key="NSSuperview" ref="696948163"/>
 									<reference key="NSNextKeyView" ref="766297276"/>
 									<string key="NSReuseIdentifierKey">_NS:9</string>
