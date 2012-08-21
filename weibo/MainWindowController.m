@@ -12,6 +12,7 @@
 #import "WBUser.h"
 #import "WBUser+ProfileImage.h"
 #import "ImageDownloader.h"
+#import "WBMessageTextView.h"
 
 #define OAuthConsumerKey @"4116306678"
 #define OAuthConsumerSecret @"630c48733d7f6c717ad6dec31bf50895"
@@ -38,6 +39,29 @@
 @synthesize urlRegularExpression = _urlRegularExpression;
 @synthesize authorizingUser = _authorizingUser;
 
+-(NSRegularExpression *)userRegularExpression
+{
+    if (!_userRegularExpression) {
+        _userRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"@[\\w-]+"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:nil];
+    }
+    
+    return _userRegularExpression;
+}
+
+-(NSRegularExpression *)urlRegularExpression
+{
+    if (!_urlRegularExpression) {
+        _urlRegularExpression =
+        [NSRegularExpression regularExpressionWithPattern:@"(http://|https://)([a-zA-Z0-9]+\\.[a-zA-Z0-9\\-]+|[a-zA-Z0-9\\-]+)\\.[a-zA-Z\\.]{2,6}(/[a-zA-Z0-9\\.\\?=/#%&\\+-]+|/|)"
+                                                  options:NSRegularExpressionCaseInsensitive
+                                                    error:nil];
+    }
+    
+    return _urlRegularExpression;
+}
+
 -(NSDateFormatter *)utcDateFormatter
 {
     if (_utcDateFormatter == nil) {
@@ -53,29 +77,6 @@
 {
     return [NSTimeZone localTimeZone];
 }
-
--(NSRegularExpression *)userRegularExpression
-{
-    if (!_userRegularExpression) {
-        _userRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"@[\\w-]+"
-                                                                           options:NSRegularExpressionCaseInsensitive
-                                                                             error:nil];
-    }
-    
-    return _userRegularExpression;
-}
-
--(NSRegularExpression *)urlRegularExpression
-    {
-        if (!_urlRegularExpression) {
-            _urlRegularExpression =
-            [NSRegularExpression regularExpressionWithPattern:@"(http://|https://)([a-zA-Z0-9]+\\.[a-zA-Z0-9\\-]+|[a-zA-Z0-9\\-]+)\\.[a-zA-Z\\.]{2,6}(/[a-zA-Z0-9\\.\\?=/#%&\\+-]+|/|)"
-                                                                               options:NSRegularExpressionCaseInsensitive
-                                                                                 error:nil];
-        }
-        
-        return _urlRegularExpression;
-                                       }
                                    
 -(WBEngine *)engine
 {
@@ -233,12 +234,17 @@
         [self startUserProfileImageDownload:user forRow:row];
     }
     
-    NSString *text;
-    text = [self populateText:row];
+    NSString *text = [self populateText:row];//[[self.timeline objectAtIndex:row] objectForKey:@"text"];
+    NSString *retweetText = nil;
+    NSDictionary *retweetStatus = [[self.timeline objectAtIndex:row] objectForKey:@"retweeted_status"];
+    if (retweetStatus) {
+         retweetText = [retweetStatus objectForKey:@"text"];
+    }
     
-    [result.textField setAllowsEditingTextAttributes:YES];
     NSMutableAttributedString *rString =
-        [[NSMutableAttributedString alloc] initWithString:text];
+    [[NSMutableAttributedString alloc] initWithString:text];
+    
+    
     [rString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range: NSMakeRange(0, rString.length)];
     
     //match user names
@@ -266,10 +272,15 @@
         [rString addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:matchRange];
         [rString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSSingleUnderlineStyle] range:matchRange];
     }
-//    NSMutableParagraphStyle * myStyle = [[NSMutableParagraphStyle alloc] init];
-//    [myStyle setLineSpacing:10.0];
-//    [result.statusTextView setDefaultParagraphStyle:myStyle];
+    NSMutableParagraphStyle * myStyle = [[NSMutableParagraphStyle alloc] init];
+    [myStyle setLineSpacing:4.0];
+    [rString addAttribute:NSParagraphStyleAttributeName value:myStyle range:NSMakeRange(0, text.length)];
+    
+    
     [result.statusTextView.textStorage setAttributedString:rString];
+
+    
+    //[((WBMessageTextView *)result.statusTextView) setText:text withRetweetText:retweetText];
     
     return result;
 }
@@ -283,7 +294,7 @@
     [rString addAttribute:NSFontAttributeName value:[NSFont userFontOfSize:13] range: NSMakeRange(0, rString.length)];
     
     float rows = ceilf(rString.size.width / 360.0f);
-    return rString.size.height * rows + 40 > 68 ? rString.size.height * rows + 40 : 68;
+    return (rString.size.height + 3 ) * rows + 30 > 68 ? (rString.size.height + 3) * rows + 30 : 68;
 }
 
 

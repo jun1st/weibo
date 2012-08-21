@@ -13,6 +13,8 @@
 		4C15276C15D67A1F000F9E93 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C15276A15D67A1F000F9E93 /* MainWindowController.m */; };
 		4C15276D15D67A1F000F9E93 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C15276B15D67A1F000F9E93 /* MainWindowController.xib */; };
 		4C15277A15D69601000F9E93 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C15277915D69601000F9E93 /* SSKeychain.m */; };
+		4C5315E615E3D33B0004238A /* WBMessageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E515E3D33B0004238A /* WBMessageScrollView.m */; };
+		4C5315EA15E3E3620004238A /* WBMessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E915E3E3620004238A /* WBMessageTextView.m */; };
 		4C5F9AB415DBE0A100B804F1 /* twitter.ico in Resources */ = {isa = PBXBuildFile; fileRef = 4C5F9AB315DBE0A100B804F1 /* twitter.ico */; };
 		4C5F9AB915DBF70C00B804F1 /* twitter.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4C5F9AB815DBF70C00B804F1 /* twitter.icns */; };
 		4C5F9ABB15DBF93000B804F1 /* drink_twitter.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4C5F9ABA15DBF93000B804F1 /* drink_twitter.icns */; };
@@ -70,6 +72,10 @@
 		4C15276B15D67A1F000F9E93 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		4C15277815D69601000F9E93 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		4C15277915D69601000F9E93 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		4C5315E415E3D33B0004238A /* WBMessageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageScrollView.h; sourceTree = "<group>"; };
+		4C5315E515E3D33B0004238A /* WBMessageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageScrollView.m; sourceTree = "<group>"; };
+		4C5315E815E3E3620004238A /* WBMessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageTextView.h; sourceTree = "<group>"; };
+		4C5315E915E3E3620004238A /* WBMessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageTextView.m; sourceTree = "<group>"; };
 		4C5F9AB315DBE0A100B804F1 /* twitter.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = twitter.ico; sourceTree = "<group>"; };
 		4C5F9AB815DBF70C00B804F1 /* twitter.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = twitter.icns; sourceTree = "<group>"; };
 		4C5F9ABA15DBF93000B804F1 /* drink_twitter.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = drink_twitter.icns; sourceTree = "<group>"; };
@@ -255,6 +261,10 @@
 				65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */,
 				4CBB148415E11EF400E7F9C8 /* NSRoundedImageView.h */,
 				4CBB148515E11EF400E7F9C8 /* NSRoundedImageView.m */,
+				4C5315E415E3D33B0004238A /* WBMessageScrollView.h */,
+				4C5315E515E3D33B0004238A /* WBMessageScrollView.m */,
+				4C5315E815E3E3620004238A /* WBMessageTextView.h */,
+				4C5315E915E3E3620004238A /* WBMessageTextView.m */,
 			);
 			path = weibo;
 			sourceTree = "<group>";
@@ -484,6 +494,8 @@
 				4C6878FD15E0B28F000F0482 /* ImageDownloader.m in Sources */,
 				4C68790115E0B864000F0482 /* WBUser+ProfileImage.m in Sources */,
 				4CBB148615E11EF400E7F9C8 /* NSRoundedImageView.m in Sources */,
+				4C5315E615E3D33B0004238A /* WBMessageScrollView.m in Sources */,
+				4C5315EA15E3E3620004238A /* WBMessageTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
