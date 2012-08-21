@@ -476,38 +476,24 @@
 													<int key="NSvFlags">2322</int>
 													<string key="NSFrameSize">{374, 81}</string>
 													<reference key="NSSuperview" ref="478335357"/>
-													<reference key="NSNextKeyView" ref="296748781"/>
+													<reference key="NSNextKeyView" ref="347515242"/>
 													<string key="NSReuseIdentifierKey">_NS:13</string>
 													<object class="NSTextContainer" key="NSTextContainer" id="640022025">
 														<object class="NSLayoutManager" key="NSLayoutManager">
 															<object class="NSTextStorage" key="NSTextStorage">
 																<object class="NSMutableString" key="NSString">
-																	<bytes key="NS.bytes">Q29vbCDkuK3mloc</bytes>
+																	<characters key="NS.bytes">cool</characters>
 																</object>
-																<array class="NSMutableArray" key="NSAttributes">
-																	<dictionary>
-																		<object class="NSFont" key="NSFont">
-																			<string key="NSName">Helvetica</string>
-																			<double key="NSSize">13</double>
-																			<int key="NSfFlags">16</int>
-																		</object>
-																		<object class="NSParagraphStyle" key="NSParagraphStyle" id="295328588">
-																			<int key="NSAlignment">4</int>
-																			<nil key="NSTabStops"/>
-																		</object>
-																	</dictionary>
-																	<dictionary>
-																		<object class="NSFont" key="NSFont">
-																			<string key="NSName">HiraKakuProN-W3</string>
-																			<double key="NSSize">13</double>
-																			<int key="NSfFlags">16</int>
-																		</object>
-																		<reference key="NSParagraphStyle" ref="295328588"/>
-																	</dictionary>
-																</array>
-																<object class="NSMutableData" key="NSAttributeInfo">
-																	<bytes key="NS.bytes">BQACAQ</bytes>
-																</object>
+																<dictionary key="NSAttributes">
+																	<object class="NSFont" key="NSFont">
+																		<string key="NSName">STHeitiSC-Light</string>
+																		<double key="NSSize">13</double>
+																		<int key="NSfFlags">16</int>
+																	</object>
+																	<object class="NSMutableParagraphStyle" key="NSParagraphStyle">
+																		<nil key="NSTabStops"/>
+																	</object>
+																</dictionary>
 																<nil key="NSDelegate"/>
 															</object>
 															<array class="NSMutableArray" key="NSTextContainers">
@@ -521,7 +507,7 @@
 														<int key="NSTCFlags">1</int>
 													</object>
 													<object class="NSTextViewSharedData" key="NSSharedData">
-														<int key="NSFlags">273157</int>
+														<int key="NSFlags">272645</int>
 														<int key="NSTextCheckingTypes">0</int>
 														<nil key="NSMarkedAttributes"/>
 														<reference key="NSBackgroundColor" ref="13583611"/>
@@ -751,7 +737,7 @@ wGw</bytes>
 									</array>
 									<string key="NSFrame">{{63, 6}, {374, 81}}</string>
 									<reference key="NSSuperview" ref="696948163"/>
-									<reference key="NSNextKeyView" ref="347515242"/>
+									<reference key="NSNextKeyView" ref="478335357"/>
 									<string key="NSReuseIdentifierKey">_NS:9</string>
 									<int key="NSsFlags">154112</int>
 									<reference key="NSVScroller" ref="296748781"/>

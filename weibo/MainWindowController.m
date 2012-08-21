@@ -239,7 +239,7 @@
     [result.textField setAllowsEditingTextAttributes:YES];
     NSMutableAttributedString *rString =
         [[NSMutableAttributedString alloc] initWithString:text];
-    [rString addAttribute:NSFontAttributeName value:[NSFont userFontOfSize:13] range: NSMakeRange(0, rString.length)];
+    [rString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range: NSMakeRange(0, rString.length)];
     
     //match user names
     NSArray *matches = [self.userRegularExpression matchesInString:text
@@ -248,7 +248,7 @@
     for(NSTextCheckingResult *match in matches)
     {
         NSRange matchRange = [match range];
-        NSFont *font = [NSFont userFontOfSize:12];
+        NSFont *font = [NSFont userFontOfSize:13];
         NSFont *boldFont = [[NSFontManager sharedFontManager] fontWithFamily:font.familyName
                                                                       traits:NSBoldFontMask weight:0 size:13];
         [rString addAttribute:NSFontAttributeName value:boldFont range:matchRange];
@@ -266,7 +266,9 @@
         [rString addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:matchRange];
         [rString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSSingleUnderlineStyle] range:matchRange];
     }
-    
+//    NSMutableParagraphStyle * myStyle = [[NSMutableParagraphStyle alloc] init];
+//    [myStyle setLineSpacing:10.0];
+//    [result.statusTextView setDefaultParagraphStyle:myStyle];
     [result.statusTextView.textStorage setAttributedString:rString];
     
     return result;
