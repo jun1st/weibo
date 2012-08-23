@@ -13,6 +13,7 @@
 		4C15276C15D67A1F000F9E93 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C15276A15D67A1F000F9E93 /* MainWindowController.m */; };
 		4C15276D15D67A1F000F9E93 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C15276B15D67A1F000F9E93 /* MainWindowController.xib */; };
 		4C15277A15D69601000F9E93 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C15277915D69601000F9E93 /* SSKeychain.m */; };
+		4C2CBEDD15E689ED0062B910 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8FAB3015D24AF7004EBBC5 /* CoreData.framework */; };
 		4C5315E615E3D33B0004238A /* WBMessageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E515E3D33B0004238A /* WBMessageScrollView.m */; };
 		4C5315EA15E3E3620004238A /* WBMessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E915E3E3620004238A /* WBMessageTextView.m */; };
 		4C5F9AB415DBE0A100B804F1 /* twitter.ico in Resources */ = {isa = PBXBuildFile; fileRef = 4C5F9AB315DBE0A100B804F1 /* twitter.ico */; };
@@ -147,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C2CBEDD15E689ED0062B910 /* CoreData.framework in Frameworks */,
 				6517CBEF15DCDED2007BAB00 /* QuartzCore.framework in Frameworks */,
 				4C15276215D604C3000F9E93 /* Security.framework in Frameworks */,
 				4CCB88BC15D3EDEF00231E13 /* WebKit.framework in Frameworks */,
