@@ -50,5 +50,6 @@
 - (void)logout;
 - (BOOL)isLoggedIn;
 - (BOOL)isAuthorizationExpired;
+- (void)deleteAuthorization;
 
 @end

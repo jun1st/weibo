@@ -13,6 +13,8 @@
 		4C15276C15D67A1F000F9E93 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C15276A15D67A1F000F9E93 /* MainWindowController.m */; };
 		4C15276D15D67A1F000F9E93 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C15276B15D67A1F000F9E93 /* MainWindowController.xib */; };
 		4C15277A15D69601000F9E93 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C15277915D69601000F9E93 /* SSKeychain.m */; };
+		4C1782F915E883660034EBFF /* WeiboMessages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1782F715E883660034EBFF /* WeiboMessages.xcdatamodeld */; };
+		4C1782FD15E883D30034EBFF /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1782FC15E883D30034EBFF /* Status.m */; };
 		4C2CBEDD15E689ED0062B910 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8FAB3015D24AF7004EBBC5 /* CoreData.framework */; };
 		4C5315E615E3D33B0004238A /* WBMessageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E515E3D33B0004238A /* WBMessageScrollView.m */; };
 		4C5315EA15E3E3620004238A /* WBMessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E915E3E3620004238A /* WBMessageTextView.m */; };
@@ -73,6 +75,9 @@
 		4C15276B15D67A1F000F9E93 /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindowController.xib; sourceTree = "<group>"; };
 		4C15277815D69601000F9E93 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		4C15277915D69601000F9E93 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		4C1782F815E883660034EBFF /* WeiboMessages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeiboMessages.xcdatamodel; sourceTree = "<group>"; };
+		4C1782FB15E883D30034EBFF /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		4C1782FC15E883D30034EBFF /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		4C5315E415E3D33B0004238A /* WBMessageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageScrollView.h; sourceTree = "<group>"; };
 		4C5315E515E3D33B0004238A /* WBMessageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageScrollView.m; sourceTree = "<group>"; };
 		4C5315E815E3E3620004238A /* WBMessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageTextView.h; sourceTree = "<group>"; };
@@ -267,6 +272,9 @@
 				4C5315E515E3D33B0004238A /* WBMessageScrollView.m */,
 				4C5315E815E3E3620004238A /* WBMessageTextView.h */,
 				4C5315E915E3E3620004238A /* WBMessageTextView.m */,
+				4C1782F715E883660034EBFF /* WeiboMessages.xcdatamodeld */,
+				4C1782FB15E883D30034EBFF /* Status.h */,
+				4C1782FC15E883D30034EBFF /* Status.m */,
 			);
 			path = weibo;
 			sourceTree = "<group>";
@@ -498,6 +506,8 @@
 				4CBB148615E11EF400E7F9C8 /* NSRoundedImageView.m in Sources */,
 				4C5315E615E3D33B0004238A /* WBMessageScrollView.m in Sources */,
 				4C5315EA15E3E3620004238A /* WBMessageTextView.m in Sources */,
+				4C1782F915E883660034EBFF /* WeiboMessages.xcdatamodeld in Sources */,
+				4C1782FD15E883D30034EBFF /* Status.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -681,6 +691,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4C1782F715E883660034EBFF /* WeiboMessages.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4C1782F815E883660034EBFF /* WeiboMessages.xcdatamodel */,
+			);
+			currentVersion = 4C1782F815E883660034EBFF /* WeiboMessages.xcdatamodel */;
+			path = WeiboMessages.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4C8FAB1F15D24AF7004EBBC5 /* Project object */;
 }

@@ -13,6 +13,7 @@
 #import "WBUser+ProfileImage.h"
 #import "ImageDownloader.h"
 #import "WBMessageTextView.h"
+#import "Status.h"
 
 #define OAuthConsumerKey @"4116306678"
 #define OAuthConsumerSecret @"630c48733d7f6c717ad6dec31bf50895"
@@ -28,7 +29,6 @@
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
 
 @property(strong, readonly) NSManagedObjectModel *managedObjectModel;
-@property(strong, readonly) NSManagedObjectContext *managedObjectContext;
 @property(strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 -(void)refreshTimelime;
@@ -155,9 +155,32 @@
     
 //    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
 //                                               stringByAppendingPathComponent: @"Core_Data.sqlite"]];
+    NSFileManager *sharedFM = [NSFileManager defaultManager];
+    NSArray *availableURLs = [sharedFM URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask];
     
-    NSURL *storeUrl = [NSURL fileURLWithPath: [@"application"
-                                            stringByAppendingPathComponent: @"Core_Data.sqlite"]];
+    NSURL *appSupportDir = nil;
+    NSURL *appDirectory = nil;
+    
+    if (availableURLs.count > 0) {
+        appSupportDir = [availableURLs objectAtIndex:0];
+    }
+    
+    if (appSupportDir) {
+        NSString *appBundleId = [[NSBundle mainBundle] bundleIdentifier];
+        appDirectory = [appSupportDir URLByAppendingPathComponent:appBundleId];
+    }
+    
+    NSURL *storeUrl = [NSURL fileURLWithPath: [appDirectory.absoluteString
+                                            stringByAppendingPathComponent: @"wbmessages.sqlite"]];
+    
+    if (![sharedFM fileExistsAtPath:storeUrl.absoluteString]) {
+        NSError *error;
+        [sharedFM createDirectoryAtPath:storeUrl.absoluteString
+            withIntermediateDirectories:YES
+                             attributes:nil
+                                  error:&error];
+    }
+    
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
                                   initWithManagedObjectModel:[self managedObjectModel]];
@@ -228,6 +251,17 @@
     };
     [self requestAuthorizingUserProfileImage];
     [self refreshTimelime];
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Status"];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"createdAt" ascending:NO];
+    [request setSortDescriptors:@[sortDescriptor]];
+    
+    NSError *error;
+    
+    NSArray *statuses = [self.managedObjectContext executeFetchRequest:request error:&error];
+    
+    
     
 }
 
@@ -306,6 +340,15 @@
     relativeFormatter.dateFormat = @"H:mm";
     
     result.createdTime.stringValue = [relativeFormatter stringFromDate:localDate];
+    
+    Status *status = [NSEntityDescription insertNewObjectForEntityForName:@"Status" inManagedObjectContext:self.managedObjectContext];
+    
+    status.id = [userInfo objectForKey:@"idstr"];
+    status.text = [self populateText:row];
+    status.createdAt = createdDate;
+    
+    NSError *error;
+    [self.managedObjectContext save:&error];
     
     WBUser *user = [[WBUser alloc] initWithUserId:[userInfo objectForKey:@"idstr"]
                                        accessToken:[WBAuthorize sharedInstance].accessToken];

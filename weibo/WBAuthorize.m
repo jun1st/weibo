@@ -48,9 +48,8 @@
 @property(nonatomic, strong) NSString *serviceName;
 @property(nonatomic, strong) WBUser *authorizingUser;
 
--(void)saveAuthorizationDataToKeychain;
--(void)readAuthorizationDataFromKeychain;
--(void)deleteAuthorizationDataFromKeychain;
+-(void)saveAuthorization;
+-(void)readAuthorization;
 
 @end
 
@@ -78,7 +77,7 @@
         self.appSecret = theAppSecret;
         self.redirectURL = redirectURL;
         
-        [self readAuthorizationDataFromKeychain];
+        [self readAuthorization];
     }
     
     return self;
@@ -97,7 +96,7 @@
 {
     if(!_accessToken)
     {
-        [self readAuthorizationDataFromKeychain];
+        [self readAuthorization];
     }
     
     return _accessToken;
@@ -155,29 +154,24 @@
     return req;
 }
 
--(void)saveAuthorizationDataToKeychain
+-(void)saveAuthorization
 {
     [[self userDefaults] setObject:self.userId forKey:kUId];
     [[self userDefaults] setDouble:self.expireTime forKey:kUExpireTime];
     
     [SSKeychain setPassword:self.accessToken forService:kKeychainServiceName account:kWBKeychainAccessToken];
-    //[SSKeychain setPassword:self.userId forService:kKeychainServiceName account:kWBKeychainUserID];
-    //[SSKeychain setPassword:[NSString stringWithFormat:@"%f", self.expireTime] forService:kKeychainServiceName account:kWBKeychainExpireTime];
-
 }
 
--(void)readAuthorizationDataFromKeychain
+-(void)readAuthorization
 {
-    //self.userId = [SSKeychain passwordForService:kKeychainServiceName account:kWBKeychainUserID];
-    
+
     self.userId = [[self userDefaults] objectForKey:kUId];
     self.expireTime = [[self userDefaults] doubleForKey:kUExpireTime];
     
     self.accessToken = [SSKeychain passwordForService:kKeychainServiceName account:kWBKeychainAccessToken];
-    //self.expireTime = [[SSKeychain passwordForService:kKeychainServiceName account:kWBKeychainExpireTime] doubleValue];
 }
 
--(void)deleteAuthorizationDataFromKeychain
+-(void)deleteAuthorization
 {
     self.accessToken = nil;
     self.userId = nil;
@@ -187,14 +181,11 @@
     [[self userDefaults] removeObjectForKey:kUExpireTime];
     
     [SSKeychain deletePasswordForService:kKeychainServiceName account:kWBKeychainAccessToken];
-    //[SSKeychain deletePasswordForService:kKeychainServiceName account:kWBKeychainUserID];
-    //[SSKeychain deletePasswordForService:kKeychainServiceName account:kWBKeychainExpireTime];
-    
 }
 
 -(void)logout
 {
-    [self deleteAuthorizationDataFromKeychain];
+    [self deleteAuthorization];
 }
 
 -(BOOL)isLoggedIn
@@ -205,7 +196,7 @@
 -(BOOL)isAuthorizationExpired
 {
     if ([[NSDate date] timeIntervalSince1970] > self.expireTime) {
-        [self deleteAuthorizationDataFromKeychain];
+        [self deleteAuthorization];
         return YES;
     }
     return NO;
@@ -229,7 +220,7 @@
         success = self.accessToken && self.userId;
         
         if (success) {
-            [self saveAuthorizationDataToKeychain];
+            [self saveAuthorization];
             self.authorizingUser = [[WBUser alloc] initWithUserId:self.userId accessToken:self.accessToken];
             [self.authorizingUser requestAuthorizingUser];
             

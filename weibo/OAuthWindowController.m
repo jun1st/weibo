@@ -79,8 +79,9 @@
     if (self.wbAuthorize.isLoggedIn && !self.wbAuthorize.isAuthorizationExpired) {
         return YES;
     }
-    
-    return NO;
+    else{
+        return NO;
+    }
 }
 
 -(WBAuthorize *)wbAuthorize
