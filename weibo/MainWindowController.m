@@ -252,16 +252,7 @@
     [self requestAuthorizingUserProfileImage];
     [self refreshTimelime];
     
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Status"];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"createdAt" ascending:NO];
-    [request setSortDescriptors:@[sortDescriptor]];
-    
-    NSError *error;
-    
-    NSArray *statuses = [self.managedObjectContext executeFetchRequest:request error:&error];
-    
-    
+    //[self statusArrayFromDatabase];
     
 }
 
@@ -289,16 +280,66 @@
                          postDataType:kWBRequestPostDataTypeNone
                      httpHeaderFields:nil];}
 
+//complete load data from Sina
 -(void)engine:(WBEngine *)engine requestDidSucceedWithResult:(id)result
 {
     if ([result isKindOfClass:[NSDictionary class]])
     {
         NSDictionary *dict = (NSDictionary *)result;
-        [self.timeline addObjectsFromArray:[dict objectForKey:@"statuses"]];
-        [self.timelineTable reloadData];
+        NSMutableArray *statusesArray = [dict objectForKey:@"statuses"];
+        
+        for (int i=0; i < statusesArray.count; i++) {
+            NSDictionary *statusDict = [statusesArray objectAtIndex:i];
+            Status *status = [NSEntityDescription insertNewObjectForEntityForName:@"Status" inManagedObjectContext:self.managedObjectContext];
+            
+            status.id = [statusDict objectForKey:@"idstr"];
+            NSDictionary *userInfo = [statusDict objectForKey:@"user"];
+            NSString *screen_name = [userInfo objectForKey:@"screen_name"];
+            status.userScreenName = screen_name;
+            status.userIdStr = [userInfo objectForKey:@"idstr"];
+            status.profileImageUrl = [userInfo objectForKey:@"profile_image_url"];
+            NSString *createdAt = [statusDict objectForKey:@"created_at"];
+            NSDate *createdDate = [self.utcDateFormatter dateFromString:createdAt];
+            
+            status.createdAt = createdDate;
+            
+            NSString *text = [statusDict objectForKey:@"text"];            
+            NSDictionary *retweetStatus = [statusDict objectForKey:@"retweeted_status"];
+            if (retweetStatus) {
+                NSString *retweetText = [retweetStatus objectForKey:@"text"];
+                if (retweetText && retweetText.length > 0) {
+                    text = [text stringByAppendingFormat:@"%@%@", @"//", retweetText];
+                }
+            }
+
+            
+            status.text = text;
+            status.source = [statusDict objectForKey:@"source"];
+            status.repostsCount = [NSNumber numberWithInteger:[[statusDict objectForKey:@"reposts_count"] integerValue]];
+            status.commentsCount = [NSNumber numberWithInteger:[[statusDict objectForKey:@"comments_count"] integerValue]];
+            status.replyToStatusId = [statusDict objectForKey:@"in_reply_to_status_id"];
+            
+            [self.managedObjectContext save:nil];
+            
+        }
+        
+        [self statusArrayFromDatabase];
         
         [self.scrollView stopLoading];
     }
+}
+
+-(void)statusArrayFromDatabase
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Status"];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                          initWithKey:@"createdAt" ascending:NO];
+    [request setSortDescriptors:@[sortDescriptor]];
+    
+    NSError *error;
+    self.timeline = [[self.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+    
+    [self.timelineTable reloadData];
 }
 
 #pragma NSTableViewDataSource
@@ -326,14 +367,16 @@
 {
     WBMessageTableCellView *result = [tableView makeViewWithIdentifier:@"wbCell" owner:self];
     
-    NSDictionary *userInfo = [[self.timeline objectAtIndex:row] objectForKey:@"user"];
+    Status *status = (Status *)[self.timeline objectAtIndex:row];
     
-    NSString *screen_name = [userInfo objectForKey:@"screen_name"];
-    result.authName.stringValue = screen_name;
+    //NSDictionary *userInfo = [[self.timeline objectAtIndex:row] objectForKey:@"user"];
     
-    NSString *createdAt = [[self.timeline objectAtIndex:row] objectForKey:@"created_at"];
-    NSDate *createdDate = [self.utcDateFormatter dateFromString:createdAt];
-    NSTimeInterval intervalSince1970 = [createdDate timeIntervalSince1970];
+    //NSString *screen_name = [userInfo objectForKey:@"screen_name"];
+    result.authName.stringValue = status.userScreenName;
+    
+    //NSString *createdAt = [[self.timeline objectAtIndex:row] objectForKey:@"created_at"];
+    //NSDate *createdDate = [self.utcDateFormatter dateFromString:createdAt];
+    NSTimeInterval intervalSince1970 = [status.createdAt timeIntervalSince1970];
     NSDate *localDate = [NSDate dateWithTimeIntervalSince1970:intervalSince1970];
     NSDateFormatter *relativeFormatter = [[NSDateFormatter alloc] init];
     relativeFormatter.timeZone = [self localTimeZone];
@@ -341,41 +384,41 @@
     
     result.createdTime.stringValue = [relativeFormatter stringFromDate:localDate];
     
-    Status *status = [NSEntityDescription insertNewObjectForEntityForName:@"Status" inManagedObjectContext:self.managedObjectContext];
+    //Status *status = [NSEntityDescription insertNewObjectForEntityForName:@"Status" inManagedObjectContext:self.managedObjectContext];
     
-    status.id = [userInfo objectForKey:@"idstr"];
-    status.text = [self populateText:row];
-    status.createdAt = createdDate;
+    //status.id = [userInfo objectForKey:@"idstr"];
+    //status.text = [self populateText:row];
+    //status.createdAt = createdDate;
     
-    NSError *error;
-    [self.managedObjectContext save:&error];
+    //NSError *error;
+    //[self.managedObjectContext save:&error];
     
-    WBUser *user = [[WBUser alloc] initWithUserId:[userInfo objectForKey:@"idstr"]
+    WBUser *user = [[WBUser alloc] initWithUserId: status.userIdStr
                                        accessToken:[WBAuthorize sharedInstance].accessToken];
-    user.profileImageUrl = [userInfo objectForKey:@"profile_image_url"];
+    user.profileImageUrl = status.profileImageUrl;
     if (user.profileImage) {
         result.userProfileImageView.image = user.profileImage;
     }else{
         [self startUserProfileImageDownload:user forRow:row];
     }
     
-    NSString *text = [self populateText:row];//[[self.timeline objectAtIndex:row] objectForKey:@"text"];
-    NSString *retweetText = nil;
-    NSDictionary *retweetStatus = [[self.timeline objectAtIndex:row] objectForKey:@"retweeted_status"];
-    if (retweetStatus) {
-         retweetText = [retweetStatus objectForKey:@"text"];
-    }
+//    NSString *text = [self populateText:row];//[[self.timeline objectAtIndex:row] objectForKey:@"text"];
+//    NSString *retweetText = nil;
+//    NSDictionary *retweetStatus = [[self.timeline objectAtIndex:row] objectForKey:@"retweeted_status"];
+//    if (retweetStatus) {
+//         retweetText = [retweetStatus objectForKey:@"text"];
+//    }
     
     NSMutableAttributedString *rString =
-    [[NSMutableAttributedString alloc] initWithString:text];
+    [[NSMutableAttributedString alloc] initWithString:status.text];
     
     
     [rString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range: NSMakeRange(0, rString.length)];
     
     //match user names
-    NSArray *matches = [self.userRegularExpression matchesInString:text
+    NSArray *matches = [self.userRegularExpression matchesInString:status.text
                                                            options:0
-                                                             range:NSMakeRange(0, [text length])];
+                                                             range:NSMakeRange(0, [status.text length])];
     for(NSTextCheckingResult *match in matches)
     {
         NSRange matchRange = [match range];
@@ -387,10 +430,10 @@
     }
     
     //match urls
-    NSArray *urlMatches = [self.urlRegularExpression matchesInString:text options:0 range:NSMakeRange(0, text.length)];
+    NSArray *urlMatches = [self.urlRegularExpression matchesInString:status.text options:0 range:NSMakeRange(0, status.text.length)];
     for (NSTextCheckingResult  *match in urlMatches) {
         NSRange matchRange = [match range];
-        NSString *subString = [text substringWithRange:matchRange];
+        NSString *subString = [status.text substringWithRange:matchRange];
         
         //NSURL* url = [NSURL URLWithString: subString];
         [rString addAttribute:NSLinkAttributeName value:subString range:matchRange];
@@ -399,7 +442,7 @@
     }
     NSMutableParagraphStyle * myStyle = [[NSMutableParagraphStyle alloc] init];
     [myStyle setLineSpacing:4.0];
-    [rString addAttribute:NSParagraphStyleAttributeName value:myStyle range:NSMakeRange(0, text.length)];
+    [rString addAttribute:NSParagraphStyleAttributeName value:myStyle range:NSMakeRange(0, status.text.length)];
     
     
     [result.statusTextView.textStorage setAttributedString:rString];
@@ -412,7 +455,7 @@
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
 {
-    NSString *text = [self populateText:row];
+    NSString *text = ((Status *)[self.timeline objectAtIndex:row]).text;
     
     NSMutableAttributedString *rString =
     [[NSMutableAttributedString alloc] initWithString:text];
