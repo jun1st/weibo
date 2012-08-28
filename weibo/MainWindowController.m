@@ -14,6 +14,10 @@
 #import "ImageDownloader.h"
 #import "WBMessageTextView.h"
 #import "Status.h"
+#import "Status+CoreData.h"
+#import "User.h"
+#import "User+CoreData.h"
+#import "WBManagedObjectContext.h"
 
 #define OAuthConsumerKey @"4116306678"
 #define OAuthConsumerSecret @"630c48733d7f6c717ad6dec31bf50895"
@@ -42,16 +46,13 @@
 @synthesize userRegularExpression = _userRegularExpression;
 @synthesize urlRegularExpression = _urlRegularExpression;
 @synthesize authorizingUser = _authorizingUser;
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 -(NSRegularExpression *)userRegularExpression
 {
     if (!_userRegularExpression) {
         _userRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"@[\\w-]+"
                                                                            options:NSRegularExpressionCaseInsensitive
-                                                                             error:nil];
+                                                                            error:nil];
     }
     
     return _userRegularExpression;
@@ -109,103 +110,6 @@
     return _imageDownloadsInProgress;
 }
 
-/**
- Returns the managed object context for the application.
- If the context doesn't already exist, it is created and bound to the persistent store
- coordinator for the application.
- */
-- (NSManagedObjectContext *) managedObjectContext {
-    
-    if (_managedObjectContext != nil) {
-        return _managedObjectContext;
-    }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator: coordinator];
-    }
-    return _managedObjectContext;
-}
-
-
-/**
- Returns the managed object model for the application.
- If the model doesn't already exist, it is created by merging all of the models found in
- application bundle.
- */
-- (NSManagedObjectModel *)managedObjectModel {
-    
-    if (_managedObjectModel != nil) {
-        return _managedObjectModel;
-    }
-    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
-    return _managedObjectModel;
-}
-
-/**
- Returns the persistent store coordinator for the application.
- If the coordinator doesn't already exist, it is created and the application's store added to it.
- */
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-    
-    if (_persistentStoreCoordinator != nil) {
-        return _persistentStoreCoordinator;
-    }
-    
-//    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
-//                                               stringByAppendingPathComponent: @"Core_Data.sqlite"]];
-    NSFileManager *sharedFM = [NSFileManager defaultManager];
-    NSArray *availableURLs = [sharedFM URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask];
-    
-    NSURL *appSupportDir = nil;
-    NSURL *appDirectory = nil;
-    
-    if (availableURLs.count > 0) {
-        appSupportDir = [availableURLs objectAtIndex:0];
-    }
-    
-    if (appSupportDir) {
-        NSString *appBundleId = [[NSBundle mainBundle] bundleIdentifier];
-        appDirectory = [appSupportDir URLByAppendingPathComponent:appBundleId];
-    }
-    
-    NSURL *storeUrl = [NSURL fileURLWithPath: [appDirectory.absoluteString
-                                            stringByAppendingPathComponent: @"wbmessages.sqlite"]];
-    
-    if (![sharedFM fileExistsAtPath:storeUrl.absoluteString]) {
-        NSError *error;
-        [sharedFM createDirectoryAtPath:storeUrl.absoluteString
-            withIntermediateDirectories:YES
-                             attributes:nil
-                                  error:&error];
-    }
-    
-    NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
-                                  initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
-                                                  configuration:nil URL:storeUrl options:nil error:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should
-         not use this function in a shipping application, although it may be useful during
-         development. If it is not possible to recover from the error, display an alert panel that
-         instructs the user to quit the application by pressing the Home button.
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible
-         * The schema for the persistent store is incompatible with current managed object
-         model
-         Check the error message to determine what the actual problem was.
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }    
-    
-    return _persistentStoreCoordinator;
-}
 
 -(id)init
 {
@@ -233,7 +137,6 @@
 }
 
 -(void)windowWillLoad{
-    //[((INAppStoreWindow *)self.window) setTitleBarHeight:40.0];
 }
 
 - (void)windowDidLoad
@@ -251,8 +154,6 @@
     };
     [self requestAuthorizingUserProfileImage];
     [self refreshTimelime];
-    
-    //[self statusArrayFromDatabase];
     
 }
 
@@ -290,37 +191,9 @@
         
         for (int i=0; i < statusesArray.count; i++) {
             NSDictionary *statusDict = [statusesArray objectAtIndex:i];
-            Status *status = [NSEntityDescription insertNewObjectForEntityForName:@"Status" inManagedObjectContext:self.managedObjectContext];
             
-            status.id = [statusDict objectForKey:@"idstr"];
-            NSDictionary *userInfo = [statusDict objectForKey:@"user"];
-            NSString *screen_name = [userInfo objectForKey:@"screen_name"];
-            status.userScreenName = screen_name;
-            status.userIdStr = [userInfo objectForKey:@"idstr"];
-            status.profileImageUrl = [userInfo objectForKey:@"profile_image_url"];
-            NSString *createdAt = [statusDict objectForKey:@"created_at"];
-            NSDate *createdDate = [self.utcDateFormatter dateFromString:createdAt];
-            
-            status.createdAt = createdDate;
-            
-            NSString *text = [statusDict objectForKey:@"text"];            
-            NSDictionary *retweetStatus = [statusDict objectForKey:@"retweeted_status"];
-            if (retweetStatus) {
-                NSString *retweetText = [retweetStatus objectForKey:@"text"];
-                if (retweetText && retweetText.length > 0) {
-                    text = [text stringByAppendingFormat:@"%@%@", @"//", retweetText];
-                }
-            }
-
-            
-            status.text = text;
-            status.source = [statusDict objectForKey:@"source"];
-            status.repostsCount = [NSNumber numberWithInteger:[[statusDict objectForKey:@"reposts_count"] integerValue]];
-            status.commentsCount = [NSNumber numberWithInteger:[[statusDict objectForKey:@"comments_count"] integerValue]];
-            status.replyToStatusId = [statusDict objectForKey:@"in_reply_to_status_id"];
-            
-            [self.managedObjectContext save:nil];
-            
+            [Status save:statusDict inContext:[[WBManagedObjectContext sharedInstance] managedObjectContext]];
+            [User saveFromDictionary:[statusDict objectForKey:@"user"] inContext:[[WBManagedObjectContext sharedInstance] managedObjectContext]];
         }
         
         [self statusArrayFromDatabase];
@@ -337,7 +210,7 @@
     [request setSortDescriptors:@[sortDescriptor]];
     
     NSError *error;
-    self.timeline = [[self.managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+    self.timeline = [[[WBManagedObjectContext sharedInstance].managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
     
     [self.timelineTable reloadData];
 }
@@ -369,13 +242,8 @@
     
     Status *status = (Status *)[self.timeline objectAtIndex:row];
     
-    //NSDictionary *userInfo = [[self.timeline objectAtIndex:row] objectForKey:@"user"];
-    
-    //NSString *screen_name = [userInfo objectForKey:@"screen_name"];
     result.authName.stringValue = status.userScreenName;
     
-    //NSString *createdAt = [[self.timeline objectAtIndex:row] objectForKey:@"created_at"];
-    //NSDate *createdDate = [self.utcDateFormatter dateFromString:createdAt];
     NSTimeInterval intervalSince1970 = [status.createdAt timeIntervalSince1970];
     NSDate *localDate = [NSDate dateWithTimeIntervalSince1970:intervalSince1970];
     NSDateFormatter *relativeFormatter = [[NSDateFormatter alloc] init];
@@ -383,15 +251,6 @@
     relativeFormatter.dateFormat = @"H:mm";
     
     result.createdTime.stringValue = [relativeFormatter stringFromDate:localDate];
-    
-    //Status *status = [NSEntityDescription insertNewObjectForEntityForName:@"Status" inManagedObjectContext:self.managedObjectContext];
-    
-    //status.id = [userInfo objectForKey:@"idstr"];
-    //status.text = [self populateText:row];
-    //status.createdAt = createdDate;
-    
-    //NSError *error;
-    //[self.managedObjectContext save:&error];
     
     WBUser *user = [[WBUser alloc] initWithUserId: status.userIdStr
                                        accessToken:[WBAuthorize sharedInstance].accessToken];
@@ -401,13 +260,7 @@
     }else{
         [self startUserProfileImageDownload:user forRow:row];
     }
-    
-//    NSString *text = [self populateText:row];//[[self.timeline objectAtIndex:row] objectForKey:@"text"];
-//    NSString *retweetText = nil;
-//    NSDictionary *retweetStatus = [[self.timeline objectAtIndex:row] objectForKey:@"retweeted_status"];
-//    if (retweetStatus) {
-//         retweetText = [retweetStatus objectForKey:@"text"];
-//    }
+
     
     NSMutableAttributedString *rString =
     [[NSMutableAttributedString alloc] initWithString:status.text];
@@ -435,7 +288,6 @@
         NSRange matchRange = [match range];
         NSString *subString = [status.text substringWithRange:matchRange];
         
-        //NSURL* url = [NSURL URLWithString: subString];
         [rString addAttribute:NSLinkAttributeName value:subString range:matchRange];
         [rString addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:matchRange];
         [rString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSSingleUnderlineStyle] range:matchRange];
@@ -446,9 +298,6 @@
     
     
     [result.statusTextView.textStorage setAttributedString:rString];
-
-    
-    //[((WBMessageTextView *)result.statusTextView) setText:text withRetweetText:retweetText];
     
     return result;
 }

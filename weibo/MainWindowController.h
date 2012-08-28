@@ -19,6 +19,5 @@
 @property (weak) IBOutlet EQSTRScrollView *scrollView;
 @property (assign) IBOutlet NSImageView *authorizingUserProfileImage;
 
-@property(strong, readonly) NSManagedObjectContext *managedObjectContext;
 
 @end

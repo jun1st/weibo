@@ -15,6 +15,10 @@
 		4C15277A15D69601000F9E93 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C15277915D69601000F9E93 /* SSKeychain.m */; };
 		4C1782F915E883660034EBFF /* WeiboMessages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1782F715E883660034EBFF /* WeiboMessages.xcdatamodeld */; };
 		4C2CBEDD15E689ED0062B910 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8FAB3015D24AF7004EBBC5 /* CoreData.framework */; };
+		4C5182F115ED04740075ECE5 /* Status+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5182F015ED04740075ECE5 /* Status+CoreData.m */; };
+		4C5182F815ED0C510075ECE5 /* WBFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5182F715ED0C510075ECE5 /* WBFormatter.m */; };
+		4C5182FB15ED15CA0075ECE5 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5182FA15ED15C90075ECE5 /* User.m */; };
+		4C5182FE15ED226A0075ECE5 /* User+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5182FD15ED226A0075ECE5 /* User+CoreData.m */; };
 		4C5315E615E3D33B0004238A /* WBMessageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E515E3D33B0004238A /* WBMessageScrollView.m */; };
 		4C5315EA15E3E3620004238A /* WBMessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E915E3E3620004238A /* WBMessageTextView.m */; };
 		4C5F9AB415DBE0A100B804F1 /* twitter.ico in Resources */ = {isa = PBXBuildFile; fileRef = 4C5F9AB315DBE0A100B804F1 /* twitter.ico */; };
@@ -77,6 +81,14 @@
 		4C15277815D69601000F9E93 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
 		4C15277915D69601000F9E93 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		4C1782F815E883660034EBFF /* WeiboMessages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeiboMessages.xcdatamodel; sourceTree = "<group>"; };
+		4C5182EF15ED04740075ECE5 /* Status+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Status+CoreData.h"; path = "../Status+CoreData.h"; sourceTree = "<group>"; };
+		4C5182F015ED04740075ECE5 /* Status+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Status+CoreData.m"; path = "../Status+CoreData.m"; sourceTree = "<group>"; };
+		4C5182F615ED0C510075ECE5 /* WBFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBFormatter.h; sourceTree = "<group>"; };
+		4C5182F715ED0C510075ECE5 /* WBFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBFormatter.m; sourceTree = "<group>"; };
+		4C5182F915ED15C90075ECE5 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		4C5182FA15ED15C90075ECE5 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		4C5182FC15ED226A0075ECE5 /* User+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreData.h"; sourceTree = "<group>"; };
+		4C5182FD15ED226A0075ECE5 /* User+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreData.m"; sourceTree = "<group>"; };
 		4C5315E415E3D33B0004238A /* WBMessageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageScrollView.h; sourceTree = "<group>"; };
 		4C5315E515E3D33B0004238A /* WBMessageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageScrollView.m; sourceTree = "<group>"; };
 		4C5315E815E3E3620004238A /* WBMessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageTextView.h; sourceTree = "<group>"; };
@@ -185,6 +197,21 @@
 			name = INAppStoreWindow;
 			sourceTree = "<group>";
 		};
+		4C5182ED15ED04530075ECE5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4CA2CC5D15EBB9A200415031 /* Status.h */,
+				4CA2CC5E15EBB9A200415031 /* Status.m */,
+				4C5182F915ED15C90075ECE5 /* User.h */,
+				4C5182FA15ED15C90075ECE5 /* User.m */,
+				4C5182EF15ED04740075ECE5 /* Status+CoreData.h */,
+				4C5182F015ED04740075ECE5 /* Status+CoreData.m */,
+				4C5182FC15ED226A0075ECE5 /* User+CoreData.h */,
+				4C5182FD15ED226A0075ECE5 /* User+CoreData.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		4C5F9AB615DBF63000B804F1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,8 +303,7 @@
 				4C5315E815E3E3620004238A /* WBMessageTextView.h */,
 				4C5315E915E3E3620004238A /* WBMessageTextView.m */,
 				4C1782F715E883660034EBFF /* WeiboMessages.xcdatamodeld */,
-				4CA2CC5D15EBB9A200415031 /* Status.h */,
-				4CA2CC5E15EBB9A200415031 /* Status.m */,
+				4C5182ED15ED04530075ECE5 /* Models */,
 				4CA2CC6015EBCFCC00415031 /* WBManagedObjectContext.h */,
 				4CA2CC6115EBCFCC00415031 /* WBManagedObjectContext.m */,
 			);
@@ -335,6 +361,8 @@
 				4CCB88B015D3EA6F00231E13 /* GTMBase64.h */,
 				4CCB88B115D3EA6F00231E13 /* GTMBase64.m */,
 				4CCB88B215D3EA6F00231E13 /* GTMDefines.h */,
+				4C5182F615ED0C510075ECE5 /* WBFormatter.h */,
+				4C5182F715ED0C510075ECE5 /* WBFormatter.m */,
 			);
 			name = weiboSDK;
 			sourceTree = "<group>";
@@ -514,6 +542,10 @@
 				4C1782F915E883660034EBFF /* WeiboMessages.xcdatamodeld in Sources */,
 				4CA2CC5F15EBB9A200415031 /* Status.m in Sources */,
 				4CA2CC6215EBCFCC00415031 /* WBManagedObjectContext.m in Sources */,
+				4C5182F115ED04740075ECE5 /* Status+CoreData.m in Sources */,
+				4C5182F815ED0C510075ECE5 /* WBFormatter.m in Sources */,
+				4C5182FB15ED15CA0075ECE5 /* User.m in Sources */,
+				4C5182FE15ED226A0075ECE5 /* User+CoreData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
