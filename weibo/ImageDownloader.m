@@ -10,11 +10,8 @@
  */
 
 #import "ImageDownloader.h"
-#import "WBUser.h"
-#import "WBUser+ProfileImage.h"
-
-
-#define PROFILE_IMAGE_BASE_URL @"http://iaroundyou.com"
+#import "User.h"
+#import "User+ProfileImage.h"
 
 @interface ImageDownloader()
 
@@ -83,17 +80,11 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSLog(@"complete load image data for user:%d", [self.user.userId intValue]);
     NSData *data = [[NSData alloc] initWithData:self.activeDownload];
-    
-
-    NSString *filePath = [[[WBUser profileImageDirectory] URLByAppendingPathComponent:self.user.userId] absoluteString];
+    NSString *filePath = [[[User profileImageDirectory] URLByAppendingPathComponent:self.user.idstr] absoluteString];
    
     [data writeToFile:filePath atomically:YES];
-    
     self.activeDownload = nil;
-
-    
     // Release the connection now that it's finished
     self.imageConnection = nil;
 

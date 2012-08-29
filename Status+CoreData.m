@@ -8,6 +8,7 @@
 
 #import "Status+CoreData.h"
 #import "WBFormatter.h"
+#import  "User+CoreData.h"
 
 
 @implementation Status (CoreData)
@@ -53,6 +54,8 @@
         status.repostsCount = [NSNumber numberWithInteger:[[statusDict objectForKey:@"reposts_count"] integerValue]];
         status.commentsCount = [NSNumber numberWithInteger:[[statusDict objectForKey:@"comments_count"] integerValue]];
         status.replyToStatusId = [statusDict objectForKey:@"in_reply_to_status_id"];
+        
+        status.author = [User saveFromDictionary:[statusDict objectForKey:@"user"] inContext:context];
         
         [context save:nil];
         

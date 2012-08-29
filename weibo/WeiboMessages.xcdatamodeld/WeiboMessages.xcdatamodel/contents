@@ -11,6 +11,7 @@
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userIdStr" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userScreenName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="author" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="statuses" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="bio" optional="YES" attributeType="String" syncable="YES"/>
@@ -26,6 +27,7 @@
         <attribute name="statusCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="verifiedReason" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="author" inverseEntity="Status" syncable="YES"/>
     </entity>
     <elements>
         <element name="Status" positionX="0" positionY="0" width="0" height="0"/>

@@ -9,14 +9,14 @@
 #import "MainWindowController.h"
 #import "EQSTRScrollView.h"
 #import "INAppStoreWindow.h"
-#import "WBUser.h"
-#import "WBUser+ProfileImage.h"
 #import "ImageDownloader.h"
+#import "WBUser.h"
 #import "WBMessageTextView.h"
 #import "Status.h"
 #import "Status+CoreData.h"
 #import "User.h"
 #import "User+CoreData.h"
+#import "User+ProfileImage.h"
 #import "WBManagedObjectContext.h"
 
 #define OAuthConsumerKey @"4116306678"
@@ -193,7 +193,6 @@
             NSDictionary *statusDict = [statusesArray objectAtIndex:i];
             
             [Status save:statusDict inContext:[[WBManagedObjectContext sharedInstance] managedObjectContext]];
-            [User saveFromDictionary:[statusDict objectForKey:@"user"] inContext:[[WBManagedObjectContext sharedInstance] managedObjectContext]];
         }
         
         [self statusArrayFromDatabase];
@@ -252,13 +251,11 @@
     
     result.createdTime.stringValue = [relativeFormatter stringFromDate:localDate];
     
-    WBUser *user = [[WBUser alloc] initWithUserId: status.userIdStr
-                                       accessToken:[WBAuthorize sharedInstance].accessToken];
-    user.profileImageUrl = status.profileImageUrl;
-    if (user.profileImage) {
-        result.userProfileImageView.image = user.profileImage;
+
+    if ([status.author profileImage]) {
+        result.userProfileImageView.image = [status.author profileImage];
     }else{
-        [self startUserProfileImageDownload:user forRow:row];
+        [self startUserProfileImageDownload:status.author forRow:row];
     }
 
     
@@ -315,19 +312,18 @@
 }
 
 
--(void)startUserProfileImageDownload:(WBUser *)user forRow:(NSInteger)row
+-(void)startUserProfileImageDownload:(User *)user forRow:(NSInteger)row
 {
-    ImageDownloader *downloader = [self.imageDownloadsInProgress objectForKey:user.userId];
+    ImageDownloader *downloader = [self.imageDownloadsInProgress objectForKey:user.idstr];
     
     if (downloader == nil)
     {
-        NSLog(@"profile image downloader for user with id: %@ ", user.userId);
         downloader = [[ImageDownloader alloc] init];
         downloader.user = user;
         [downloader.rowsToUpdate addObject:[NSNumber numberWithInteger:row]];
         //[downloader addCellPathToUpdate:indexPath];
         downloader.delegate = self;
-        [self.imageDownloadsInProgress setObject:downloader forKey:user.userId];
+        [self.imageDownloadsInProgress setObject:downloader forKey:user.idstr];
         [downloader startDownload];
         
     }
@@ -340,9 +336,9 @@
 }
 
 #pragma ImageDoneLoading delegate
--(void)doneLoadImageForUser:(WBUser *)user
+-(void)doneLoadImageForUser:(User *)user
 {
-    ImageDownloader *iconDownloader = [self.imageDownloadsInProgress objectForKey:user.userId];
+    ImageDownloader *iconDownloader = [self.imageDownloadsInProgress objectForKey:user.idstr];
     if (iconDownloader != nil)
     {
         for (NSNumber *row in iconDownloader.rowsToUpdate) {

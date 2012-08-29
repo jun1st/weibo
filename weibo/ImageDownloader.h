@@ -10,14 +10,14 @@
     
  */
 
-@class WBUser;
+@class User;
 
 @protocol ImageDownloading;
 
 @interface ImageDownloader : NSObject
 
 
-@property (nonatomic, strong) WBUser *user;
+@property (nonatomic, strong) User *user;
 @property (nonatomic, strong) NSMutableArray *rowsToUpdate;
 @property (nonatomic, strong) id <ImageDownloading> delegate;
 
@@ -32,6 +32,6 @@
 
 @protocol ImageDownloading 
 
-- (void)doneLoadImageForUser:(WBUser *)user;
+- (void)doneLoadImageForUser:(User *)user;
 
 @end

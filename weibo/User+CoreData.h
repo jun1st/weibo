@@ -12,6 +12,6 @@
 
 +(User *)userById:(NSString *)id fromContext:(NSManagedObjectContext *)context;
 
-+(void)saveFromDictionary:(NSDictionary *)userInfo inContext:(NSManagedObjectContext *)context;
++(User *)saveFromDictionary:(NSDictionary *)userInfo inContext:(NSManagedObjectContext *)context;
 
 @end

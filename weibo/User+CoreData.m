@@ -30,7 +30,7 @@
 
 }
 
-+(void)saveFromDictionary:(NSDictionary *)userInfo inContext:(NSManagedObjectContext *)context
++(User *)saveFromDictionary:(NSDictionary *)userInfo inContext:(NSManagedObjectContext *)context
 {
     User *user = [User userById:[userInfo objectForKey:@"idstr"] fromContext:context];
     
@@ -54,6 +54,8 @@
         [context save:nil];
         
     }
+    
+    return user;
 }
 
 @end
