@@ -2,7 +2,7 @@
 //  Status.h
 //  weibo
 //
-//  Created by derek on 8/30/12.
+//  Created by feng qijun on 8/30/12.
 //  Copyright (c) 2012 feng qijun. All rights reserved.
 //
 
@@ -23,6 +23,7 @@
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * userIdStr;
 @property (nonatomic, retain) NSString * userScreenName;
+@property (nonatomic, retain) NSString * replyToUserId;
 @property (nonatomic, retain) User *author;
 
 @end

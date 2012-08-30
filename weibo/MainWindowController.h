@@ -17,7 +17,8 @@
 @property(nonatomic, strong) WBEngine *engine;
 @property (weak) IBOutlet NSTableView *timelineTable;
 @property (weak) IBOutlet EQSTRScrollView *scrollView;
-@property (assign) IBOutlet NSImageView *authorizingUserProfileImage;
+@property (weak) IBOutlet NSImageView *authorizingUserProfileImage;
 
+- (IBAction)showAtMeStatus:(id)sender;
 
 @end

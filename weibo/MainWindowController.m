@@ -369,4 +369,17 @@
     }
 }
 
+
+- (IBAction)showAtMeStatus:(id)sender {
+    
+    WBUser *authorizingUser = [WBUser authorizingUser];
+    
+    NSArray *statuses = [Status statusesAtUser:authorizingUser.userId
+                                     inContext:[WBManagedObjectContext sharedInstance].managedObjectContext];
+    
+    [self.timeline removeAllObjects];
+    [self.timeline addObjectsFromArray:statuses];
+    [self.timelineTable reloadData];
+    
+}
 @end

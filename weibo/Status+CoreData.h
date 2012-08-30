@@ -11,5 +11,6 @@
 @interface Status (CoreData)
 
 +(void)save:(NSDictionary *)status inContext:(NSManagedObjectContext *)context;
++(NSArray *)statusesAtUser:(NSString *)idstr inContext:(NSManagedObjectContext *)context;
 
 @end

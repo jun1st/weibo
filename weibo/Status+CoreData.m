@@ -54,13 +54,29 @@
         status.repostsCount = [NSNumber numberWithInteger:[[statusDict objectForKey:@"reposts_count"] integerValue]];
         status.commentsCount = [NSNumber numberWithInteger:[[statusDict objectForKey:@"comments_count"] integerValue]];
         status.replyToStatusId = [statusDict objectForKey:@"in_reply_to_status_id"];
-        
+        status.replyToUserId = [statusDict objectForKey:@"in_reply_to_user_id"];
         status.author = [User saveFromDictionary:[statusDict objectForKey:@"user"] inContext:context];
         
         [context save:nil];
         
     }
 
+}
+
++(NSArray *)statusesAtUser:(NSString *)idstr inContext:(NSManagedObjectContext *)context
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Status"];
+    request.predicate = [NSPredicate predicateWithFormat:@"replyToUserId = %@", idstr];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO];
+    request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    
+    NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    if (!error) {
+        return matches;
+    }
+    
+    return nil;
 }
 
 @end

@@ -51,11 +51,12 @@
 		4CCB88D615D5287100231E13 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88D015D5287100231E13 /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4CCB88DC15D5289500231E13 /* WBAuthorize.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88D815D5289400231E13 /* WBAuthorize.m */; };
 		4CCB88DD15D5289500231E13 /* WBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88DA15D5289400231E13 /* WBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4CF33B9E15EFAB0300DBE88B /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF33B9D15EFAB0300DBE88B /* Status.m */; };
+		4CF33BA215EFBC3100DBE88B /* Mention.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF33BA115EFBC3000DBE88B /* Mention.m */; };
 		6517CBEA15DCDE3D007BAB00 /* EQSTRClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6517CBE715DCDE3D007BAB00 /* EQSTRClipView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6517CBEB15DCDE3D007BAB00 /* EQSTRScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6517CBE915DCDE3D007BAB00 /* EQSTRScrollView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6517CBEF15DCDED2007BAB00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6517CBEE15DCDED2007BAB00 /* QuartzCore.framework */; };
 		65A425BF15DB908C00861D3B /* WBMessageTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */; };
-		65A5304B15EF3FF0004D6FDE /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304A15EF3FF0004D6FDE /* Status.m */; };
 		65A5304E15EF3FFD004D6FDE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304D15EF3FFD004D6FDE /* User.m */; };
 		65A5305115EF4059004D6FDE /* Status+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304F15EF4059004D6FDE /* Status+CoreData.m */; };
 /* End PBXBuildFile section */
@@ -151,6 +152,10 @@
 		4CCB88D915D5289400231E13 /* WBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBRequest.h; sourceTree = "<group>"; };
 		4CCB88DA15D5289400231E13 /* WBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBRequest.m; sourceTree = "<group>"; };
 		4CCB88DB15D5289400231E13 /* WBSDKGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKGlobal.h; sourceTree = "<group>"; };
+		4CF33B9C15EFAB0300DBE88B /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		4CF33B9D15EFAB0300DBE88B /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
+		4CF33BA015EFBC3000DBE88B /* Mention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mention.h; sourceTree = "<group>"; };
+		4CF33BA115EFBC3000DBE88B /* Mention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mention.m; sourceTree = "<group>"; };
 		6517CBE615DCDE3D007BAB00 /* EQSTRClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EQSTRClipView.h; sourceTree = "<group>"; };
 		6517CBE715DCDE3D007BAB00 /* EQSTRClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EQSTRClipView.m; sourceTree = "<group>"; };
 		6517CBE815DCDE3D007BAB00 /* EQSTRScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EQSTRScrollView.h; sourceTree = "<group>"; };
@@ -158,8 +163,6 @@
 		6517CBEE15DCDED2007BAB00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		65A425BD15DB908C00861D3B /* WBMessageTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageTableCellView.h; sourceTree = "<group>"; };
 		65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageTableCellView.m; sourceTree = "<group>"; };
-		65A5304915EF3FF0004D6FDE /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
-		65A5304A15EF3FF0004D6FDE /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		65A5304C15EF3FFD004D6FDE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		65A5304D15EF3FFD004D6FDE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		65A5304F15EF4059004D6FDE /* Status+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Status+CoreData.m"; sourceTree = "<group>"; };
@@ -203,10 +206,12 @@
 		4C5182ED15ED04530075ECE5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4CF33BA015EFBC3000DBE88B /* Mention.h */,
+				4CF33BA115EFBC3000DBE88B /* Mention.m */,
+				4CF33B9C15EFAB0300DBE88B /* Status.h */,
+				4CF33B9D15EFAB0300DBE88B /* Status.m */,
 				65A5304C15EF3FFD004D6FDE /* User.h */,
 				65A5304D15EF3FFD004D6FDE /* User.m */,
-				65A5304915EF3FF0004D6FDE /* Status.h */,
-				65A5304A15EF3FF0004D6FDE /* Status.m */,
 				65A5304F15EF4059004D6FDE /* Status+CoreData.m */,
 				65A5305015EF4059004D6FDE /* Status+CoreData.h */,
 				4C5182FC15ED226A0075ECE5 /* User+CoreData.h */,
@@ -549,9 +554,10 @@
 				4C5182F815ED0C510075ECE5 /* WBFormatter.m in Sources */,
 				4C5182FE15ED226A0075ECE5 /* User+CoreData.m in Sources */,
 				4C17296A15EE745100E4B805 /* User+ProfileImage.m in Sources */,
-				65A5304B15EF3FF0004D6FDE /* Status.m in Sources */,
 				65A5304E15EF3FFD004D6FDE /* User.m in Sources */,
 				65A5305115EF4059004D6FDE /* Status+CoreData.m in Sources */,
+				4CF33B9E15EFAB0300DBE88B /* Status.m in Sources */,
+				4CF33BA215EFBC3100DBE88B /* Mention.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
