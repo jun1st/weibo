@@ -2,7 +2,7 @@
 //  User.m
 //  weibo
 //
-//  Created by feng qijun on 8/29/12.
+//  Created by derek on 8/30/12.
 //  Copyright (c) 2012 feng qijun. All rights reserved.
 //
 

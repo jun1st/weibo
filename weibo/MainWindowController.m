@@ -214,6 +214,19 @@
     [self.timelineTable reloadData];
 }
 
+-(void)prefetchingData{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Status"];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"createdAt" ascending:NO];
+    [request setSortDescriptors:@[sortDescriptor]];
+    
+    NSError *error;
+    NSArray *dic = [[WBManagedObjectContext sharedInstance].managedObjectContext executeFetchRequest:request error:&error];
+    
+    [self.timeline addObjectsFromArray:dic];
+    [self.timelineTable reloadData];
+}
+
 #pragma NSTableViewDataSource
 
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
@@ -295,6 +308,10 @@
     
     
     [result.statusTextView.textStorage setAttributedString:rString];
+    
+    if (row + 1 == [self.timeline count]) {
+        [self prefetchingData];
+    }
     
     return result;
 }
