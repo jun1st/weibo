@@ -59,6 +59,10 @@
 		65A425BF15DB908C00861D3B /* WBMessageTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */; };
 		65A5304E15EF3FFD004D6FDE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304D15EF3FFD004D6FDE /* User.m */; };
 		65A5305115EF4059004D6FDE /* Status+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304F15EF4059004D6FDE /* Status+CoreData.m */; };
+		65A5306515F0611D0019F71B /* MentionLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5306415F0611D0019F71B /* MentionLoader.m */; };
+		65A5306815F064E80019F71B /* Mention+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5306715F064E80019F71B /* Mention+CoreData.m */; };
+		65C45D9515F0A68A00BB7557 /* MetionTimeLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C45D9415F0A68A00BB7557 /* MetionTimeLineController.m */; };
+		65C45D9915F0AB8200BB7557 /* MentionTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C45D9815F0AB8200BB7557 /* MentionTableCellView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +171,14 @@
 		65A5304D15EF3FFD004D6FDE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		65A5304F15EF4059004D6FDE /* Status+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Status+CoreData.m"; sourceTree = "<group>"; };
 		65A5305015EF4059004D6FDE /* Status+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Status+CoreData.h"; sourceTree = "<group>"; };
+		65A5306315F0611D0019F71B /* MentionLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionLoader.h; sourceTree = "<group>"; };
+		65A5306415F0611D0019F71B /* MentionLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionLoader.m; sourceTree = "<group>"; };
+		65A5306615F064E80019F71B /* Mention+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Mention+CoreData.h"; sourceTree = "<group>"; };
+		65A5306715F064E80019F71B /* Mention+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Mention+CoreData.m"; sourceTree = "<group>"; };
+		65C45D9315F0A68A00BB7557 /* MetionTimeLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetionTimeLineController.h; sourceTree = "<group>"; };
+		65C45D9415F0A68A00BB7557 /* MetionTimeLineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetionTimeLineController.m; sourceTree = "<group>"; };
+		65C45D9715F0AB8200BB7557 /* MentionTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionTableCellView.h; sourceTree = "<group>"; };
+		65C45D9815F0AB8200BB7557 /* MentionTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionTableCellView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,12 +224,16 @@
 				4CF33B9D15EFAB0300DBE88B /* Status.m */,
 				65A5304C15EF3FFD004D6FDE /* User.h */,
 				65A5304D15EF3FFD004D6FDE /* User.m */,
-				65A5304F15EF4059004D6FDE /* Status+CoreData.m */,
 				65A5305015EF4059004D6FDE /* Status+CoreData.h */,
+				65A5304F15EF4059004D6FDE /* Status+CoreData.m */,
 				4C5182FC15ED226A0075ECE5 /* User+CoreData.h */,
 				4C5182FD15ED226A0075ECE5 /* User+CoreData.m */,
 				4C17296815EE745100E4B805 /* User+ProfileImage.h */,
 				4C17296915EE745100E4B805 /* User+ProfileImage.m */,
+				65A5306315F0611D0019F71B /* MentionLoader.h */,
+				65A5306415F0611D0019F71B /* MentionLoader.m */,
+				65A5306615F064E80019F71B /* Mention+CoreData.h */,
+				65A5306715F064E80019F71B /* Mention+CoreData.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -304,6 +320,8 @@
 				4C15276915D67A1F000F9E93 /* MainWindowController.h */,
 				4C15276A15D67A1F000F9E93 /* MainWindowController.m */,
 				4C15276B15D67A1F000F9E93 /* MainWindowController.xib */,
+				65C45D9715F0AB8200BB7557 /* MentionTableCellView.h */,
+				65C45D9815F0AB8200BB7557 /* MentionTableCellView.m */,
 				65A425BD15DB908C00861D3B /* WBMessageTableCellView.h */,
 				65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */,
 				4CBB148415E11EF400E7F9C8 /* NSRoundedImageView.h */,
@@ -316,6 +334,8 @@
 				4C5182ED15ED04530075ECE5 /* Models */,
 				4CA2CC6015EBCFCC00415031 /* WBManagedObjectContext.h */,
 				4CA2CC6115EBCFCC00415031 /* WBManagedObjectContext.m */,
+				65C45D9315F0A68A00BB7557 /* MetionTimeLineController.h */,
+				65C45D9415F0A68A00BB7557 /* MetionTimeLineController.m */,
 			);
 			path = weibo;
 			sourceTree = "<group>";
@@ -558,6 +578,10 @@
 				65A5305115EF4059004D6FDE /* Status+CoreData.m in Sources */,
 				4CF33B9E15EFAB0300DBE88B /* Status.m in Sources */,
 				4CF33BA215EFBC3100DBE88B /* Mention.m in Sources */,
+				65A5306515F0611D0019F71B /* MentionLoader.m in Sources */,
+				65A5306815F064E80019F71B /* Mention+CoreData.m in Sources */,
+				65C45D9515F0A68A00BB7557 /* MetionTimeLineController.m in Sources */,
+				65C45D9915F0AB8200BB7557 /* MentionTableCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

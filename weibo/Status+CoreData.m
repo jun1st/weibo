@@ -54,7 +54,7 @@
         status.repostsCount = [NSNumber numberWithInteger:[[statusDict objectForKey:@"reposts_count"] integerValue]];
         status.commentsCount = [NSNumber numberWithInteger:[[statusDict objectForKey:@"comments_count"] integerValue]];
         status.replyToStatusId = [statusDict objectForKey:@"in_reply_to_status_id"];
-        status.replyToUserId = [statusDict objectForKey:@"in_reply_to_user_id"];
+        //status.replyToUserId = [statusDict objectForKey:@"in_reply_to_user_id"];
         status.author = [User saveFromDictionary:[statusDict objectForKey:@"user"] inContext:context];
         
         [context save:nil];
@@ -69,6 +69,7 @@
     request.predicate = [NSPredicate predicateWithFormat:@"replyToUserId = %@", idstr];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    request.fetchLimit = 20;
     
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];
@@ -77,6 +78,24 @@
     }
     
     return nil;
+}
+
++(Status *)statusById:(NSString *)idstr fromContext:(NSManagedObjectContext *)context
+{
+    Status *status = nil;
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Status"];
+    request.predicate = [NSPredicate predicateWithFormat:@"id = %@", idstr];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO];
+    request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    
+    NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    if (!error) {
+        status = [matches lastObject];
+    }
+    
+    return status;
 }
 
 @end

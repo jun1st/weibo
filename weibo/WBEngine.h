@@ -67,7 +67,7 @@
 @property (nonatomic, retain) WBRequest *request;
 @property (nonatomic, assign) id<WBEngineDelegate> delegate;
 
-
+-(id)init;
 // Initialize an instance with the AppKey and the AppSecret you have for your client.
 - (id)initWithAppKey:(NSString *)theAppKey appSecret:(NSString *)theAppSecret;
 

@@ -13,4 +13,6 @@
 +(void)save:(NSDictionary *)status inContext:(NSManagedObjectContext *)context;
 +(NSArray *)statusesAtUser:(NSString *)idstr inContext:(NSManagedObjectContext *)context;
 
++(Status *)statusById:(NSString *)idstr fromContext:(NSManagedObjectContext *)context;
+
 @end

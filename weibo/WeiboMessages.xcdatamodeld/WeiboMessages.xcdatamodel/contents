@@ -38,8 +38,8 @@
         <relationship name="statuses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Status" inverseName="author" inverseEntity="Status" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Mention" positionX="160" positionY="192" width="128" height="120"/>
         <element name="Status" positionX="0" positionY="0" width="128" height="225"/>
         <element name="User" positionX="0" positionY="0" width="128" height="255"/>
-        <element name="Mention" positionX="160" positionY="192" width="128" height="120"/>
     </elements>
 </model>

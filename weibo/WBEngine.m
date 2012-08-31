@@ -19,6 +19,9 @@
 #import "WBSDKGlobal.h"
 #import "WBUtil.h"
 
+#define OAuthConsumerKey @"4116306678"
+#define OAuthConsumerSecret @"630c48733d7f6c717ad6dec31bf50895"
+
 #define kWBURLSchemePrefix              @"WB_"
 
 #define kWBKeychainServiceNameSuffix    @"_WeiBoServiceName"
@@ -36,6 +39,13 @@
 
 
 #pragma mark - WBEngine Life Circle
+
+-(id)init
+{
+    self = [self initWithAppKey:OAuthConsumerKey appSecret:OAuthConsumerSecret];
+    
+    return self;
+}
 
 - (id)initWithAppKey:(NSString *)theAppKey appSecret:(NSString *)theAppSecret
 {

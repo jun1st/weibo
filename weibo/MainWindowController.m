@@ -18,6 +18,8 @@
 #import "User+CoreData.h"
 #import "User+ProfileImage.h"
 #import "WBManagedObjectContext.h"
+#import "MentionLoader.h"
+#import "Mention+CoreData.h"
 
 #define OAuthConsumerKey @"4116306678"
 #define OAuthConsumerSecret @"630c48733d7f6c717ad6dec31bf50895"
@@ -32,20 +34,23 @@
 
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
 
-@property(strong, readonly) NSManagedObjectModel *managedObjectModel;
-@property(strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong) MentionLoader *mentionLoader;
+
 
 -(void)refreshTimelime;
 
 @end
 
 @implementation MainWindowController
+@synthesize timelineTabs = _timelineTabs;
+@synthesize mentionTimeLineController = _mentionTimeLineController;
 
 @synthesize timelineTable = _timelineTable;
 @synthesize utcDateFormatter = _utcDateFormatter;
 @synthesize userRegularExpression = _userRegularExpression;
 @synthesize urlRegularExpression = _urlRegularExpression;
 @synthesize authorizingUser = _authorizingUser;
+@synthesize mentionLoader = _mentionLoader;
 
 -(NSRegularExpression *)userRegularExpression
 {
@@ -94,6 +99,15 @@
     }
     
     return _engine;
+}
+
+-(MentionLoader *)mentionLoader
+{
+    if (!_mentionLoader) {
+        _mentionLoader = [[MentionLoader alloc] init];
+    }
+    
+    return _mentionLoader;
 }
 
 -(WBUser *)authorizingUser
@@ -153,7 +167,9 @@
         [self refreshTimelime];
     };
     [self requestAuthorizingUserProfileImage];
-    [self refreshTimelime];
+    //[self refreshTimelime];
+    
+    [self statusArrayFromDatabase];
     
 }
 
@@ -207,6 +223,7 @@
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                           initWithKey:@"createdAt" ascending:NO];
     [request setSortDescriptors:@[sortDescriptor]];
+    request.fetchLimit = 20;
     
     NSError *error;
     self.timeline = [[[WBManagedObjectContext sharedInstance].managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
@@ -309,9 +326,9 @@
     
     [result.statusTextView.textStorage setAttributedString:rString];
     
-    if (row + 1 == [self.timeline count]) {
-        [self prefetchingData];
-    }
+//    if (row + 1 == [self.timeline count]) {
+//        [self prefetchingData];
+//    }
     
     return result;
 }
@@ -371,15 +388,10 @@
 
 
 - (IBAction)showAtMeStatus:(id)sender {
-    
-    WBUser *authorizingUser = [WBUser authorizingUser];
-    
-    NSArray *statuses = [Status statusesAtUser:authorizingUser.userId
-                                     inContext:[WBManagedObjectContext sharedInstance].managedObjectContext];
-    
-    [self.timeline removeAllObjects];
-    [self.timeline addObjectsFromArray:statuses];
-    [self.timelineTable reloadData];
-    
+    [self.timelineTabs selectTabViewItemAtIndex:1];
+}
+
+- (IBAction)showHomeTimeLine:(id)sender {
+    [self.timelineTabs selectTabViewItemAtIndex:0];
 }
 @end
