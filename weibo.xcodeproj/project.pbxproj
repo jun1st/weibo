@@ -15,13 +15,13 @@
 		4C15277A15D69601000F9E93 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C15277915D69601000F9E93 /* SSKeychain.m */; };
 		4C17296A15EE745100E4B805 /* User+ProfileImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C17296915EE745100E4B805 /* User+ProfileImage.m */; };
 		4C1782F915E883660034EBFF /* WeiboMessages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1782F715E883660034EBFF /* WeiboMessages.xcdatamodeld */; };
+		4C1AB28A15F1F287008AE9C7 /* TimeLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1AB28915F1F287008AE9C7 /* TimeLineController.m */; };
 		4C2CBEDD15E689ED0062B910 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8FAB3015D24AF7004EBBC5 /* CoreData.framework */; };
+		4C408A3A15F179FF007CF089 /* HomeTimeLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C408A3915F179FF007CF089 /* HomeTimeLineController.m */; };
 		4C5182F815ED0C510075ECE5 /* WBFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5182F715ED0C510075ECE5 /* WBFormatter.m */; };
 		4C5182FE15ED226A0075ECE5 /* User+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5182FD15ED226A0075ECE5 /* User+CoreData.m */; };
 		4C5315E615E3D33B0004238A /* WBMessageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E515E3D33B0004238A /* WBMessageScrollView.m */; };
 		4C5315EA15E3E3620004238A /* WBMessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E915E3E3620004238A /* WBMessageTextView.m */; };
-		4C5F9AB415DBE0A100B804F1 /* twitter.ico in Resources */ = {isa = PBXBuildFile; fileRef = 4C5F9AB315DBE0A100B804F1 /* twitter.ico */; };
-		4C5F9AB915DBF70C00B804F1 /* twitter.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4C5F9AB815DBF70C00B804F1 /* twitter.icns */; };
 		4C5F9ABB15DBF93000B804F1 /* drink_twitter.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4C5F9ABA15DBF93000B804F1 /* drink_twitter.icns */; };
 		4C6878FD15E0B28F000F0482 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6878FC15E0B28F000F0482 /* ImageDownloader.m */; };
 		4C68790115E0B864000F0482 /* WBUser+ProfileImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C68790015E0B864000F0482 /* WBUser+ProfileImage.m */; };
@@ -89,6 +89,10 @@
 		4C17296815EE745100E4B805 /* User+ProfileImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+ProfileImage.h"; sourceTree = "<group>"; };
 		4C17296915EE745100E4B805 /* User+ProfileImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+ProfileImage.m"; sourceTree = "<group>"; };
 		4C1782F815E883660034EBFF /* WeiboMessages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeiboMessages.xcdatamodel; sourceTree = "<group>"; };
+		4C1AB28815F1F287008AE9C7 /* TimeLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineController.h; sourceTree = "<group>"; };
+		4C1AB28915F1F287008AE9C7 /* TimeLineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineController.m; sourceTree = "<group>"; };
+		4C408A3815F179FF007CF089 /* HomeTimeLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTimeLineController.h; sourceTree = "<group>"; };
+		4C408A3915F179FF007CF089 /* HomeTimeLineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTimeLineController.m; sourceTree = "<group>"; };
 		4C5182F615ED0C510075ECE5 /* WBFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBFormatter.h; sourceTree = "<group>"; };
 		4C5182F715ED0C510075ECE5 /* WBFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBFormatter.m; sourceTree = "<group>"; };
 		4C5182FC15ED226A0075ECE5 /* User+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreData.h"; sourceTree = "<group>"; };
@@ -97,8 +101,6 @@
 		4C5315E515E3D33B0004238A /* WBMessageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageScrollView.m; sourceTree = "<group>"; };
 		4C5315E815E3E3620004238A /* WBMessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageTextView.h; sourceTree = "<group>"; };
 		4C5315E915E3E3620004238A /* WBMessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageTextView.m; sourceTree = "<group>"; };
-		4C5F9AB315DBE0A100B804F1 /* twitter.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = twitter.ico; sourceTree = "<group>"; };
-		4C5F9AB815DBF70C00B804F1 /* twitter.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = twitter.icns; sourceTree = "<group>"; };
 		4C5F9ABA15DBF93000B804F1 /* drink_twitter.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = drink_twitter.icns; sourceTree = "<group>"; };
 		4C6878FB15E0B28F000F0482 /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
 		4C6878FC15E0B28F000F0482 /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
@@ -251,8 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				4C5F9ABA15DBF93000B804F1 /* drink_twitter.icns */,
-				4C5F9AB815DBF70C00B804F1 /* twitter.icns */,
-				4C5F9AB315DBE0A100B804F1 /* twitter.ico */,
 			);
 			name = macos;
 			sourceTree = "<group>";
@@ -320,6 +320,8 @@
 				4C15276915D67A1F000F9E93 /* MainWindowController.h */,
 				4C15276A15D67A1F000F9E93 /* MainWindowController.m */,
 				4C15276B15D67A1F000F9E93 /* MainWindowController.xib */,
+				4C408A3815F179FF007CF089 /* HomeTimeLineController.h */,
+				4C408A3915F179FF007CF089 /* HomeTimeLineController.m */,
 				65C45D9715F0AB8200BB7557 /* MentionTableCellView.h */,
 				65C45D9815F0AB8200BB7557 /* MentionTableCellView.m */,
 				65A425BD15DB908C00861D3B /* WBMessageTableCellView.h */,
@@ -336,6 +338,8 @@
 				4CA2CC6115EBCFCC00415031 /* WBManagedObjectContext.m */,
 				65C45D9315F0A68A00BB7557 /* MetionTimeLineController.h */,
 				65C45D9415F0A68A00BB7557 /* MetionTimeLineController.m */,
+				4C1AB28815F1F287008AE9C7 /* TimeLineController.h */,
+				4C1AB28915F1F287008AE9C7 /* TimeLineController.m */,
 			);
 			path = weibo;
 			sourceTree = "<group>";
@@ -506,8 +510,6 @@
 				4C8FABC015D25005004EBBC5 /* OAuthWindow.xib in Resources */,
 				4C8FABC515D2520F004EBBC5 /* MainMenu.xib in Resources */,
 				4C15276D15D67A1F000F9E93 /* MainWindowController.xib in Resources */,
-				4C5F9AB415DBE0A100B804F1 /* twitter.ico in Resources */,
-				4C5F9AB915DBF70C00B804F1 /* twitter.icns in Resources */,
 				4C5F9ABB15DBF93000B804F1 /* drink_twitter.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,6 +584,8 @@
 				65A5306815F064E80019F71B /* Mention+CoreData.m in Sources */,
 				65C45D9515F0A68A00BB7557 /* MetionTimeLineController.m in Sources */,
 				65C45D9915F0AB8200BB7557 /* MentionTableCellView.m in Sources */,
+				4C408A3A15F179FF007CF089 /* HomeTimeLineController.m in Sources */,
+				4C1AB28A15F1F287008AE9C7 /* TimeLineController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -79,13 +79,12 @@
         return _persistentStoreCoordinator;
     }
     
-    //    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
-    //                                               stringByAppendingPathComponent: @"Core_Data.sqlite"]];
     NSFileManager *sharedFM = [NSFileManager defaultManager];
     NSArray *availableURLs = [sharedFM URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask];
     
     NSURL *appSupportDir = nil;
     NSURL *appDirectory = nil;
+    //NSURL *profileImagesDirectory = nil;
     
     if (availableURLs.count > 0) {
         appSupportDir = [availableURLs objectAtIndex:0];
@@ -96,16 +95,14 @@
         appDirectory = [appSupportDir URLByAppendingPathComponent:appBundleId];
     }
     
-    NSURL *storeUrl = [NSURL fileURLWithPath: [appDirectory.absoluteString
-                                               stringByAppendingPathComponent: @"wbmessages.sqlite"]];
-    
-    if (![sharedFM fileExistsAtPath:storeUrl.absoluteString]) {
-        NSError *error;
-        [sharedFM createDirectoryAtPath:storeUrl.absoluteString
-            withIntermediateDirectories:YES
-                             attributes:nil
-                                  error:&error];
+    if (![sharedFM fileExistsAtPath:appDirectory.absoluteString]) {
+        [sharedFM createDirectoryAtPath:appDirectory.absoluteString withIntermediateDirectories:YES attributes:nil error:nil];
     }
+
+    
+    NSURL *storeUrl = [NSURL fileURLWithPath: [appDirectory.absoluteString
+                                               stringByAppendingPathComponent: @"iweibo4mac.sqlite"]];
+    
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
@@ -126,12 +123,14 @@
          model
          Check the error message to determine what the actual problem was.
          */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        NSDictionary *ui = [error userInfo];
+        for(NSString *err in [ui keyEnumerator]) {
+            NSLog(@"err:%@",[ui objectForKey:err]);
+        }
         abort();
     }
     
     return _persistentStoreCoordinator;
 }
-
 
 @end

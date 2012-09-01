@@ -11,17 +11,19 @@
 #import "WBEngine.h"
 #import "WBMessageTableCellView.h"
 #import "EQSTRScrollView.h"
+#import "HomeTimeLineController.h"
 #import "MetionTimeLineController.h"
 
-@interface MainWindowController : NSWindowController<NSTableViewDataSource, NSTableViewDelegate>
+@interface MainWindowController : NSWindowController
 
-@property(nonatomic, strong) WBEngine *engine;
-@property (weak) IBOutlet NSTableView *timelineTable;
-@property (weak) IBOutlet EQSTRScrollView *scrollView;
+
+@property (weak) IBOutlet EQSTRScrollView *homeTimeLineScrollView;
+@property (weak) IBOutlet EQSTRScrollView *mentionsTimeLineScrollView;
 @property (weak) IBOutlet NSImageView *authorizingUserProfileImage;
 @property (weak) IBOutlet NSTabView *timelineTabs;
 
-@property (strong) IBOutlet MetionTimeLineController *mentionTimeLineController;
+@property (strong) IBOutlet HomeTimeLineController *homeTimeLineController;
+
 - (IBAction)showAtMeStatus:(id)sender;
 - (IBAction)showHomeTimeLine:(id)sender;
 
