@@ -15,9 +15,9 @@
 		4C15277A15D69601000F9E93 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C15277915D69601000F9E93 /* SSKeychain.m */; };
 		4C17296A15EE745100E4B805 /* User+ProfileImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C17296915EE745100E4B805 /* User+ProfileImage.m */; };
 		4C1782F915E883660034EBFF /* WeiboMessages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1782F715E883660034EBFF /* WeiboMessages.xcdatamodeld */; };
-		4C1AB28A15F1F287008AE9C7 /* TimeLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1AB28915F1F287008AE9C7 /* TimeLineController.m */; };
+		4C1AB28A15F1F287008AE9C7 /* TimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1AB28915F1F287008AE9C7 /* TimelineController.m */; };
 		4C2CBEDD15E689ED0062B910 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8FAB3015D24AF7004EBBC5 /* CoreData.framework */; };
-		4C408A3A15F179FF007CF089 /* HomeTimeLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C408A3915F179FF007CF089 /* HomeTimeLineController.m */; };
+		4C408A3A15F179FF007CF089 /* HomeTimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C408A3915F179FF007CF089 /* HomeTimelineController.m */; };
 		4C5182F815ED0C510075ECE5 /* WBFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5182F715ED0C510075ECE5 /* WBFormatter.m */; };
 		4C5182FE15ED226A0075ECE5 /* User+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5182FD15ED226A0075ECE5 /* User+CoreData.m */; };
 		4C5315E615E3D33B0004238A /* WBMessageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E515E3D33B0004238A /* WBMessageScrollView.m */; };
@@ -39,6 +39,7 @@
 		4C8FABC315D25068004EBBC5 /* OAuthWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8FABC215D25068004EBBC5 /* OAuthWindowController.m */; };
 		4C8FABC515D2520F004EBBC5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C8FABC415D2520F004EBBC5 /* MainMenu.xib */; };
 		4CA2CC6215EBCFCC00415031 /* WBManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2CC6115EBCFCC00415031 /* WBManagedObjectContext.m */; };
+		4CB9277415F3880800DE4678 /* TimelineCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB9277315F3880800DE4678 /* TimelineCellView.m */; };
 		4CBB148615E11EF400E7F9C8 /* NSRoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB148515E11EF400E7F9C8 /* NSRoundedImageView.m */; };
 		4CCB88B315D3EA6F00231E13 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88B115D3EA6F00231E13 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4CCB88B615D3EA9D00231E13 /* WBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88B515D3EA9D00231E13 /* WBUtil.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -59,9 +60,8 @@
 		65A425BF15DB908C00861D3B /* WBMessageTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */; };
 		65A5304E15EF3FFD004D6FDE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304D15EF3FFD004D6FDE /* User.m */; };
 		65A5305115EF4059004D6FDE /* Status+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304F15EF4059004D6FDE /* Status+CoreData.m */; };
-		65A5306515F0611D0019F71B /* MentionLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5306415F0611D0019F71B /* MentionLoader.m */; };
 		65A5306815F064E80019F71B /* Mention+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5306715F064E80019F71B /* Mention+CoreData.m */; };
-		65C45D9515F0A68A00BB7557 /* MetionTimeLineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C45D9415F0A68A00BB7557 /* MetionTimeLineController.m */; };
+		65C45D9515F0A68A00BB7557 /* MentionTimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C45D9415F0A68A00BB7557 /* MentionTimelineController.m */; };
 		65C45D9915F0AB8200BB7557 /* MentionTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C45D9815F0AB8200BB7557 /* MentionTableCellView.m */; };
 /* End PBXBuildFile section */
 
@@ -89,10 +89,10 @@
 		4C17296815EE745100E4B805 /* User+ProfileImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+ProfileImage.h"; sourceTree = "<group>"; };
 		4C17296915EE745100E4B805 /* User+ProfileImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+ProfileImage.m"; sourceTree = "<group>"; };
 		4C1782F815E883660034EBFF /* WeiboMessages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeiboMessages.xcdatamodel; sourceTree = "<group>"; };
-		4C1AB28815F1F287008AE9C7 /* TimeLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLineController.h; sourceTree = "<group>"; };
-		4C1AB28915F1F287008AE9C7 /* TimeLineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLineController.m; sourceTree = "<group>"; };
-		4C408A3815F179FF007CF089 /* HomeTimeLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTimeLineController.h; sourceTree = "<group>"; };
-		4C408A3915F179FF007CF089 /* HomeTimeLineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTimeLineController.m; sourceTree = "<group>"; };
+		4C1AB28815F1F287008AE9C7 /* TimelineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineController.h; sourceTree = "<group>"; };
+		4C1AB28915F1F287008AE9C7 /* TimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineController.m; sourceTree = "<group>"; };
+		4C408A3815F179FF007CF089 /* HomeTimelineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTimelineController.h; sourceTree = "<group>"; };
+		4C408A3915F179FF007CF089 /* HomeTimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTimelineController.m; sourceTree = "<group>"; };
 		4C5182F615ED0C510075ECE5 /* WBFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBFormatter.h; sourceTree = "<group>"; };
 		4C5182F715ED0C510075ECE5 /* WBFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBFormatter.m; sourceTree = "<group>"; };
 		4C5182FC15ED226A0075ECE5 /* User+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreData.h"; sourceTree = "<group>"; };
@@ -132,6 +132,8 @@
 		4C8FABC415D2520F004EBBC5 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		4CA2CC6015EBCFCC00415031 /* WBManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBManagedObjectContext.h; sourceTree = "<group>"; };
 		4CA2CC6115EBCFCC00415031 /* WBManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBManagedObjectContext.m; sourceTree = "<group>"; };
+		4CB9277215F3880800DE4678 /* TimelineCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCellView.h; sourceTree = "<group>"; };
+		4CB9277315F3880800DE4678 /* TimelineCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineCellView.m; sourceTree = "<group>"; };
 		4CBB148415E11EF400E7F9C8 /* NSRoundedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSRoundedImageView.h; sourceTree = "<group>"; };
 		4CBB148515E11EF400E7F9C8 /* NSRoundedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSRoundedImageView.m; sourceTree = "<group>"; };
 		4CCB88B015D3EA6F00231E13 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
@@ -173,12 +175,10 @@
 		65A5304D15EF3FFD004D6FDE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		65A5304F15EF4059004D6FDE /* Status+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Status+CoreData.m"; sourceTree = "<group>"; };
 		65A5305015EF4059004D6FDE /* Status+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Status+CoreData.h"; sourceTree = "<group>"; };
-		65A5306315F0611D0019F71B /* MentionLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionLoader.h; sourceTree = "<group>"; };
-		65A5306415F0611D0019F71B /* MentionLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionLoader.m; sourceTree = "<group>"; };
 		65A5306615F064E80019F71B /* Mention+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Mention+CoreData.h"; sourceTree = "<group>"; };
 		65A5306715F064E80019F71B /* Mention+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Mention+CoreData.m"; sourceTree = "<group>"; };
-		65C45D9315F0A68A00BB7557 /* MetionTimeLineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetionTimeLineController.h; sourceTree = "<group>"; };
-		65C45D9415F0A68A00BB7557 /* MetionTimeLineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetionTimeLineController.m; sourceTree = "<group>"; };
+		65C45D9315F0A68A00BB7557 /* MentionTimelineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionTimelineController.h; sourceTree = "<group>"; };
+		65C45D9415F0A68A00BB7557 /* MentionTimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionTimelineController.m; sourceTree = "<group>"; };
 		65C45D9715F0AB8200BB7557 /* MentionTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionTableCellView.h; sourceTree = "<group>"; };
 		65C45D9815F0AB8200BB7557 /* MentionTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionTableCellView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -232,8 +232,6 @@
 				4C5182FD15ED226A0075ECE5 /* User+CoreData.m */,
 				4C17296815EE745100E4B805 /* User+ProfileImage.h */,
 				4C17296915EE745100E4B805 /* User+ProfileImage.m */,
-				65A5306315F0611D0019F71B /* MentionLoader.h */,
-				65A5306415F0611D0019F71B /* MentionLoader.m */,
 				65A5306615F064E80019F71B /* Mention+CoreData.h */,
 				65A5306715F064E80019F71B /* Mention+CoreData.m */,
 			);
@@ -243,6 +241,9 @@
 		4C5F9AB615DBF63000B804F1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4C15276B15D67A1F000F9E93 /* MainWindowController.xib */,
+				4C8FABBF15D25005004EBBC5 /* OAuthWindow.xib */,
+				4C8FABC415D2520F004EBBC5 /* MainMenu.xib */,
 				4C5F9AB715DBF66A00B804F1 /* macos */,
 			);
 			name = Resources;
@@ -255,6 +256,44 @@
 				4C5F9ABA15DBF93000B804F1 /* drink_twitter.icns */,
 			);
 			name = macos;
+			sourceTree = "<group>";
+		};
+		4C6E977915F26B2E007F6575 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C13ECC815DE8AE500996029 /* INAppStoreWindow */,
+				6517CBED15DCDE42007BAB00 /* ScrollToRefreshView */,
+				65C45D9715F0AB8200BB7557 /* MentionTableCellView.h */,
+				65C45D9815F0AB8200BB7557 /* MentionTableCellView.m */,
+				65A425BD15DB908C00861D3B /* WBMessageTableCellView.h */,
+				65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */,
+				4CBB148415E11EF400E7F9C8 /* NSRoundedImageView.h */,
+				4CBB148515E11EF400E7F9C8 /* NSRoundedImageView.m */,
+				4C5315E415E3D33B0004238A /* WBMessageScrollView.h */,
+				4C5315E515E3D33B0004238A /* WBMessageScrollView.m */,
+				4C5315E815E3E3620004238A /* WBMessageTextView.h */,
+				4C5315E915E3E3620004238A /* WBMessageTextView.m */,
+				4CB9277215F3880800DE4678 /* TimelineCellView.h */,
+				4CB9277315F3880800DE4678 /* TimelineCellView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4C6E977B15F26B4A007F6575 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4C8FABC115D25067004EBBC5 /* OAuthWindowController.h */,
+				4C8FABC215D25068004EBBC5 /* OAuthWindowController.m */,
+				4C15276915D67A1F000F9E93 /* MainWindowController.h */,
+				4C15276A15D67A1F000F9E93 /* MainWindowController.m */,
+				4C408A3815F179FF007CF089 /* HomeTimelineController.h */,
+				4C408A3915F179FF007CF089 /* HomeTimelineController.m */,
+				65C45D9315F0A68A00BB7557 /* MentionTimelineController.h */,
+				65C45D9415F0A68A00BB7557 /* MentionTimelineController.m */,
+				4C1AB28815F1F287008AE9C7 /* TimelineController.h */,
+				4C1AB28915F1F287008AE9C7 /* TimelineController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		4C8FAB1D15D24AF7004EBBC5 = {
@@ -305,41 +344,18 @@
 			children = (
 				4C6878FB15E0B28F000F0482 /* ImageDownloader.h */,
 				4C6878FC15E0B28F000F0482 /* ImageDownloader.m */,
-				4C13ECC815DE8AE500996029 /* INAppStoreWindow */,
-				6517CBED15DCDE42007BAB00 /* ScrollToRefreshView */,
 				4C15277815D69601000F9E93 /* SSKeychain.h */,
 				4C15277915D69601000F9E93 /* SSKeychain.m */,
 				4CCB88AE15D3EA4300231E13 /* weiboSDK */,
 				4C8FAB3E15D24AF7004EBBC5 /* AppDelegate.h */,
 				4C8FAB3F15D24AF7004EBBC5 /* AppDelegate.m */,
 				4C8FAB3315D24AF7004EBBC5 /* Supporting Files */,
-				4C8FABBF15D25005004EBBC5 /* OAuthWindow.xib */,
-				4C8FABC115D25067004EBBC5 /* OAuthWindowController.h */,
-				4C8FABC215D25068004EBBC5 /* OAuthWindowController.m */,
-				4C8FABC415D2520F004EBBC5 /* MainMenu.xib */,
-				4C15276915D67A1F000F9E93 /* MainWindowController.h */,
-				4C15276A15D67A1F000F9E93 /* MainWindowController.m */,
-				4C15276B15D67A1F000F9E93 /* MainWindowController.xib */,
-				4C408A3815F179FF007CF089 /* HomeTimeLineController.h */,
-				4C408A3915F179FF007CF089 /* HomeTimeLineController.m */,
-				65C45D9715F0AB8200BB7557 /* MentionTableCellView.h */,
-				65C45D9815F0AB8200BB7557 /* MentionTableCellView.m */,
-				65A425BD15DB908C00861D3B /* WBMessageTableCellView.h */,
-				65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */,
-				4CBB148415E11EF400E7F9C8 /* NSRoundedImageView.h */,
-				4CBB148515E11EF400E7F9C8 /* NSRoundedImageView.m */,
-				4C5315E415E3D33B0004238A /* WBMessageScrollView.h */,
-				4C5315E515E3D33B0004238A /* WBMessageScrollView.m */,
-				4C5315E815E3E3620004238A /* WBMessageTextView.h */,
-				4C5315E915E3E3620004238A /* WBMessageTextView.m */,
+				4C6E977B15F26B4A007F6575 /* Controllers */,
+				4C6E977915F26B2E007F6575 /* Views */,
 				4C1782F715E883660034EBFF /* WeiboMessages.xcdatamodeld */,
 				4C5182ED15ED04530075ECE5 /* Models */,
 				4CA2CC6015EBCFCC00415031 /* WBManagedObjectContext.h */,
 				4CA2CC6115EBCFCC00415031 /* WBManagedObjectContext.m */,
-				65C45D9315F0A68A00BB7557 /* MetionTimeLineController.h */,
-				65C45D9415F0A68A00BB7557 /* MetionTimeLineController.m */,
-				4C1AB28815F1F287008AE9C7 /* TimeLineController.h */,
-				4C1AB28915F1F287008AE9C7 /* TimeLineController.m */,
 			);
 			path = weibo;
 			sourceTree = "<group>";
@@ -580,12 +596,12 @@
 				65A5305115EF4059004D6FDE /* Status+CoreData.m in Sources */,
 				4CF33B9E15EFAB0300DBE88B /* Status.m in Sources */,
 				4CF33BA215EFBC3100DBE88B /* Mention.m in Sources */,
-				65A5306515F0611D0019F71B /* MentionLoader.m in Sources */,
 				65A5306815F064E80019F71B /* Mention+CoreData.m in Sources */,
-				65C45D9515F0A68A00BB7557 /* MetionTimeLineController.m in Sources */,
+				65C45D9515F0A68A00BB7557 /* MentionTimelineController.m in Sources */,
 				65C45D9915F0AB8200BB7557 /* MentionTableCellView.m in Sources */,
-				4C408A3A15F179FF007CF089 /* HomeTimeLineController.m in Sources */,
-				4C1AB28A15F1F287008AE9C7 /* TimeLineController.m in Sources */,
+				4C408A3A15F179FF007CF089 /* HomeTimelineController.m in Sources */,
+				4C1AB28A15F1F287008AE9C7 /* TimelineController.m in Sources */,
+				4CB9277415F3880800DE4678 /* TimelineCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

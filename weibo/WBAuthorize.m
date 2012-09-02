@@ -158,8 +158,9 @@
 {
     [[self userDefaults] setObject:self.userId forKey:kUId];
     [[self userDefaults] setDouble:self.expireTime forKey:kUExpireTime];
-    
-    [SSKeychain setPassword:self.accessToken forService:kKeychainServiceName account:kWBKeychainAccessToken];
+    [[self userDefaults] setObject:self.accessToken forKey:kWBKeychainAccessToken];
+    [[self userDefaults] synchronize];
+    //    [SSKeychain setPassword:self.accessToken forService:kKeychainServiceName account:kWBKeychainAccessToken];
 }
 
 -(void)readAuthorization
@@ -167,8 +168,9 @@
 
     self.userId = [[self userDefaults] objectForKey:kUId];
     self.expireTime = [[self userDefaults] doubleForKey:kUExpireTime];
-    
-    self.accessToken = [SSKeychain passwordForService:kKeychainServiceName account:kWBKeychainAccessToken];
+    self.accessToken = [[self userDefaults] objectForKey:kWBKeychainAccessToken];
+    [[self userDefaults] synchronize];
+//    self.accessToken = [SSKeychain passwordForService:kKeychainServiceName account:kWBKeychainAccessToken];
 }
 
 -(void)deleteAuthorization
@@ -179,8 +181,9 @@
     
     [[self userDefaults] removeObjectForKey:kUId];
     [[self userDefaults] removeObjectForKey:kUExpireTime];
-    
-    [SSKeychain deletePasswordForService:kKeychainServiceName account:kWBKeychainAccessToken];
+    [[self userDefaults] removeObjectForKey:kWBKeychainAccessToken];
+    [[self userDefaults] synchronize];
+//    [SSKeychain deletePasswordForService:kKeychainServiceName account:kWBKeychainAccessToken];
 }
 
 -(void)logout

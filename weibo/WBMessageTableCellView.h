@@ -7,15 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TimeLineCellView.h"
 
-@interface WBMessageTableCellView : NSTableCellView
+@interface WBMessageTableCellView : TimelineCellView
 {
     IBOutlet NSTextView *statusTextView;
 }
 
 @property (weak) IBOutlet NSTextField *authName;
 @property (weak) IBOutlet NSTextField *createdTime;
-@property (weak) IBOutlet NSImageView *userProfileImageView;
 
 @property NSTextView *statusTextView;
 

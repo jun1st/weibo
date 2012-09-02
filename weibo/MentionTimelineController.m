@@ -6,20 +6,24 @@
 //  Copyright (c) 2012 feng qijun. All rights reserved.
 //
 
-#import "MetionTimeLineController.h"
+#import "MentionTimelineController.h"
 #import "Mention+CoreData.h"
 #import "WBManagedObjectContext.h"
 #import "MentionTableCellView.h"
 #import "User.h"
 #import "User+ProfileImage.h"
+#import "EQSTRScrollView.h"
 
-@interface MetionTimeLineController()
+#define kWBMetionsUrl @"comments/mentions.json"
+
+@interface MentionTimelineController()
 
 @property (readonly, strong) NSMutableArray *mentions;
+@property (assign)EQSTRScrollView *parentScrollView;
 
 @end
 
-@implementation MetionTimeLineController
+@implementation MentionTimelineController
 
 @synthesize mentions = _mentions;
 
@@ -28,10 +32,10 @@
     if (!_mentions) {
         _mentions = [[NSMutableArray alloc] init];
         
-        NSArray *mentions = [Mention metionsFromContext:[[WBManagedObjectContext sharedInstance] managedObjectContext]];
+        NSArray *objects = [Mention metionsFromContext:[[WBManagedObjectContext sharedInstance] managedObjectContext]];
         
         [_mentions removeAllObjects];
-        [_mentions addObjectsFromArray:mentions];
+        [_mentions addObjectsFromArray:objects];
     }
     
     return _mentions;
@@ -45,6 +49,44 @@
     }
     
     return self;
+}
+
+#pragma timeline controller delegate
+
+-(void)pullToRefreshInScrollView:(EQSTRScrollView *)scrollView
+{
+    [self.engine loadRequestWithMethodName:kWBMetionsUrl
+                           httpMethod:@"GET"
+                               params:nil
+                         postDataType:kWBRequestPostDataTypeNone
+                     httpHeaderFields:nil];
+    
+    self.parentScrollView = scrollView;
+}
+
+-(void)engine:(WBEngine *)engine requestDidSucceedWithResult:(id)result
+{
+    if ([result isKindOfClass:[NSDictionary class]])
+    {
+        NSDictionary *dict = (NSDictionary *)result;
+        NSMutableArray *metionsDict = [dict objectForKey:@"comments"];
+        
+        for (int i=0; i < metionsDict.count; i++) {
+            NSDictionary *metion = [metionsDict objectAtIndex:i];
+            [Mention save:metion inContext:[[WBManagedObjectContext sharedInstance] managedObjectContext]];
+        }
+        
+        
+    }
+    
+    [self.parentScrollView stopLoading];
+
+}
+
+-(void)engine:(WBEngine *)engine requestDidFailWithError:(NSError *)error
+{
+    NSLog(@"%@", error);
+    [self.parentScrollView stopLoading];
 }
 
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
@@ -61,6 +103,9 @@
     
     if (mention.user.profileImage) {
         result.userProfileImageView.image = mention.user.profileImage;
+    }
+    else{
+        [self startUserProfileImageDownload:mention.user forRow:row];
     }
     
     NSMutableAttributedString *rString =

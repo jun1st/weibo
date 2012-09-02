@@ -11,8 +11,8 @@
 #import "WBEngine.h"
 #import "WBMessageTableCellView.h"
 #import "EQSTRScrollView.h"
-#import "HomeTimeLineController.h"
-#import "MetionTimeLineController.h"
+#import "HomeTimelineController.h"
+#import "MentionTimelineController.h"
 
 @interface MainWindowController : NSWindowController
 
@@ -22,7 +22,8 @@
 @property (weak) IBOutlet NSImageView *authorizingUserProfileImage;
 @property (weak) IBOutlet NSTabView *timelineTabs;
 
-@property (strong) IBOutlet HomeTimeLineController *homeTimeLineController;
+@property (strong) IBOutlet HomeTimelineController *homeTimeLineController;
+@property (strong) IBOutlet MentionTimelineController *mentionTimeLineController;
 
 - (IBAction)showAtMeStatus:(id)sender;
 - (IBAction)showHomeTimeLine:(id)sender;

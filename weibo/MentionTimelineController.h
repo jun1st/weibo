@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TimelineController.h"
 
-@interface MetionTimeLineController : NSObject<NSTableViewDataSource, NSTableViewDelegate>
+@interface MentionTimelineController :
+                    TimelineController<NSTableViewDataSource, NSTableViewDelegate, TimeLineControllerDelegate>
+
 
 -(id)init;
 

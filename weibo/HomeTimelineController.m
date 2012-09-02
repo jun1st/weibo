@@ -6,30 +6,27 @@
 //  Copyright (c) 2012 feng qijun. All rights reserved.
 //
 
-#import "HomeTimeLineController.h"
+#import "HomeTimelineController.h"
 #import "WBMessageTableCellView.h"
 #import "Status+CoreData.h"
 #import "User+ProfileImage.h"
-#import "ImageDownloader.h"
 #import "WBEngine.h"
 #import "WBManagedObjectContext.h"
+#import "EQSTRScrollView.h"
 
-@interface HomeTimeLineController()<WBEngineDelegate, ImageDownloading>
+@interface HomeTimelineController()<WBEngineDelegate>
 
-@property(nonatomic, strong) WBEngine *engine;
 @property (nonatomic)NSMutableArray *timeline;
-@property(strong, readonly, nonatomic) NSDateFormatter *utcDateFormatter;
-@property(readonly, nonatomic) NSRegularExpression *userRegularExpression;
-@property(readonly, nonatomic) NSRegularExpression *urlRegularExpression;
-
-@property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
+@property (strong, readonly, nonatomic) NSDateFormatter *utcDateFormatter;
+@property (readonly, nonatomic) NSRegularExpression *userRegularExpression;
+@property (readonly, nonatomic) NSRegularExpression *urlRegularExpression;
+@property (assign) EQSTRScrollView *parentScrollView;
 
 @end
 
-@implementation HomeTimeLineController
+@implementation HomeTimelineController
 
 @synthesize timelineTable = _timelineTable;
-@synthesize engine = _engine;
 @synthesize timeline = _timeline;
 @synthesize utcDateFormatter = _utcDateFormatter;
 @synthesize userRegularExpression = _userRegularExpression;
@@ -49,7 +46,7 @@
 {
     if (!_timeline) {
         _timeline = [[NSMutableArray alloc] init];
-        [self refreshTimeline];
+        [self statusArrayFromDatabase];
     }
     
     return _timeline;
@@ -83,18 +80,11 @@
     return _urlRegularExpression;
 }
 
--(WBEngine *)engine
-{
-    if (!_engine) {
-        _engine = [[WBEngine alloc] init];
-        _engine.delegate = self;
-    }
-    
-    return _engine;
-}
 
--(void)refreshTimeline
+-(void)pullToRefreshInScrollView:(EQSTRScrollView *)scrollView
 {
+    self.parentScrollView = scrollView;
+    
     [self.engine loadRequestWithMethodName:@"statuses/home_timeline.json"
                            httpMethod:@"GET"
                                params:nil
@@ -117,7 +107,14 @@
         
         [self statusArrayFromDatabase];
         
+        [self.parentScrollView stopLoading];
     }
+}
+
+-(void)engine:(WBEngine *)engine requestDidFailWithError:(NSError *)error
+{
+    NSLog(@"%@", error);
+    [self.parentScrollView stopLoading];
 }
 
 -(void)statusArrayFromDatabase
@@ -223,50 +220,6 @@
 }
 
 
--(void)startUserProfileImageDownload:(User *)user forRow:(NSInteger)row
-{
-    ImageDownloader *downloader = [self.imageDownloadsInProgress objectForKey:user.idstr];
-    
-    if (downloader == nil)
-    {
-        downloader = [[ImageDownloader alloc] init];
-        downloader.user = user;
-        [downloader.rowsToUpdate addObject:[NSNumber numberWithInteger:row]];
-        //[downloader addCellPathToUpdate:indexPath];
-        downloader.delegate = self;
-        [self.imageDownloadsInProgress setObject:downloader forKey:user.idstr];
-        [downloader startDownload];
-        
-    }
-    else
-    {
-        [downloader.rowsToUpdate addObject:[NSNumber numberWithInteger:row]];
-        
-    }
-    
-}
 
-#pragma ImageDoneLoading delegate
--(void)doneLoadImageForUser:(User *)user
-{
-    ImageDownloader *iconDownloader = [self.imageDownloadsInProgress objectForKey:user.idstr];
-    if (iconDownloader != nil)
-    {
-        for (NSNumber *row in iconDownloader.rowsToUpdate) {
-            
-            NSTableRowView *result = [self.timelineTable rowViewAtRow:[row integerValue] makeIfNecessary:NO];
-            
-            WBMessageTableCellView *cellView = [result viewAtColumn:0];
-            
-            cellView.userProfileImageView.image = user.profileImage;
-        }
-    }
-}
-
-#pragma TimeLineControllerDelegate
--(void)refreshTimeLine
-{
-    
-}
 
 @end
