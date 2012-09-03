@@ -28,7 +28,7 @@
 @property (assign) IBOutlet NSView *titleBar;
 @property (assign) IBOutlet ANSegmentedControl *anSegmentedControl;
 
-- (IBAction)showAtMeStatus:(id)sender;
-- (IBAction)showHomeTimeLine:(id)sender;
+- (IBAction)showMentionTimeline:(id)sender;
+- (IBAction)showHomeTimeline:(id)sender;
 
 @end

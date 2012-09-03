@@ -127,7 +127,7 @@
     [rString addAttribute:NSFontAttributeName value:[NSFont userFontOfSize:13] range: NSMakeRange(0, rString.length)];
     
     float rows = ceilf(rString.size.width / 380.0f);
-    return (rString.size.height + 3 ) * rows + 20 > 68 ? (rString.size.height + 3) * rows + 20 : 68;
+    return (rString.size.height + 3 ) * rows + 30 > 68 ? (rString.size.height + 3) * rows + 30 : 68;
 }
 
 @end
