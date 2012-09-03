@@ -13,6 +13,7 @@
 #import "EQSTRScrollView.h"
 #import "HomeTimelineController.h"
 #import "MentionTimelineController.h"
+#import "ANSegmentedControl/ANSegmentedControl.h"
 
 @interface MainWindowController : NSWindowController
 
@@ -24,6 +25,8 @@
 
 @property (strong) IBOutlet HomeTimelineController *homeTimeLineController;
 @property (strong) IBOutlet MentionTimelineController *mentionTimeLineController;
+@property (assign) IBOutlet NSView *titleBar;
+@property (assign) IBOutlet ANSegmentedControl *anSegmentedControl;
 
 - (IBAction)showAtMeStatus:(id)sender;
 - (IBAction)showHomeTimeLine:(id)sender;

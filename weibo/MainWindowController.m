@@ -69,7 +69,8 @@
     aWindow.titleBarHeight = 40.0;
 	aWindow.trafficLightButtonsLeftMargin = 13.0;
     
-    aWindow.title = @"Weibo Timeline";
+    [aWindow.titleBarView addSubview:self.titleBar];
+    
     
     self.homeTimeLineScrollView.refreshBlock = ^(EQSTRScrollView *view){
         [self.homeTimeLineController pullToRefreshInScrollView: view];
