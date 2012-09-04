@@ -17,9 +17,7 @@
 @interface HomeTimelineController()<WBEngineDelegate>
 
 @property (nonatomic)NSMutableArray *timeline;
-@property (strong, readonly, nonatomic) NSDateFormatter *utcDateFormatter;
-@property (readonly, nonatomic) NSRegularExpression *userRegularExpression;
-@property (readonly, nonatomic) NSRegularExpression *urlRegularExpression;
+
 @property (assign) EQSTRScrollView *parentScrollView;
 
 @end
@@ -28,9 +26,6 @@
 
 @synthesize timelineTable = _timelineTable;
 @synthesize timeline = _timeline;
-@synthesize utcDateFormatter = _utcDateFormatter;
-@synthesize userRegularExpression = _userRegularExpression;
-@synthesize urlRegularExpression = _urlRegularExpression;
 
 -(id)init
 {
@@ -56,30 +51,6 @@
 {
     return [NSTimeZone localTimeZone];
 }
-
--(NSRegularExpression *)userRegularExpression
-{
-    if (!_userRegularExpression) {
-        _userRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"@[\\w-]+"
-                                                                           options:NSRegularExpressionCaseInsensitive
-                                                                             error:nil];
-    }
-    
-    return _userRegularExpression;
-}
-
--(NSRegularExpression *)urlRegularExpression
-{
-    if (!_urlRegularExpression) {
-        _urlRegularExpression =
-        [NSRegularExpression regularExpressionWithPattern:@"(http://|https://)([a-zA-Z0-9]+\\.[a-zA-Z0-9\\-]+|[a-zA-Z0-9\\-]+)\\.[a-zA-Z\\.]{2,6}(/[a-zA-Z0-9\\.\\?=/#%&\\+-]+|/|)"
-                                                  options:NSRegularExpressionCaseInsensitive
-                                                    error:nil];
-    }
-    
-    return _urlRegularExpression;
-}
-
 
 -(void)pullToRefreshInScrollView:(EQSTRScrollView *)scrollView
 {
@@ -162,9 +133,7 @@
     }
     
     
-    NSMutableAttributedString *rString =
-    [[NSMutableAttributedString alloc] initWithString:status.text];
-    
+    NSMutableAttributedString *rString = [[NSMutableAttributedString alloc] initWithString:status.text];
     
     [rString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range: NSMakeRange(0, rString.length)];
     

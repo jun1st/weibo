@@ -30,6 +30,10 @@
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
 @property (nonatomic, strong) WBEngine *engine;
 
+@property (strong, readonly, nonatomic) NSDateFormatter *utcDateFormatter;
+@property (strong, readonly, nonatomic) NSRegularExpression *userRegularExpression;
+@property (strong, readonly, nonatomic) NSRegularExpression *urlRegularExpression;
+
 -(void)startUserProfileImageDownload:(User *)user forRow:(NSInteger)row;
 
 @end

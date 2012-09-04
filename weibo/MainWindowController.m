@@ -101,12 +101,10 @@
 
 
 - (IBAction)showMentionTimeline:(id)sender {
-    NSLog(@"%s", "mention");
     [self.timelineTabs selectTabViewItemAtIndex:1];
 }
 
 - (IBAction)showHomeTimeline:(id)sender {
-    NSLog(@"%s", "called");
     [self.timelineTabs selectTabViewItemAtIndex:0];
 }
 @end

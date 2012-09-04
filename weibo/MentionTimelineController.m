@@ -113,6 +113,35 @@
     
     [rString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range: NSMakeRange(0, rString.length)];
     
+    //match user names
+    NSArray *matches = [self.userRegularExpression matchesInString:mention.text
+                                                           options:0
+                                                             range:NSMakeRange(0, [mention.text length])];
+    for(NSTextCheckingResult *match in matches)
+    {
+        NSRange matchRange = [match range];
+        NSFont *font = [NSFont userFontOfSize:13];
+        NSFont *boldFont = [[NSFontManager sharedFontManager] fontWithFamily:font.familyName
+                                                                      traits:NSBoldFontMask weight:0 size:13];
+        [rString addAttribute:NSFontAttributeName value:boldFont range:matchRange];
+        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor darkGrayColor] range:matchRange];
+    }
+    
+    //match urls
+    NSArray *urlMatches = [self.urlRegularExpression matchesInString:mention.text options:0 range:NSMakeRange(0, mention.text.length)];
+    for (NSTextCheckingResult  *match in urlMatches) {
+        NSRange matchRange = [match range];
+        NSString *subString = [mention.text substringWithRange:matchRange];
+        
+        [rString addAttribute:NSLinkAttributeName value:subString range:matchRange];
+        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:matchRange];
+        [rString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSSingleUnderlineStyle] range:matchRange];
+    }
+    NSMutableParagraphStyle * myStyle = [[NSMutableParagraphStyle alloc] init];
+    [myStyle setLineSpacing:4.0];
+    [rString addAttribute:NSParagraphStyleAttributeName value:myStyle range:NSMakeRange(0, mention.text.length)];
+    
+    
     [result.statusTextView.textStorage setAttributedString: rString];
     
     return result;
