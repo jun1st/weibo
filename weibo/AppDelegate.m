@@ -7,11 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "NSAttributedStringToNSDataValueTransformer.h"
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [NSAttributedStringToNSDataValueTransformer class];
     
     self.mainController = [[MainWindowController alloc] init];
     

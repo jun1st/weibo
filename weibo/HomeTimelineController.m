@@ -165,8 +165,12 @@
     [myStyle setLineSpacing:4.0];
     [rString addAttribute:NSParagraphStyleAttributeName value:myStyle range:NSMakeRange(0, status.text.length)];
     
+    status.attributedText = rString;
+    NSError *error;
+    [status.managedObjectContext save:&error];
+    NSLog(@"%@", error);
     
-    [result.statusTextView.textStorage setAttributedString:rString];
+    [result.statusTextView.textStorage setAttributedString:status.attributedText];
     
     //    if (row + 1 == [self.timeline count]) {
     //        [self prefetchingData];
@@ -178,14 +182,12 @@
 
 -(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
 {
-    NSString *text = ((Status *)[self.timeline objectAtIndex:row]).text;
+    Status *status = ((Status *)[self.timeline objectAtIndex:row]);
     
-    NSMutableAttributedString *rString =
-    [[NSMutableAttributedString alloc] initWithString:text];
-    [rString addAttribute:NSFontAttributeName value:[NSFont userFontOfSize:13] range: NSMakeRange(0, rString.length)];
+    NSMutableAttributedString *rString = status.attributedText;
     
-    float rows = ceilf(rString.size.width / 360.0f);
-    return (rString.size.height + 3 ) * rows + 30 > 68 ? (rString.size.height + 3) * rows + 30 : 68;
+    float rows = ceilf(rString.size.width / 385.0f);
+    return (rString.size.height + 4 ) * rows + 30 > 68 ? (rString.size.height + 4) * rows + 30 : 68;
 }
 
 

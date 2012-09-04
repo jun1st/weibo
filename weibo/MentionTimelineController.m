@@ -31,7 +31,6 @@
 {
     if (!_mentions) {
         _mentions = [[NSMutableArray alloc] init];
-        
         NSArray *objects = [Mention metionsFromContext:[[WBManagedObjectContext sharedInstance] managedObjectContext]];
         
         [_mentions removeAllObjects];
@@ -49,6 +48,17 @@
     }
     
     return self;
+}
+
+-(void)mentionsFromContext
+{
+    NSArray *objects = [Mention metionsFromContext:[[WBManagedObjectContext sharedInstance] managedObjectContext]];
+    
+    [self.mentions removeAllObjects];
+    [self.mentions addObjectsFromArray:objects];
+    
+    [self.timelineTable reloadData];
+
 }
 
 #pragma timeline controller delegate
@@ -76,7 +86,7 @@
             [Mention save:metion inContext:[[WBManagedObjectContext sharedInstance] managedObjectContext]];
         }
         
-        
+        [self mentionsFromContext];
     }
     
     [self.parentScrollView stopLoading];

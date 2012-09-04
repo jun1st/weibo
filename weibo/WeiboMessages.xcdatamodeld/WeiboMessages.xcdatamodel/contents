@@ -8,6 +8,8 @@
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <entity name="Status" representedClassName="Status" syncable="YES">
+        <attribute name="attributedText" optional="YES" attributeType="Transformable" valueTransformerName="NSAttributedStringToNSDataValueTransformer" syncable="YES"/>
+        <attribute name="calculatedLineHeight" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="commentsCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -39,7 +41,7 @@
     </entity>
     <elements>
         <element name="Mention" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="Status" positionX="0" positionY="0" width="128" height="225"/>
+        <element name="Status" positionX="0" positionY="0" width="128" height="255"/>
         <element name="User" positionX="0" positionY="0" width="128" height="255"/>
     </elements>
 </model>
