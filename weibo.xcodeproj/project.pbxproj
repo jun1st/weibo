@@ -19,7 +19,6 @@
 		4C1BF99D15F634CD0066590E /* AttributedStringCodeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BF99C15F634CD0066590E /* AttributedStringCodeHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C1BF9A115F635A70066590E /* FontUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BF9A015F635A70066590E /* FontUtility.m */; };
 		4C1BF9A415F636930066590E /* NSAttributedStringToNSDataValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BF9A315F636930066590E /* NSAttributedStringToNSDataValueTransformer.m */; };
-		4C1BF9A715F638700066590E /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BF9A615F6386F0066590E /* Status.m */; };
 		4C2CBEDD15E689ED0062B910 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8FAB3015D24AF7004EBBC5 /* CoreData.framework */; };
 		4C408A3A15F179FF007CF089 /* HomeTimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C408A3915F179FF007CF089 /* HomeTimelineController.m */; };
 		4C5182F815ED0C510075ECE5 /* WBFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5182F715ED0C510075ECE5 /* WBFormatter.m */; };
@@ -62,6 +61,7 @@
 		6517CBEF15DCDED2007BAB00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6517CBEE15DCDED2007BAB00 /* QuartzCore.framework */; };
 		6580BB3715F4B5A70089BDA3 /* home_w.png in Resources */ = {isa = PBXBuildFile; fileRef = 6580BB3615F4B5A70089BDA3 /* home_w.png */; };
 		6580BB3A15F4B6BA0089BDA3 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 6580BB3915F4B6BA0089BDA3 /* home.png */; };
+		65A2C33C15F6F8ED00E68003 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A2C33B15F6F8ED00E68003 /* Status.m */; };
 		65A425BF15DB908C00861D3B /* WBMessageTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */; };
 		65A5304E15EF3FFD004D6FDE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304D15EF3FFD004D6FDE /* User.m */; };
 		65A5305115EF4059004D6FDE /* Status+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304F15EF4059004D6FDE /* Status+CoreData.m */; };
@@ -122,8 +122,6 @@
 		4C1BF9A015F635A70066590E /* FontUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontUtility.m; sourceTree = "<group>"; };
 		4C1BF9A215F636930066590E /* NSAttributedStringToNSDataValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSAttributedStringToNSDataValueTransformer.h; sourceTree = "<group>"; };
 		4C1BF9A315F636930066590E /* NSAttributedStringToNSDataValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSAttributedStringToNSDataValueTransformer.m; sourceTree = "<group>"; };
-		4C1BF9A515F6386F0066590E /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
-		4C1BF9A615F6386F0066590E /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		4C408A3815F179FF007CF089 /* HomeTimelineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTimelineController.h; sourceTree = "<group>"; };
 		4C408A3915F179FF007CF089 /* HomeTimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTimelineController.m; sourceTree = "<group>"; };
 		4C5182F615ED0C510075ECE5 /* WBFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBFormatter.h; sourceTree = "<group>"; };
@@ -202,6 +200,8 @@
 		6517CBEE15DCDED2007BAB00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6580BB3615F4B5A70089BDA3 /* home_w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_w.png; sourceTree = "<group>"; };
 		6580BB3915F4B6BA0089BDA3 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		65A2C33A15F6F8ED00E68003 /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		65A2C33B15F6F8ED00E68003 /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
 		65A425BD15DB908C00861D3B /* WBMessageTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageTableCellView.h; sourceTree = "<group>"; };
 		65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageTableCellView.m; sourceTree = "<group>"; };
 		65A5304C15EF3FFD004D6FDE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
@@ -278,8 +278,8 @@
 		4C5182ED15ED04530075ECE5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4C1BF9A515F6386F0066590E /* Status.h */,
-				4C1BF9A615F6386F0066590E /* Status.m */,
+				65A2C33A15F6F8ED00E68003 /* Status.h */,
+				65A2C33B15F6F8ED00E68003 /* Status.m */,
 				4CF33BA015EFBC3000DBE88B /* Mention.h */,
 				4CF33BA115EFBC3000DBE88B /* Mention.m */,
 				65A5304C15EF3FFD004D6FDE /* User.h */,
@@ -725,7 +725,7 @@
 				4C1BF99D15F634CD0066590E /* AttributedStringCodeHelper.m in Sources */,
 				4C1BF9A115F635A70066590E /* FontUtility.m in Sources */,
 				4C1BF9A415F636930066590E /* NSAttributedStringToNSDataValueTransformer.m in Sources */,
-				4C1BF9A715F638700066590E /* Status.m in Sources */,
+				65A2C33C15F6F8ED00E68003 /* Status.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

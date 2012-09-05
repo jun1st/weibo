@@ -14,4 +14,8 @@
 
 +(NSDateFormatter *)wbUTCDateFormatter;
 
++(NSRegularExpression *)userRegularExpression;
++(NSRegularExpression *)urlRegularExpression;
++(NSRegularExpression *)topicRegularExpression;
+
 @end

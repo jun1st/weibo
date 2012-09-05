@@ -22,4 +22,42 @@
     return dateFormatter;
 }
 
++(NSRegularExpression *)urlRegularExpression
+{
+    static NSRegularExpression *_urlRegularExpression;
+    if (!_urlRegularExpression) {
+        _urlRegularExpression =
+        [NSRegularExpression regularExpressionWithPattern:@"(http://|https://)([a-zA-Z0-9]+\\.[a-zA-Z0-9\\-]+|[a-zA-Z0-9\\-]+)\\.[a-zA-Z\\.]{2,6}(/[a-zA-Z0-9\\.\\?=/#%&\\+-]+|/|)"
+                                                  options:NSRegularExpressionCaseInsensitive
+                                                    error:nil];
+    }
+    
+    return _urlRegularExpression;
+}
+
++(NSRegularExpression *)userRegularExpression
+{
+    static NSRegularExpression *_userRegularExpression;
+    
+    if (!_userRegularExpression) {
+        _userRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"@[\\w-]+"
+                                                                           options:NSRegularExpressionCaseInsensitive
+                                                                             error:nil];
+    }
+    
+    return _userRegularExpression;
+
+}
+
++(NSRegularExpression *)topicRegularExpression
+{
+    static NSRegularExpression *_topicRegularExpression;
+    
+    if (!_topicRegularExpression) {
+        _topicRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"#\\S+#" options:NSRegularExpressionCaseInsensitive error:nil];
+    }
+    
+    return _topicRegularExpression;
+}
+
 @end

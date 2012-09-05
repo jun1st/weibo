@@ -2,7 +2,7 @@
 //  Status.h
 //  weibo
 //
-//  Created by feng qijun on 9/4/12.
+//  Created by derek on 9/5/12.
 //  Copyright (c) 2012 feng qijun. All rights reserved.
 //
 
@@ -13,6 +13,8 @@
 
 @interface Status : NSManagedObject
 
+@property (nonatomic, retain) id attributedText;
+@property (nonatomic, retain) NSNumber * calculatedLineHeight;
 @property (nonatomic, retain) NSNumber * commentsCount;
 @property (nonatomic, retain) NSDate * createdAt;
 @property (nonatomic, retain) NSString * id;
@@ -24,8 +26,6 @@
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * userIdStr;
 @property (nonatomic, retain) NSString * userScreenName;
-@property (nonatomic, retain) id attributedText;
-@property (nonatomic, retain) NSNumber * calculatedLineHeight;
 @property (nonatomic, retain) User *author;
 
 @end

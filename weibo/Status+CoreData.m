@@ -40,21 +40,29 @@
         status.createdAt = createdDate;
         
         NSString *text = [statusDict objectForKey:@"text"];
+        if ([text isEqualToString:@"转发微博"]) {
+            text = @"";
+        }
         NSDictionary *retweetStatus = [statusDict objectForKey:@"retweeted_status"];
         if (retweetStatus) {
             NSString *retweetText = [retweetStatus objectForKey:@"text"];
             if (retweetText && retweetText.length > 0) {
-                text = [text stringByAppendingFormat:@"%@%@", @"//", retweetText];
+                
+                if ([text isEqualToString:@""]) {
+                    text = retweetText;
+                }
+                else{
+                    text = [text stringByAppendingFormat:@"%@%@", @" RT ", retweetText];
+                }
             }
         }
         
-        
         status.text = text;
+        //status.attributedText = [Status attributedTextFromString:text];
         status.source = [statusDict objectForKey:@"source"];
         status.repostsCount = [NSNumber numberWithInteger:[[statusDict objectForKey:@"reposts_count"] integerValue]];
         status.commentsCount = [NSNumber numberWithInteger:[[statusDict objectForKey:@"comments_count"] integerValue]];
         status.replyToStatusId = [statusDict objectForKey:@"in_reply_to_status_id"];
-        //status.replyToUserId = [statusDict objectForKey:@"in_reply_to_user_id"];
         status.author = [User saveFromDictionary:[statusDict objectForKey:@"user"] inContext:context];
         
         [context save:nil];
@@ -96,6 +104,43 @@
     }
     
     return status;
+}
+
++(NSAttributedString *)attributedTextFromString:(NSString *)text
+{
+    NSMutableAttributedString *rString = [[NSMutableAttributedString alloc] initWithString:text];
+    
+    [rString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range: NSMakeRange(0, rString.length)];
+    
+    //match user names
+    NSArray *matches = [[WBFormatter userRegularExpression] matchesInString:text
+                                                           options:0
+                                                             range:NSMakeRange(0, [text length])];
+    for(NSTextCheckingResult *match in matches)
+    {
+        NSRange matchRange = [match range];
+        NSFont *font = [NSFont userFontOfSize:13];
+        NSFont *boldFont = [[NSFontManager sharedFontManager] fontWithFamily:font.familyName
+                                                                      traits:NSBoldFontMask weight:0 size:13];
+        [rString addAttribute:NSFontAttributeName value:boldFont range:matchRange];
+        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor darkGrayColor] range:matchRange];
+    }
+    
+    //match urls
+    NSArray *urlMatches = [[WBFormatter urlRegularExpression] matchesInString:text options:0 range:NSMakeRange(0, text.length)];
+    for (NSTextCheckingResult  *match in urlMatches) {
+        NSRange matchRange = [match range];
+        NSString *subString = [text substringWithRange:matchRange];
+        
+        [rString addAttribute:NSLinkAttributeName value:subString range:matchRange];
+        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:matchRange];
+        [rString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSSingleUnderlineStyle] range:matchRange];
+    }
+    NSMutableParagraphStyle * myStyle = [[NSMutableParagraphStyle alloc] init];
+    [myStyle setLineSpacing:4.0];
+    [rString addAttribute:NSParagraphStyleAttributeName value:myStyle range:NSMakeRange(0, text.length)];
+    
+    return rString;
 }
 
 @end

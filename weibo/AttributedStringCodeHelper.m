@@ -22,9 +22,7 @@
             [archiver encodeObject:fontData forKey:key];
             [fontData release];
         }
-        else if([key isEqualToString:(NSString*)kCTForegroundColorFromContextAttributeName]
-                //                    || [key isEqualToString:(NSString*)kCTVerticalFormsAttributeName]     // IPHONE_NA
-                ) {
+        else if([key isEqualToString:(NSString*)kCTForegroundColorFromContextAttributeName]){
             CFBooleanRef boolRef = (CFBooleanRef)[attributes objectForKey:key];
             [archiver encodeBool:((boolRef == kCFBooleanTrue) ? YES : NO)  forKey:key];
         }

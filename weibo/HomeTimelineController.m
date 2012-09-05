@@ -13,6 +13,7 @@
 #import "WBEngine.h"
 #import "WBManagedObjectContext.h"
 #import "EQSTRScrollView.h"
+#import "WBFormatter.h"
 
 @interface HomeTimelineController()<WBEngineDelegate>
 
@@ -97,8 +98,10 @@
     request.fetchLimit = 20;
     
     NSError *error;
-    [self.timeline removeAllObjects];
-    self.timeline = [[[WBManagedObjectContext sharedInstance].managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+    
+    [self.timeline addObjectsFromArray:[[WBManagedObjectContext sharedInstance].managedObjectContext executeFetchRequest:request error:&error]];
+    [self.timeline sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc]
+                                                                  initWithKey:@"createdAt" ascending:NO]]];
     
     [self.timelineTable reloadData];
 }
@@ -132,15 +135,14 @@
         [self startUserProfileImageDownload:status.author forRow:row];
     }
     
-    
     NSMutableAttributedString *rString = [[NSMutableAttributedString alloc] initWithString:status.text];
     
-    [rString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range: NSMakeRange(0, rString.length)];
+    [rString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range: NSMakeRange(0, status.text.length)];
     
     //match user names
-    NSArray *matches = [self.userRegularExpression matchesInString:status.text
-                                                           options:0
-                                                             range:NSMakeRange(0, [status.text length])];
+    NSArray *matches = [[WBFormatter userRegularExpression] matchesInString:status.text
+                                                                    options:0
+                                                                      range:NSMakeRange(0, [status.text length])];
     for(NSTextCheckingResult *match in matches)
     {
         NSRange matchRange = [match range];
@@ -152,24 +154,32 @@
     }
     
     //match urls
-    NSArray *urlMatches = [self.urlRegularExpression matchesInString:status.text options:0 range:NSMakeRange(0, status.text.length)];
+    NSArray *urlMatches = [[WBFormatter urlRegularExpression] matchesInString:status.text options:0 range:NSMakeRange(0, status.text.length)];
     for (NSTextCheckingResult  *match in urlMatches) {
         NSRange matchRange = [match range];
         NSString *subString = [status.text substringWithRange:matchRange];
         
         [rString addAttribute:NSLinkAttributeName value:subString range:matchRange];
-        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:matchRange];
+        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor colorWithCalibratedRed:62 green:152 blue:216 alpha:0]
+                        range:matchRange];
         [rString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSSingleUnderlineStyle] range:matchRange];
     }
+    
+    //match topics
+    matches = [[WBFormatter topicRegularExpression] matchesInString:status.text options:0 range:NSMakeRange(0, status.text.length)];
+    for (NSTextCheckingResult *match in matches) {
+        NSRange matchRange = match.range;
+        
+        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor grayColor] range:matchRange];
+    }
+    
     NSMutableParagraphStyle * myStyle = [[NSMutableParagraphStyle alloc] init];
     [myStyle setLineSpacing:4.0];
     [rString addAttribute:NSParagraphStyleAttributeName value:myStyle range:NSMakeRange(0, status.text.length)];
     
     status.attributedText = rString;
-    NSError *error;
-    [status.managedObjectContext save:&error];
-    NSLog(@"%@", error);
-    
+
+        
     [result.statusTextView.textStorage setAttributedString:status.attributedText];
     
     //    if (row + 1 == [self.timeline count]) {
@@ -184,10 +194,12 @@
 {
     Status *status = ((Status *)[self.timeline objectAtIndex:row]);
     
-    NSMutableAttributedString *rString = status.attributedText;
+    NSMutableAttributedString *rString = [[NSMutableAttributedString alloc] initWithString:status.text];
+        
+    [rString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range: NSMakeRange(0, status.text.length)];    
     
     float rows = ceilf(rString.size.width / 385.0f);
-    return (rString.size.height + 4 ) * rows + 30 > 68 ? (rString.size.height + 4) * rows + 30 : 68;
+    return (rString.size.height + 1 ) * rows + 24 > 68 ? (rString.size.height + 1) * rows + 24 : 68;
 }
 
 
