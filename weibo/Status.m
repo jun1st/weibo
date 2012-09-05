@@ -2,7 +2,7 @@
 //  Status.m
 //  weibo
 //
-//  Created by derek on 9/5/12.
+//  Created by feng qijun on 9/5/12.
 //  Copyright (c) 2012 feng qijun. All rights reserved.
 //
 
@@ -25,6 +25,8 @@
 @dynamic text;
 @dynamic userIdStr;
 @dynamic userScreenName;
+@dynamic retweetText;
+@dynamic attributedRetweetText;
 @dynamic author;
 
 @end

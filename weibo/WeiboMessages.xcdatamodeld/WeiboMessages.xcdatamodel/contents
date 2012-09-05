@@ -8,6 +8,7 @@
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <entity name="Status" representedClassName="Status" syncable="YES">
+        <attribute name="attributedRetweetText" optional="YES" attributeType="Transformable" valueTransformerName="NSAttributedStringToNSDataValueTransformer" syncable="YES"/>
         <attribute name="attributedText" optional="YES" attributeType="Transformable" valueTransformerName="NSAttributedStringToNSDataValueTransformer" syncable="YES"/>
         <attribute name="calculatedLineHeight" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="commentsCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -17,6 +18,7 @@
         <attribute name="replyToStatusId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="replyToUserId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="repostsCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="retweetText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="source" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userIdStr" optional="YES" attributeType="String" syncable="YES"/>
@@ -41,7 +43,7 @@
     </entity>
     <elements>
         <element name="Mention" positionX="160" positionY="192" width="128" height="120"/>
-        <element name="Status" positionX="0" positionY="0" width="128" height="255"/>
+        <element name="Status" positionX="0" positionY="0" width="128" height="285"/>
         <element name="User" positionX="0" positionY="0" width="128" height="255"/>
     </elements>
 </model>

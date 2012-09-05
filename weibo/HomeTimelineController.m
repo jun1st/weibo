@@ -14,6 +14,7 @@
 #import "WBManagedObjectContext.h"
 #import "EQSTRScrollView.h"
 #import "WBFormatter.h"
+#import "NS(Attributed)String+Geometrics.h"
 
 @interface HomeTimelineController()<WBEngineDelegate>
 
@@ -135,50 +136,16 @@
         [self startUserProfileImageDownload:status.author forRow:row];
     }
     
-    NSMutableAttributedString *rString = [[NSMutableAttributedString alloc] initWithString:status.text];
-    
-    [rString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range: NSMakeRange(0, status.text.length)];
-    
-    //match user names
-    NSArray *matches = [[WBFormatter userRegularExpression] matchesInString:status.text
-                                                                    options:0
-                                                                      range:NSMakeRange(0, [status.text length])];
-    for(NSTextCheckingResult *match in matches)
-    {
-        NSRange matchRange = [match range];
-        NSFont *font = [NSFont userFontOfSize:13];
-        NSFont *boldFont = [[NSFontManager sharedFontManager] fontWithFamily:font.familyName
-                                                                      traits:NSBoldFontMask weight:0 size:13];
-        [rString addAttribute:NSFontAttributeName value:boldFont range:matchRange];
-        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor darkGrayColor] range:matchRange];
+    if (status.retweetText) {
+        NSLog(@"%ld", row);
+        result.retweetTextView.string = status.retweetText;
     }
-    
-    //match urls
-    NSArray *urlMatches = [[WBFormatter urlRegularExpression] matchesInString:status.text options:0 range:NSMakeRange(0, status.text.length)];
-    for (NSTextCheckingResult  *match in urlMatches) {
-        NSRange matchRange = [match range];
-        NSString *subString = [status.text substringWithRange:matchRange];
-        
-        [rString addAttribute:NSLinkAttributeName value:subString range:matchRange];
-        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor colorWithCalibratedRed:62 green:152 blue:216 alpha:0]
-                        range:matchRange];
-        [rString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSSingleUnderlineStyle] range:matchRange];
+    else{
+        [result.retweetTextView setHidden:YES];
+//        CGPoint origin = result.retweetTextView.frame.origin;
+//        NSRect rect = NSMakeRect(origin.x, origin.y, 355.0f, 0.0f);
+//        [result.retweetTextView setFrame:rect];
     }
-    
-    //match topics
-    matches = [[WBFormatter topicRegularExpression] matchesInString:status.text options:0 range:NSMakeRange(0, status.text.length)];
-    for (NSTextCheckingResult *match in matches) {
-        NSRange matchRange = match.range;
-        
-        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor grayColor] range:matchRange];
-    }
-    
-    NSMutableParagraphStyle * myStyle = [[NSMutableParagraphStyle alloc] init];
-    [myStyle setLineSpacing:4.0];
-    [rString addAttribute:NSParagraphStyleAttributeName value:myStyle range:NSMakeRange(0, status.text.length)];
-    
-    status.attributedText = rString;
-
         
     [result.statusTextView.textStorage setAttributedString:status.attributedText];
     
@@ -194,15 +161,71 @@
 {
     Status *status = ((Status *)[self.timeline objectAtIndex:row]);
     
-    NSMutableAttributedString *rString = [[NSMutableAttributedString alloc] initWithString:status.text];
-        
-    [rString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Helvetica Neue" size:13] range: NSMakeRange(0, status.text.length)];    
-    
-    float rows = ceilf(rString.size.width / 385.0f);
-    return (rString.size.height + 1 ) * rows + 24 > 68 ? (rString.size.height + 1) * rows + 24 : 68;
+    NSAttributedString *textRString = [self attributedStringFromString:status.text];
+    status.attributedText = textRString;
+    CGFloat height = [textRString heightForWidth:380.0f];
+//    NSLog(@"%f", height);
+//    if (height <= 30) {
+//        height = 30;
+//    }
+//    NSAttributedString *retweetTextRString = nil;
+//    if (status.retweetText) {
+//        
+//        retweetTextRString = [self attributedStringFromString:status.retweetText];
+//        status.attributedRetweetText = retweetTextRString;
+//        CGFloat retweetHeight = [retweetTextRString heightForWidth:355.0f];
+//        NSLog(@"%f", retweetHeight);
+//        height += retweetHeight;
+//    }
+    //NSLog(@"%f", height);
+    return height + 30 > 68 ? height + 30 : 68;
 }
 
-
+-(NSAttributedString *)attributedStringFromString:(NSString *)text
+{
+    NSMutableAttributedString *rString = [[NSMutableAttributedString alloc] initWithString:text];
+    
+    [rString addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Lucida Grande" size:13] range: NSMakeRange(0, text.length)];
+    
+    //match user names
+    NSArray *matches = [[WBFormatter userRegularExpression] matchesInString:text
+                                                                    options:0
+                                                                      range:NSMakeRange(0, [text length])];
+    for(NSTextCheckingResult *match in matches)
+    {
+        NSRange matchRange = [match range];
+        NSFont *font = [NSFont userFontOfSize:13];
+        NSFont *boldFont = [[NSFontManager sharedFontManager] fontWithFamily:font.familyName
+                                                                      traits:NSBoldFontMask weight:0 size:13];
+        [rString addAttribute:NSFontAttributeName value:boldFont range:matchRange];
+        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor darkGrayColor] range:matchRange];
+    }
+    
+    //match urls
+    NSArray *urlMatches = [[WBFormatter urlRegularExpression] matchesInString:text options:0 range:NSMakeRange(0, text.length)];
+    for (NSTextCheckingResult  *match in urlMatches) {
+        NSRange matchRange = [match range];
+        NSString *subString = [text substringWithRange:matchRange];
+        
+        [rString addAttribute:NSLinkAttributeName value:subString range:matchRange];
+        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor colorWithCalibratedRed:62 green:152 blue:216 alpha:0]
+                        range:matchRange];
+        [rString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSSingleUnderlineStyle] range:matchRange];
+    }
+    
+    //match topics
+    matches = [[WBFormatter topicRegularExpression] matchesInString:text options:0 range:NSMakeRange(0, text.length)];
+    for (NSTextCheckingResult *match in matches) {
+        NSRange matchRange = match.range;        
+        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor grayColor] range:matchRange];
+    }
+    
+    NSMutableParagraphStyle * myStyle = [[NSMutableParagraphStyle alloc] init];
+    [myStyle setLineSpacing:4.0];
+    [rString addAttribute:NSParagraphStyleAttributeName value:myStyle range:NSMakeRange(0, text.length)];
+    
+    return rString;
+}
 
 
 @end

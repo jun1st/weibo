@@ -12,11 +12,13 @@
 @interface WBMessageTableCellView : TimelineCellView
 {
     IBOutlet NSTextView *statusTextView;
+    IBOutlet NSTextView *retweetTextView;
 }
 
 @property (weak) IBOutlet NSTextField *authName;
 @property (weak) IBOutlet NSTextField *createdTime;
 
 @property NSTextView *statusTextView;
+@property NSTextView *retweetTextView;
 
 @end

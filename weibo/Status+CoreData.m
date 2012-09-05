@@ -46,15 +46,7 @@
         NSDictionary *retweetStatus = [statusDict objectForKey:@"retweeted_status"];
         if (retweetStatus) {
             NSString *retweetText = [retweetStatus objectForKey:@"text"];
-            if (retweetText && retweetText.length > 0) {
-                
-                if ([text isEqualToString:@""]) {
-                    text = retweetText;
-                }
-                else{
-                    text = [text stringByAppendingFormat:@"%@%@", @" RT ", retweetText];
-                }
-            }
+            status.retweetText = retweetText;
         }
         
         status.text = text;
