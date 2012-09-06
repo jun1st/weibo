@@ -92,15 +92,10 @@
 
 -(void)statusArrayFromDatabase
 {
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Status"];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"createdAt" ascending:NO];
-    [request setSortDescriptors:@[sortDescriptor]];
-    request.fetchLimit = 20;
+    NSArray *status = [Status statusesFromContext:[WBManagedObjectContext sharedInstance].managedObjectContext
+                                       withOffSet:self.timeline.count];
     
-    NSError *error;
-    
-    [self.timeline addObjectsFromArray:[[WBManagedObjectContext sharedInstance].managedObjectContext executeFetchRequest:request error:&error]];
+    [self.timeline addObjectsFromArray:status];
     [self.timeline sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc]
                                                                   initWithKey:@"createdAt" ascending:NO]]];
     
@@ -137,7 +132,6 @@
     }
     
     if (status.retweetText) {
-        NSLog(@"%ld", row);
         result.retweetTextView.string = status.retweetText;
     }
     else{
@@ -149,9 +143,9 @@
         
     [result.statusTextView.textStorage setAttributedString:status.attributedText];
     
-    //    if (row + 1 == [self.timeline count]) {
-    //        [self prefetchingData];
-    //    }
+    if (row + 1 == [self.timeline count]) {
+        [self statusArrayFromDatabase];
+    }
     
     return result;
 

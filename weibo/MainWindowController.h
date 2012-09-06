@@ -31,4 +31,6 @@
 - (IBAction)showMentionTimeline:(id)sender;
 - (IBAction)showHomeTimeline:(id)sender;
 
+-(IBAction)showComposeWindow:(id)sender;
+
 @end

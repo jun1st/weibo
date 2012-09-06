@@ -2,7 +2,7 @@
 //  Status.m
 //  weibo
 //
-//  Created by feng qijun on 9/5/12.
+//  Created by derek on 9/6/12.
 //  Copyright (c) 2012 feng qijun. All rights reserved.
 //
 
@@ -12,6 +12,7 @@
 
 @implementation Status
 
+@dynamic attributedRetweetText;
 @dynamic attributedText;
 @dynamic calculatedLineHeight;
 @dynamic commentsCount;
@@ -21,12 +22,11 @@
 @dynamic replyToStatusId;
 @dynamic replyToUserId;
 @dynamic repostsCount;
+@dynamic retweetText;
 @dynamic source;
 @dynamic text;
 @dynamic userIdStr;
 @dynamic userScreenName;
-@dynamic retweetText;
-@dynamic attributedRetweetText;
 @dynamic author;
 
 @end

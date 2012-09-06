@@ -98,6 +98,23 @@
     return status;
 }
 
++(NSArray *)statusesFromContext:(NSManagedObjectContext *)context withOffSet:(NSUInteger)offset
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Status"];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"createdAt" ascending:NO];
+    [request setSortDescriptors:@[sortDescriptor]];
+    request.fetchLimit = 30;
+    request.fetchOffset = offset;
+    
+    NSError *error;
+    NSArray *statuses = [context executeFetchRequest:request error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    return statuses;
+}
+
 +(NSAttributedString *)attributedTextFromString:(NSString *)text
 {
     NSMutableAttributedString *rString = [[NSMutableAttributedString alloc] initWithString:text];

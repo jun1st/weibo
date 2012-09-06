@@ -67,6 +67,8 @@
 		65A5304E15EF3FFD004D6FDE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304D15EF3FFD004D6FDE /* User.m */; };
 		65A5305115EF4059004D6FDE /* Status+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304F15EF4059004D6FDE /* Status+CoreData.m */; };
 		65A5306815F064E80019F71B /* Mention+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5306715F064E80019F71B /* Mention+CoreData.m */; };
+		65A7D86415F898AA00322E57 /* ComposeMessageWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A7D86215F898AA00322E57 /* ComposeMessageWindowController.m */; };
+		65A7D86515F898AA00322E57 /* ComposeMessageWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65A7D86315F898AA00322E57 /* ComposeMessageWindowController.xib */; };
 		65A816BD15F4713400231A89 /* ANSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A816B615F4713400231A89 /* ANSegmentedCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		65A816BE15F4713400231A89 /* ANSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A816B815F4713400231A89 /* ANSegmentedControl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		65A816BF15F4713400231A89 /* NSBezierPath+MCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A816BA15F4713400231A89 /* NSBezierPath+MCAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -213,6 +215,9 @@
 		65A5305015EF4059004D6FDE /* Status+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Status+CoreData.h"; sourceTree = "<group>"; };
 		65A5306615F064E80019F71B /* Mention+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Mention+CoreData.h"; sourceTree = "<group>"; };
 		65A5306715F064E80019F71B /* Mention+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Mention+CoreData.m"; sourceTree = "<group>"; };
+		65A7D86115F898AA00322E57 /* ComposeMessageWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeMessageWindowController.h; sourceTree = "<group>"; };
+		65A7D86215F898AA00322E57 /* ComposeMessageWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeMessageWindowController.m; sourceTree = "<group>"; };
+		65A7D86315F898AA00322E57 /* ComposeMessageWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeMessageWindowController.xib; sourceTree = "<group>"; };
 		65A816B515F4713400231A89 /* ANSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSegmentedCell.h; sourceTree = "<group>"; };
 		65A816B615F4713400231A89 /* ANSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANSegmentedCell.m; sourceTree = "<group>"; };
 		65A816B715F4713400231A89 /* ANSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSegmentedControl.h; sourceTree = "<group>"; };
@@ -381,6 +386,9 @@
 				65C45D9415F0A68A00BB7557 /* MentionTimelineController.m */,
 				4C1AB28815F1F287008AE9C7 /* TimelineController.h */,
 				4C1AB28915F1F287008AE9C7 /* TimelineController.m */,
+				65A7D86115F898AA00322E57 /* ComposeMessageWindowController.h */,
+				65A7D86215F898AA00322E57 /* ComposeMessageWindowController.m */,
+				65A7D86315F898AA00322E57 /* ComposeMessageWindowController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -648,6 +656,7 @@
 				65A816DF15F4A31300231A89 /* home1.png in Resources */,
 				6580BB3715F4B5A70089BDA3 /* home_w.png in Resources */,
 				6580BB3A15F4B6BA0089BDA3 /* home.png in Resources */,
+				65A7D86515F898AA00322E57 /* ComposeMessageWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +741,7 @@
 				4C1BF9A415F636930066590E /* NSAttributedStringToNSDataValueTransformer.m in Sources */,
 				4C147A2815F78CED00C87523 /* NS(Attributed)String+Geometrics.m in Sources */,
 				4C147A3415F7A59C00C87523 /* Status.m in Sources */,
+				65A7D86415F898AA00322E57 /* ComposeMessageWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

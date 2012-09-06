@@ -54,7 +54,7 @@
     static NSRegularExpression *_topicRegularExpression;
     
     if (!_topicRegularExpression) {
-        _topicRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"#\\S+#" options:NSRegularExpressionCaseInsensitive error:nil];
+        _topicRegularExpression = [NSRegularExpression regularExpressionWithPattern:@"#.+?#" options:NSRegularExpressionCaseInsensitive error:nil];
     }
     
     return _topicRegularExpression;

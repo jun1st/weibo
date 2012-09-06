@@ -14,6 +14,7 @@
 #import "User+ProfileImage.h"
 #import "WBManagedObjectContext.h"
 #import "TimeLineController.h"
+#import "ComposeMessageWindowController.h"
 
 #define OAuthConsumerKey @"4116306678"
 #define OAuthConsumerSecret @"630c48733d7f6c717ad6dec31bf50895"
@@ -21,6 +22,7 @@
 @interface MainWindowController ()
 
 @property(readonly, strong) WBUser *authorizingUser;
+@property(strong) ComposeMessageWindowController *composeWindowController;
 
 @end
 
@@ -107,4 +109,11 @@
 - (IBAction)showHomeTimeline:(id)sender {
     [self.timelineTabs selectTabViewItemAtIndex:0];
 }
+
+-(IBAction)showComposeWindow:(id)sender
+{
+     self.composeWindowController = [[ComposeMessageWindowController alloc] init];
+    [self.composeWindowController showWindow:self];
+}
+
 @end
