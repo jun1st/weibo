@@ -74,15 +74,15 @@
     [aWindow.titleBarView addSubview:self.titleBar];
     
     
-    self.homeTimeLineScrollView.refreshBlock = ^(EQSTRScrollView *view){
-        [self.homeTimeLineController pullToRefreshInScrollView: view];
-    };
-    
-    self.mentionsTimeLineScrollView.refreshBlock = ^(EQSTRScrollView *view){
-        [self.mentionTimeLineController pullToRefreshInScrollView:view];
-    };
-    [self requestAuthorizingUserProfileImage];
-    
+//    self.homeTimelineList.refreshBlock = ^(EQSTRScrollView *view){
+//        [self.homeTimeLineController pullToRefreshInScrollView: view];
+//    };
+//    
+//    self.mentionsTimeLineScrollView.refreshBlock = ^(EQSTRScrollView *view){
+//        [self.mentionTimeLineController pullToRefreshInScrollView:view];
+//    };
+//    
+//    [self.homeTimelineList reloadData];
 }
 
 -(void)requestAuthorizingUserProfileImage

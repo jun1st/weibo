@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "WBEngine.h"
 #import "ImageDownloader.h"
+#import "PXListView.h"
 
 @class EQSTRScrollView;
 
@@ -26,7 +27,7 @@
 
 }
 
-@property (nonatomic, weak) IBOutlet NSTableView *timelineTable;
+@property (nonatomic, weak) IBOutlet PXListView* timelineListView;
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
 @property (nonatomic, strong) WBEngine *engine;
 
@@ -34,6 +35,6 @@
 @property (strong, readonly, nonatomic) NSRegularExpression *userRegularExpression;
 @property (strong, readonly, nonatomic) NSRegularExpression *urlRegularExpression;
 
--(void)startUserProfileImageDownload:(User *)user forRow:(NSInteger)row;
+-(void)startUserProfileImageDownload:(User *)user forRow:(NSUInteger)row;
 
 @end

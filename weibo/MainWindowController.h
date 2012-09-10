@@ -13,12 +13,10 @@
 #import "EQSTRScrollView.h"
 #import "HomeTimelineController.h"
 #import "MentionTimelineController.h"
-#import "ANSegmentedControl/ANSegmentedControl.h"
+#import "PXListView.h"
 
 @interface MainWindowController : NSWindowController
 
-
-@property (weak) IBOutlet EQSTRScrollView *homeTimeLineScrollView;
 @property (weak) IBOutlet EQSTRScrollView *mentionsTimeLineScrollView;
 @property (weak) IBOutlet NSImageView *authorizingUserProfileImage;
 @property (weak) IBOutlet NSTabView *timelineTabs;
@@ -26,7 +24,7 @@
 @property (strong) IBOutlet HomeTimelineController *homeTimeLineController;
 @property (strong) IBOutlet MentionTimelineController *mentionTimeLineController;
 @property (assign) IBOutlet NSView *titleBar;
-@property (assign) IBOutlet ANSegmentedControl *anSegmentedControl;
+@property (weak) IBOutlet PXListView *homeTimelineList;
 
 - (IBAction)showMentionTimeline:(id)sender;
 - (IBAction)showHomeTimeline:(id)sender;

@@ -15,6 +15,9 @@
 #import "EQSTRScrollView.h"
 #import "WBFormatter.h"
 #import "NS(Attributed)String+Geometrics.h"
+#import "StatusListCellView.h"
+
+#define LISTVIEW_CELL_IDENTIFIER		@"StatusListCellView"
 
 @interface HomeTimelineController()<WBEngineDelegate>
 
@@ -26,17 +29,26 @@
 
 @implementation HomeTimelineController
 
-@synthesize timelineTable = _timelineTable;
 @synthesize timeline = _timeline;
 
 -(id)init
 {
     self = [super init];
     if (self) {
-        
     }
     
     return self;
+}
+
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.timelineListView.refreshBlock = ^(EQSTRScrollView *view){
+        [self pullToRefreshInScrollView: view];
+    };
+    
+    [self.timelineListView reloadData];
 }
 
 -(NSMutableArray *)timeline
@@ -95,84 +107,12 @@
     NSArray *status = [Status statusesFromContext:[WBManagedObjectContext sharedInstance].managedObjectContext
                                        withOffSet:self.timeline.count];
     
+    [self.timeline removeAllObjects];
     [self.timeline addObjectsFromArray:status];
     [self.timeline sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc]
                                                                   initWithKey:@"createdAt" ascending:NO]]];
+    [self.timelineListView reloadData];
     
-    [self.timelineTable reloadData];
-}
-
-#pragma tableview datasource methods
--(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
-{
-    return [self.timeline count];
-}
-
--(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row
-{
-    WBMessageTableCellView *result = [tableView makeViewWithIdentifier:@"wbCell" owner:self];
-    
-    Status *status = (Status *)[self.timeline objectAtIndex:row];
-    
-    result.authName.stringValue = status.userScreenName;
-    
-    NSTimeInterval intervalSince1970 = [status.createdAt timeIntervalSince1970];
-    NSDate *localDate = [NSDate dateWithTimeIntervalSince1970:intervalSince1970];
-    NSDateFormatter *relativeFormatter = [[NSDateFormatter alloc] init];
-    relativeFormatter.timeZone = [self localTimeZone];
-    relativeFormatter.dateFormat = @"H:mm";
-    
-    result.createdTime.stringValue = [relativeFormatter stringFromDate:localDate];
-    
-    
-    if ([status.author profileImage]) {
-        result.userProfileImageView.image = [status.author profileImage];
-    }else{
-        [self startUserProfileImageDownload:status.author forRow:row];
-    }
-    
-    if (status.retweetText) {
-        result.retweetTextView.string = status.retweetText;
-    }
-    else{
-        [result.retweetTextView setHidden:YES];
-//        CGPoint origin = result.retweetTextView.frame.origin;
-//        NSRect rect = NSMakeRect(origin.x, origin.y, 355.0f, 0.0f);
-//        [result.retweetTextView setFrame:rect];
-    }
-        
-    [result.statusTextView.textStorage setAttributedString:status.attributedText];
-    
-    if (row + 1 == [self.timeline count]) {
-        [self statusArrayFromDatabase];
-    }
-    
-    return result;
-
-}
-
--(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row
-{
-    Status *status = ((Status *)[self.timeline objectAtIndex:row]);
-    
-    NSAttributedString *textRString = [self attributedStringFromString:status.text];
-    status.attributedText = textRString;
-    CGFloat height = [textRString heightForWidth:380.0f];
-//    NSLog(@"%f", height);
-//    if (height <= 30) {
-//        height = 30;
-//    }
-//    NSAttributedString *retweetTextRString = nil;
-//    if (status.retweetText) {
-//        
-//        retweetTextRString = [self attributedStringFromString:status.retweetText];
-//        status.attributedRetweetText = retweetTextRString;
-//        CGFloat retweetHeight = [retweetTextRString heightForWidth:355.0f];
-//        NSLog(@"%f", retweetHeight);
-//        height += retweetHeight;
-//    }
-    //NSLog(@"%f", height);
-    return height + 30 > 68 ? height + 30 : 68;
 }
 
 -(NSAttributedString *)attributedStringFromString:(NSString *)text
@@ -196,7 +136,9 @@
     }
     
     //match urls
-    NSArray *urlMatches = [[WBFormatter urlRegularExpression] matchesInString:text options:0 range:NSMakeRange(0, text.length)];
+    NSArray *urlMatches = [[WBFormatter urlRegularExpression] matchesInString:text
+                                                                      options:0
+                                                                        range:NSMakeRange(0, text.length)];
     for (NSTextCheckingResult  *match in urlMatches) {
         NSRange matchRange = [match range];
         NSString *subString = [text substringWithRange:matchRange];
@@ -221,5 +163,74 @@
     return rString;
 }
 
+
+#pragma PXListViewDelegate
+
+- (NSUInteger)numberOfRowsInListView:(PXListView*)aListView
+{
+    return [self.timeline count];
+}
+- (CGFloat)listView:(PXListView*)aListView heightOfRow:(NSUInteger)row
+{
+    Status *status = ((Status *)[self.timeline objectAtIndex:row]);
+    
+    NSAttributedString *textRString = [self attributedStringFromString:status.text];
+    status.attributedText = textRString;
+    CGFloat height = [textRString heightForWidth:376.0f];
+    
+    return height + 52 > 82 ? height + 52 : 82;
+
+}
+- (PXListViewCell*)listView:(PXListView*)aListView cellForRow:(NSUInteger)row
+{
+    StatusListCellView *cell = (StatusListCellView*)[aListView dequeueCellWithReusableIdentifier:LISTVIEW_CELL_IDENTIFIER];
+
+	if(!cell) {
+		cell = [StatusListCellView cellLoadedFromNibNamed:@"StatusListCellView"
+                                       reusableIdentifier:LISTVIEW_CELL_IDENTIFIER];
+	}
+    
+    Status *status = ((Status *)[self.timeline objectAtIndex:row]);
+    
+    cell.userName.stringValue = status.userScreenName;
+    
+    if (status.author.profileImage) {
+        cell.userProfileImage.image = status.author.profileImage;
+    }else
+    {
+        [self startUserProfileImageDownload:status.author forRow:row];
+    }
+    
+    CGFloat height = [status.attributedText heightForWidth:376.0f];
+
+    NSRect rect;
+    if (height >= 34) {
+        rect = NSMakeRect(58.0f, 31.0f - (height - 31.0f), 376.0f, height);
+    }
+    else{
+        rect = NSMakeRect(58.0f, 21.0f, 376.0f, 30);
+    }
+    [cell.statusTextView setFrame:rect];
+    
+    [cell.statusTextView.textStorage setAttributedString:status.attributedText];
+    
+    return cell;
+}
+
+#pragma ImageDoneLoading delegate
+-(void)doneLoadImageForUser:(User *)user
+{
+    ImageDownloader *iconDownloader = [self.imageDownloadsInProgress objectForKey:user.idstr];
+    if (iconDownloader != nil)
+    {
+        for (NSNumber *row in iconDownloader.rowsToUpdate) {
+            
+            StatusListCellView *result = (StatusListCellView *)[self.timelineListView cellForRowAtIndex:[row unsignedIntegerValue]];
+            if (result.window) {
+                result.userProfileImage.image = user.profileImage;
+            }
+        }
+    }
+}
 
 @end

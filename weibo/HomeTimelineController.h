@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "TimelineController.h"
+#import "PXListView.h"
 
-@interface HomeTimelineController : TimelineController<NSTableViewDataSource, NSTableViewDelegate, TimeLineControllerDelegate>
+@interface HomeTimelineController : TimelineController<PXListViewDelegate, TimeLineControllerDelegate>
 
 -(id)init;
 

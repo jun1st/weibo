@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C12CA1015FA4A240052E491 /* StatusListCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C12CA0F15FA4A240052E491 /* StatusListCellView.xib */; };
+		4C12CA1415FA4AC60052E491 /* StatusListCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12CA1315FA4AC50052E491 /* StatusListCellView.m */; };
+		4C12CA2115FA4B8F0052E491 /* PXListView+UserInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12CA1715FA4B8E0052E491 /* PXListView+UserInteraction.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4C12CA2215FA4B8F0052E491 /* PXListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12CA1915FA4B8F0052E491 /* PXListViewCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4C12CA2315FA4B8F0052E491 /* PXListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12CA1D15FA4B8F0052E491 /* PXListView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4C12CA2415FA4B8F0052E491 /* PXListDocumentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C12CA2015FA4B8F0052E491 /* PXListDocumentView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C13ECC615DE8ADA00996029 /* INAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13ECC515DE8ADA00996029 /* INAppStoreWindow.m */; };
 		4C147A2815F78CED00C87523 /* NS(Attributed)String+Geometrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C147A2715F78CED00C87523 /* NS(Attributed)String+Geometrics.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C147A3415F7A59C00C87523 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C147A3315F7A59C00C87523 /* Status.m */; };
@@ -104,6 +110,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C12CA0F15FA4A240052E491 /* StatusListCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusListCellView.xib; sourceTree = "<group>"; };
+		4C12CA1215FA4AC50052E491 /* StatusListCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusListCellView.h; sourceTree = "<group>"; };
+		4C12CA1315FA4AC50052E491 /* StatusListCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusListCellView.m; sourceTree = "<group>"; };
+		4C12CA1515FA4B8E0052E491 /* PXListView+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PXListView+Private.h"; sourceTree = "<group>"; };
+		4C12CA1615FA4B8E0052E491 /* PXListView+UserInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PXListView+UserInteraction.h"; sourceTree = "<group>"; };
+		4C12CA1715FA4B8E0052E491 /* PXListView+UserInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PXListView+UserInteraction.m"; sourceTree = "<group>"; };
+		4C12CA1815FA4B8E0052E491 /* PXListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXListViewCell.h; sourceTree = "<group>"; };
+		4C12CA1915FA4B8F0052E491 /* PXListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXListViewCell.m; sourceTree = "<group>"; };
+		4C12CA1A15FA4B8F0052E491 /* PXListViewCell+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PXListViewCell+Private.h"; sourceTree = "<group>"; };
+		4C12CA1B15FA4B8F0052E491 /* PXListViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXListViewDelegate.h; sourceTree = "<group>"; };
+		4C12CA1C15FA4B8F0052E491 /* PXListViewDropHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXListViewDropHighlight.h; sourceTree = "<group>"; };
+		4C12CA1D15FA4B8F0052E491 /* PXListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXListView.m; sourceTree = "<group>"; };
+		4C12CA1E15FA4B8F0052E491 /* PXListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXListView.h; sourceTree = "<group>"; };
+		4C12CA1F15FA4B8F0052E491 /* PXListDocumentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PXListDocumentView.h; sourceTree = "<group>"; };
+		4C12CA2015FA4B8F0052E491 /* PXListDocumentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PXListDocumentView.m; sourceTree = "<group>"; };
 		4C13ECC415DE8ADA00996029 /* INAppStoreWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INAppStoreWindow.h; sourceTree = "<group>"; };
 		4C13ECC515DE8ADA00996029 /* INAppStoreWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INAppStoreWindow.m; sourceTree = "<group>"; };
 		4C147A2615F78CED00C87523 /* NS(Attributed)String+Geometrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NS(Attributed)String+Geometrics.h"; sourceTree = "<group>"; };
@@ -274,6 +295,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C12CA2515FA4B950052E491 /* PXListView */ = {
+			isa = PBXGroup;
+			children = (
+				4C12CA1515FA4B8E0052E491 /* PXListView+Private.h */,
+				4C12CA1615FA4B8E0052E491 /* PXListView+UserInteraction.h */,
+				4C12CA1715FA4B8E0052E491 /* PXListView+UserInteraction.m */,
+				4C12CA1815FA4B8E0052E491 /* PXListViewCell.h */,
+				4C12CA1915FA4B8F0052E491 /* PXListViewCell.m */,
+				4C12CA1A15FA4B8F0052E491 /* PXListViewCell+Private.h */,
+				4C12CA1B15FA4B8F0052E491 /* PXListViewDelegate.h */,
+				4C12CA1C15FA4B8F0052E491 /* PXListViewDropHighlight.h */,
+				4C12CA1D15FA4B8F0052E491 /* PXListView.m */,
+				4C12CA1E15FA4B8F0052E491 /* PXListView.h */,
+				4C12CA1F15FA4B8F0052E491 /* PXListDocumentView.h */,
+				4C12CA2015FA4B8F0052E491 /* PXListDocumentView.m */,
+				4C12CA1215FA4AC50052E491 /* StatusListCellView.h */,
+				4C12CA1315FA4AC50052E491 /* StatusListCellView.m */,
+			);
+			name = PXListView;
+			sourceTree = "<group>";
+		};
 		4C13ECC815DE8AE500996029 /* INAppStoreWindow */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +375,7 @@
 				4C15276B15D67A1F000F9E93 /* MainWindowController.xib */,
 				4C8FABBF15D25005004EBBC5 /* OAuthWindow.xib */,
 				4C8FABC415D2520F004EBBC5 /* MainMenu.xib */,
+				4C12CA0F15FA4A240052E491 /* StatusListCellView.xib */,
 				4C5F9AB715DBF66A00B804F1 /* macos */,
 			);
 			name = Resources;
@@ -350,6 +393,7 @@
 		4C6E977915F26B2E007F6575 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4C12CA2515FA4B950052E491 /* PXListView */,
 				65A816B415F4713400231A89 /* ANSegmentedControl */,
 				4C13ECC815DE8AE500996029 /* INAppStoreWindow */,
 				6517CBED15DCDE42007BAB00 /* ScrollToRefreshView */,
@@ -657,6 +701,7 @@
 				6580BB3715F4B5A70089BDA3 /* home_w.png in Resources */,
 				6580BB3A15F4B6BA0089BDA3 /* home.png in Resources */,
 				65A7D86515F898AA00322E57 /* ComposeMessageWindowController.xib in Resources */,
+				4C12CA1015FA4A240052E491 /* StatusListCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,6 +787,11 @@
 				4C147A2815F78CED00C87523 /* NS(Attributed)String+Geometrics.m in Sources */,
 				4C147A3415F7A59C00C87523 /* Status.m in Sources */,
 				65A7D86415F898AA00322E57 /* ComposeMessageWindowController.m in Sources */,
+				4C12CA1415FA4AC60052E491 /* StatusListCellView.m in Sources */,
+				4C12CA2115FA4B8F0052E491 /* PXListView+UserInteraction.m in Sources */,
+				4C12CA2215FA4B8F0052E491 /* PXListViewCell.m in Sources */,
+				4C12CA2315FA4B8F0052E491 /* PXListView.m in Sources */,
+				4C12CA2415FA4B8F0052E491 /* PXListDocumentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

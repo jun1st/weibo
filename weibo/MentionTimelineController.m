@@ -57,7 +57,6 @@
     [self.mentions removeAllObjects];
     [self.mentions addObjectsFromArray:objects];
     
-    [self.timelineTable reloadData];
 
 }
 
