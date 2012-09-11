@@ -82,33 +82,33 @@
 	[self.request connect];
 }
 
-//- (void)sendWeiBoWithText:(NSString *)text image:(Image *)image
-//{
-//    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
-//
-//    //NSString *sendText = [text URLEncodedString];
-//    
-//	[params setObject:(text ? text : @"") forKey:@"status"];
-//	
-//    if (image)
-//    {
-//		[params setObject:image forKey:@"pic"];
-//
-//        [self loadRequestWithMethodName:@"statuses/upload.json"
-//                             httpMethod:@"POST"
-//                                 params:params
-//                           postDataType:kWBRequestPostDataTypeMultipart
-//                       httpHeaderFields:nil];
-//    }
-//    else
-//    {
-//        [self loadRequestWithMethodName:@"statuses/update.json"
-//                             httpMethod:@"POST"
-//                                 params:params
-//                           postDataType:kWBRequestPostDataTypeNormal
-//                       httpHeaderFields:nil];
-//    }
-//}
+- (void)sendWeiBoWithText:(NSString *)text image:(NSImage *)image
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
+
+    //NSString *sendText = [text URLEncodedString];
+    
+	[params setObject:(text ? text : @"") forKey:@"status"];
+	
+    if (image)
+    {
+		[params setObject:image forKey:@"pic"];
+
+        [self loadRequestWithMethodName:@"statuses/upload.json"
+                             httpMethod:@"POST"
+                                 params:params
+                           postDataType:kWBRequestPostDataTypeMultipart
+                       httpHeaderFields:nil];
+    }
+    else
+    {
+        [self loadRequestWithMethodName:@"statuses/update.json"
+                             httpMethod:@"POST"
+                                 params:params
+                           postDataType:kWBRequestPostDataTypeNormal
+                       httpHeaderFields:nil];
+    }
+}
 
 
 

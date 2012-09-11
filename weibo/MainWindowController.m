@@ -14,7 +14,8 @@
 #import "User+ProfileImage.h"
 #import "WBManagedObjectContext.h"
 #import "TimeLineController.h"
-#import "ComposeMessageWindowController.h"
+#import "ComposeStatusViewController.h"
+#import "INPopoverController.h"
 
 #define OAuthConsumerKey @"4116306678"
 #define OAuthConsumerSecret @"630c48733d7f6c717ad6dec31bf50895"
@@ -22,7 +23,7 @@
 @interface MainWindowController ()
 
 @property(readonly, strong) WBUser *authorizingUser;
-@property(strong) ComposeMessageWindowController *composeWindowController;
+@property(strong) INPopoverController *popoverController;
 
 @end
 
@@ -73,16 +74,6 @@
     
     [aWindow.titleBarView addSubview:self.titleBar];
     
-    
-//    self.homeTimelineList.refreshBlock = ^(EQSTRScrollView *view){
-//        [self.homeTimeLineController pullToRefreshInScrollView: view];
-//    };
-//    
-//    self.mentionsTimeLineScrollView.refreshBlock = ^(EQSTRScrollView *view){
-//        [self.mentionTimeLineController pullToRefreshInScrollView:view];
-//    };
-//    
-//    [self.homeTimelineList reloadData];
 }
 
 -(void)requestAuthorizingUserProfileImage
@@ -101,7 +92,6 @@
 }
 
 
-
 - (IBAction)showMentionTimeline:(id)sender {
     [self.timelineTabs selectTabViewItemAtIndex:1];
 }
@@ -112,8 +102,20 @@
 
 -(IBAction)showComposeWindow:(id)sender
 {
-     self.composeWindowController = [[ComposeMessageWindowController alloc] init];
-    [self.composeWindowController showWindow:self];
+    if (self.popoverController && self.popoverController.popoverIsVisible) {
+        [self.popoverController closePopover:nil];
+    }
+    else{
+        ComposeStatusViewController *composeViewController = [[ComposeStatusViewController alloc] init];
+    
+        self.popoverController = [[INPopoverController alloc] initWithContentViewController:composeViewController];
+        
+        composeViewController.parentPopoverController = self.popoverController;
+        
+        //[self.composeWindowController showWindow:self];
+        self.popoverController.closesWhenPopoverResignsKey = NO;
+        [self.popoverController presentPopoverFromRect:[sender bounds] inView:sender preferredArrowDirection:INPopoverArrowDirectionUp anchorsToPositionView:YES];
+    }
 }
 
 @end

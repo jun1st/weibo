@@ -37,6 +37,12 @@
 		4C6878FD15E0B28F000F0482 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6878FC15E0B28F000F0482 /* ImageDownloader.m */; };
 		4C68790115E0B864000F0482 /* WBUser+ProfileImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C68790015E0B864000F0482 /* WBUser+ProfileImage.m */; };
 		4C6CB7CC15DF67A2009557AB /* WBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6CB7CB15DF67A2009557AB /* WBUser.m */; };
+		4C8AF47415FE2CBF001DF132 /* INPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AF46D15FE2CBF001DF132 /* INPopoverController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4C8AF47515FE2CBF001DF132 /* INPopoverParentWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AF46F15FE2CBF001DF132 /* INPopoverParentWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4C8AF47615FE2CBF001DF132 /* INPopoverWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AF47115FE2CBF001DF132 /* INPopoverWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4C8AF47715FE2CBF001DF132 /* INPopoverWindowFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AF47315FE2CBF001DF132 /* INPopoverWindowFrame.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4C8AF48215FE2FF4001DF132 /* ComposeStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8AF48015FE2FF4001DF132 /* ComposeStatusViewController.m */; };
+		4C8AF48315FE2FF4001DF132 /* ComposeStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C8AF48115FE2FF4001DF132 /* ComposeStatusViewController.xib */; };
 		4C8FAB2D15D24AF7004EBBC5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C8FAB2C15D24AF7004EBBC5 /* Cocoa.framework */; };
 		4C8FAB3715D24AF7004EBBC5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C8FAB3515D24AF7004EBBC5 /* InfoPlist.strings */; };
 		4C8FAB3915D24AF7004EBBC5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8FAB3815D24AF7004EBBC5 /* main.m */; };
@@ -73,8 +79,6 @@
 		65A5304E15EF3FFD004D6FDE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304D15EF3FFD004D6FDE /* User.m */; };
 		65A5305115EF4059004D6FDE /* Status+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304F15EF4059004D6FDE /* Status+CoreData.m */; };
 		65A5306815F064E80019F71B /* Mention+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5306715F064E80019F71B /* Mention+CoreData.m */; };
-		65A7D86415F898AA00322E57 /* ComposeMessageWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A7D86215F898AA00322E57 /* ComposeMessageWindowController.m */; };
-		65A7D86515F898AA00322E57 /* ComposeMessageWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65A7D86315F898AA00322E57 /* ComposeMessageWindowController.xib */; };
 		65A816BD15F4713400231A89 /* ANSegmentedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A816B615F4713400231A89 /* ANSegmentedCell.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		65A816BE15F4713400231A89 /* ANSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A816B815F4713400231A89 /* ANSegmentedControl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		65A816BF15F4713400231A89 /* NSBezierPath+MCAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A816BA15F4713400231A89 /* NSBezierPath+MCAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -167,6 +171,18 @@
 		4C68790015E0B864000F0482 /* WBUser+ProfileImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WBUser+ProfileImage.m"; sourceTree = "<group>"; };
 		4C6CB7CA15DF67A2009557AB /* WBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBUser.h; sourceTree = "<group>"; };
 		4C6CB7CB15DF67A2009557AB /* WBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBUser.m; sourceTree = "<group>"; };
+		4C8AF46C15FE2CBF001DF132 /* INPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INPopoverController.h; sourceTree = "<group>"; };
+		4C8AF46D15FE2CBF001DF132 /* INPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INPopoverController.m; sourceTree = "<group>"; };
+		4C8AF46E15FE2CBF001DF132 /* INPopoverParentWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INPopoverParentWindow.h; sourceTree = "<group>"; };
+		4C8AF46F15FE2CBF001DF132 /* INPopoverParentWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INPopoverParentWindow.m; sourceTree = "<group>"; };
+		4C8AF47015FE2CBF001DF132 /* INPopoverWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INPopoverWindow.h; sourceTree = "<group>"; };
+		4C8AF47115FE2CBF001DF132 /* INPopoverWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INPopoverWindow.m; sourceTree = "<group>"; };
+		4C8AF47215FE2CBF001DF132 /* INPopoverWindowFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INPopoverWindowFrame.h; sourceTree = "<group>"; };
+		4C8AF47315FE2CBF001DF132 /* INPopoverWindowFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INPopoverWindowFrame.m; sourceTree = "<group>"; };
+		4C8AF47A15FE2F34001DF132 /* INPopoverControllerDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INPopoverControllerDefines.h; sourceTree = "<group>"; };
+		4C8AF47F15FE2FF4001DF132 /* ComposeStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeStatusViewController.h; sourceTree = "<group>"; };
+		4C8AF48015FE2FF4001DF132 /* ComposeStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeStatusViewController.m; sourceTree = "<group>"; };
+		4C8AF48115FE2FF4001DF132 /* ComposeStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeStatusViewController.xib; sourceTree = "<group>"; };
 		4C8FAB2815D24AF7004EBBC5 /* iwei4mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iwei4mac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8FAB2C15D24AF7004EBBC5 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		4C8FAB2F15D24AF7004EBBC5 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -236,9 +252,6 @@
 		65A5305015EF4059004D6FDE /* Status+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Status+CoreData.h"; sourceTree = "<group>"; };
 		65A5306615F064E80019F71B /* Mention+CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Mention+CoreData.h"; sourceTree = "<group>"; };
 		65A5306715F064E80019F71B /* Mention+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Mention+CoreData.m"; sourceTree = "<group>"; };
-		65A7D86115F898AA00322E57 /* ComposeMessageWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeMessageWindowController.h; sourceTree = "<group>"; };
-		65A7D86215F898AA00322E57 /* ComposeMessageWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeMessageWindowController.m; sourceTree = "<group>"; };
-		65A7D86315F898AA00322E57 /* ComposeMessageWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeMessageWindowController.xib; sourceTree = "<group>"; };
 		65A816B515F4713400231A89 /* ANSegmentedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSegmentedCell.h; sourceTree = "<group>"; };
 		65A816B615F4713400231A89 /* ANSegmentedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANSegmentedCell.m; sourceTree = "<group>"; };
 		65A816B715F4713400231A89 /* ANSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANSegmentedControl.h; sourceTree = "<group>"; };
@@ -376,6 +389,7 @@
 				4C8FABBF15D25005004EBBC5 /* OAuthWindow.xib */,
 				4C8FABC415D2520F004EBBC5 /* MainMenu.xib */,
 				4C12CA0F15FA4A240052E491 /* StatusListCellView.xib */,
+				4C8AF48115FE2FF4001DF132 /* ComposeStatusViewController.xib */,
 				4C5F9AB715DBF66A00B804F1 /* macos */,
 			);
 			name = Resources;
@@ -393,6 +407,7 @@
 		4C6E977915F26B2E007F6575 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4C8AF47915FE2CC8001DF132 /* InPopoverController */,
 				4C12CA2515FA4B950052E491 /* PXListView */,
 				65A816B415F4713400231A89 /* ANSegmentedControl */,
 				4C13ECC815DE8AE500996029 /* INAppStoreWindow */,
@@ -424,17 +439,32 @@
 				4C15276A15D67A1F000F9E93 /* MainWindowController.m */,
 				4C408A3815F179FF007CF089 /* HomeTimelineController.h */,
 				4C408A3915F179FF007CF089 /* HomeTimelineController.m */,
+				4C8AF47F15FE2FF4001DF132 /* ComposeStatusViewController.h */,
+				4C8AF48015FE2FF4001DF132 /* ComposeStatusViewController.m */,
 				4C147A2615F78CED00C87523 /* NS(Attributed)String+Geometrics.h */,
 				4C147A2715F78CED00C87523 /* NS(Attributed)String+Geometrics.m */,
 				65C45D9315F0A68A00BB7557 /* MentionTimelineController.h */,
 				65C45D9415F0A68A00BB7557 /* MentionTimelineController.m */,
 				4C1AB28815F1F287008AE9C7 /* TimelineController.h */,
 				4C1AB28915F1F287008AE9C7 /* TimelineController.m */,
-				65A7D86115F898AA00322E57 /* ComposeMessageWindowController.h */,
-				65A7D86215F898AA00322E57 /* ComposeMessageWindowController.m */,
-				65A7D86315F898AA00322E57 /* ComposeMessageWindowController.xib */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4C8AF47915FE2CC8001DF132 /* InPopoverController */ = {
+			isa = PBXGroup;
+			children = (
+				4C8AF47A15FE2F34001DF132 /* INPopoverControllerDefines.h */,
+				4C8AF46C15FE2CBF001DF132 /* INPopoverController.h */,
+				4C8AF46D15FE2CBF001DF132 /* INPopoverController.m */,
+				4C8AF46E15FE2CBF001DF132 /* INPopoverParentWindow.h */,
+				4C8AF46F15FE2CBF001DF132 /* INPopoverParentWindow.m */,
+				4C8AF47015FE2CBF001DF132 /* INPopoverWindow.h */,
+				4C8AF47115FE2CBF001DF132 /* INPopoverWindow.m */,
+				4C8AF47215FE2CBF001DF132 /* INPopoverWindowFrame.h */,
+				4C8AF47315FE2CBF001DF132 /* INPopoverWindowFrame.m */,
+			);
+			name = InPopoverController;
 			sourceTree = "<group>";
 		};
 		4C8FAB1D15D24AF7004EBBC5 = {
@@ -700,8 +730,8 @@
 				65A816DF15F4A31300231A89 /* home1.png in Resources */,
 				6580BB3715F4B5A70089BDA3 /* home_w.png in Resources */,
 				6580BB3A15F4B6BA0089BDA3 /* home.png in Resources */,
-				65A7D86515F898AA00322E57 /* ComposeMessageWindowController.xib in Resources */,
 				4C12CA1015FA4A240052E491 /* StatusListCellView.xib in Resources */,
+				4C8AF48315FE2FF4001DF132 /* ComposeStatusViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -786,12 +816,16 @@
 				4C1BF9A415F636930066590E /* NSAttributedStringToNSDataValueTransformer.m in Sources */,
 				4C147A2815F78CED00C87523 /* NS(Attributed)String+Geometrics.m in Sources */,
 				4C147A3415F7A59C00C87523 /* Status.m in Sources */,
-				65A7D86415F898AA00322E57 /* ComposeMessageWindowController.m in Sources */,
 				4C12CA1415FA4AC60052E491 /* StatusListCellView.m in Sources */,
 				4C12CA2115FA4B8F0052E491 /* PXListView+UserInteraction.m in Sources */,
 				4C12CA2215FA4B8F0052E491 /* PXListViewCell.m in Sources */,
 				4C12CA2315FA4B8F0052E491 /* PXListView.m in Sources */,
 				4C12CA2415FA4B8F0052E491 /* PXListDocumentView.m in Sources */,
+				4C8AF47415FE2CBF001DF132 /* INPopoverController.m in Sources */,
+				4C8AF47515FE2CBF001DF132 /* INPopoverParentWindow.m in Sources */,
+				4C8AF47615FE2CBF001DF132 /* INPopoverWindow.m in Sources */,
+				4C8AF47715FE2CBF001DF132 /* INPopoverWindowFrame.m in Sources */,
+				4C8AF48215FE2FF4001DF132 /* ComposeStatusViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

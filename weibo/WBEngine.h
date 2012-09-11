@@ -87,6 +87,6 @@
                  httpHeaderFields:(NSDictionary *)httpHeaderFields;
 
 //// Send a Weibo, to which you can attach an image.
-//- (void)sendWeiBoWithText:(NSString *)text image:(Image *)image;
+- (void)sendWeiBoWithText:(NSString *)text image:(NSImage *)image;
 
 @end
