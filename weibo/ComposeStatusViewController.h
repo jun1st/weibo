@@ -16,6 +16,7 @@
 
 @property (assign) INPopoverController *parentPopoverController;
 @property IBOutlet NSTextView *statusTextView;
+@property (weak) IBOutlet NSImageView *imageView;
 
 -(IBAction)cancelComposing:(id)sender;
 -(IBAction)postNewStatus:(NSButton *)button;

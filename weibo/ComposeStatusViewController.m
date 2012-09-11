@@ -8,8 +8,9 @@
 #import "INPopoverController.h"
 #import "ComposeStatusViewController.h"
 #import "WBEngine.h"
+#import "NSImageView+Picker.h"
 
-@interface ComposeStatusViewController ()
+@interface ComposeStatusViewController ()<WBEngineDelegate>
 
 @property(nonatomic, strong, readonly)WBEngine *engine;
 
@@ -17,12 +18,14 @@
 
 @implementation ComposeStatusViewController
 @synthesize statusTextView;
+@synthesize imageView;
 @synthesize engine = _engine;
 
 -(WBEngine *)engine
 {
     if (!_engine) {
         _engine = [[WBEngine alloc] init];
+        _engine.delegate = self;
     }
     
     return _engine;
@@ -55,7 +58,18 @@
 
 -(IBAction)postNewStatus:(NSButton *)button
 {
-    [self.engine sendWeiBoWithText:self.statusTextView.string image:nil];
+    [self.engine sendWeiBoWithText:self.statusTextView.string image:self.imageView.image];
+}
+
+
+#pragma WBEngine delegate methods
+-(void)engine:(WBEngine *)engine requestDidFailWithError:(NSError *)error
+{
+    NSLog(@"%@", error);
+}
+-(void)engine:(WBEngine *)engine requestDidSucceedWithResult:(id)result
+{
+    
 }
 
 @end

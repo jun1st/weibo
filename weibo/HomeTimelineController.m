@@ -90,9 +90,11 @@
             [Status save:statusDict inContext:[[WBManagedObjectContext sharedInstance] managedObjectContext]];
         }
         
+        [self.parentScrollView stopLoading];
+        
         [self statusArrayFromDatabase];
         
-        [self.parentScrollView stopLoading];
+        
     }
 }
 

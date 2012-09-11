@@ -105,7 +105,7 @@
                                         initWithKey:@"createdAt" ascending:NO];
     [request setSortDescriptors:@[sortDescriptor]];
     request.fetchLimit = 30;
-    request.fetchOffset = offset;
+    //request.fetchOffset = offset;
     
     NSError *error;
     NSArray *statuses = [context executeFetchRequest:request error:&error];
