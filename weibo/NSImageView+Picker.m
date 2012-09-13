@@ -12,18 +12,23 @@
 
 -(void)mouseUp:(NSEvent *)theEvent
 {
-    __block NSOpenPanel *panel = [NSOpenPanel openPanel];
-    [panel setAllowedFileTypes:[NSImage imageFileTypes]];
+    if (self.image) {
+        self.image = nil;
+    }else
+    {
+        __block NSOpenPanel *panel = [NSOpenPanel openPanel];
+        [panel setAllowedFileTypes:[NSImage imageFileTypes]];
     
-    [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result){
-        if (result == NSOKButton) {
-            NSImage *image = [[NSImage alloc] initWithContentsOfURL:panel.URL];
+        [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result){
+            if (result == NSOKButton) {
+                NSImage *image = [[NSImage alloc] initWithContentsOfURL:panel.URL];
             
-            self.image = image;
-        }
+                self.image = image;
+            }
         
-        panel = nil;
-    }];
+            panel = nil;
+        }];
+    }
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "ComposeStatusViewController.h"
 #import "WBEngine.h"
 #import "NSImageView+Picker.h"
+#import <Growl/Growl.h>
 
 @interface ComposeStatusViewController ()<WBEngineDelegate>
 
@@ -51,6 +52,11 @@
     return self;
 }
 
+-(void)awakeFromNib
+{
+    [self.statusTextView setTextContainerInset:NSMakeSize(4, 8)];
+}
+
 -(IBAction)cancelComposing:(id)sender
 {
     [self.parentPopoverController closePopover:nil];
@@ -65,11 +71,19 @@
 #pragma WBEngine delegate methods
 -(void)engine:(WBEngine *)engine requestDidFailWithError:(NSError *)error
 {
+    [self.parentPopoverController closePopover:nil];
     NSLog(@"%@", error);
 }
 -(void)engine:(WBEngine *)engine requestDidSucceedWithResult:(id)result
 {
-    
+    [self.parentPopoverController closePopover:nil];
+    [GrowlApplicationBridge notifyWithTitle:@"Weibo Sent"
+                                description:@"Your weibo has been sent"
+                           notificationName:@"weibo_sent"
+                                   iconData:nil
+                                   priority:0
+                                   isSticky:NO
+                               clickContext:@"weibo"];
 }
 
 @end

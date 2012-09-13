@@ -9,8 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "MainWindowController.h"
 #import "OAuthWindowController.h"
+#import <Growl/Growl.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, GrowlApplicationBridgeDelegate>
 
 
 @property (strong) MainWindowController *mainController;

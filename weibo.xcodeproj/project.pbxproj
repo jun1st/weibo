@@ -36,6 +36,7 @@
 		4C5182FE15ED226A0075ECE5 /* User+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5182FD15ED226A0075ECE5 /* User+CoreData.m */; };
 		4C5315E615E3D33B0004238A /* WBMessageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E515E3D33B0004238A /* WBMessageScrollView.m */; };
 		4C5315EA15E3E3620004238A /* WBMessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E915E3E3620004238A /* WBMessageTextView.m */; };
+		4C53A2FE16022CC900576B70 /* NSDate+RelativeToNow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C53A2FD16022CC900576B70 /* NSDate+RelativeToNow.m */; };
 		4C5F9ABB15DBF93000B804F1 /* drink_twitter.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4C5F9ABA15DBF93000B804F1 /* drink_twitter.icns */; };
 		4C6878FD15E0B28F000F0482 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6878FC15E0B28F000F0482 /* ImageDownloader.m */; };
 		4C68790115E0B864000F0482 /* WBUser+ProfileImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C68790015E0B864000F0482 /* WBUser+ProfileImage.m */; };
@@ -73,6 +74,9 @@
 		4CCB88DC15D5289500231E13 /* WBAuthorize.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88D815D5289400231E13 /* WBAuthorize.m */; };
 		4CCB88DD15D5289500231E13 /* WBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88DA15D5289400231E13 /* WBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4CF33BA215EFBC3100DBE88B /* Mention.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF33BA115EFBC3000DBE88B /* Mention.m */; };
+		4CF77A011601D56100082195 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF77A001601D56100082195 /* Growl.framework */; };
+		4CF77A071601DD8000082195 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CF77A001601D56100082195 /* Growl.framework */; };
+		4CF77A091601DDEE00082195 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 4CF77A081601DDEE00082195 /* Growl Registration Ticket.growlRegDict */; };
 		6517CBEA15DCDE3D007BAB00 /* EQSTRClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6517CBE715DCDE3D007BAB00 /* EQSTRClipView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6517CBEB15DCDE3D007BAB00 /* EQSTRScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6517CBE915DCDE3D007BAB00 /* EQSTRScrollView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6517CBEF15DCDED2007BAB00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6517CBEE15DCDED2007BAB00 /* QuartzCore.framework */; };
@@ -115,6 +119,19 @@
 			remoteInfo = weibo;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4CF77A061601DC7400082195 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4CF77A071601DD8000082195 /* Growl.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4C12CA0F15FA4A240052E491 /* StatusListCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusListCellView.xib; sourceTree = "<group>"; };
@@ -172,6 +189,8 @@
 		4C5315E515E3D33B0004238A /* WBMessageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageScrollView.m; sourceTree = "<group>"; };
 		4C5315E815E3E3620004238A /* WBMessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageTextView.h; sourceTree = "<group>"; };
 		4C5315E915E3E3620004238A /* WBMessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageTextView.m; sourceTree = "<group>"; };
+		4C53A2FC16022CC900576B70 /* NSDate+RelativeToNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RelativeToNow.h"; sourceTree = "<group>"; };
+		4C53A2FD16022CC900576B70 /* NSDate+RelativeToNow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RelativeToNow.m"; sourceTree = "<group>"; };
 		4C5F9ABA15DBF93000B804F1 /* drink_twitter.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = drink_twitter.icns; sourceTree = "<group>"; };
 		4C6878FB15E0B28F000F0482 /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
 		4C6878FC15E0B28F000F0482 /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
@@ -245,6 +264,8 @@
 		4CCB88DB15D5289400231E13 /* WBSDKGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKGlobal.h; sourceTree = "<group>"; };
 		4CF33BA015EFBC3000DBE88B /* Mention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mention.h; sourceTree = "<group>"; };
 		4CF33BA115EFBC3000DBE88B /* Mention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mention.m; sourceTree = "<group>"; };
+		4CF77A001601D56100082195 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		4CF77A081601DDEE00082195 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		6517CBE615DCDE3D007BAB00 /* EQSTRClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EQSTRClipView.h; sourceTree = "<group>"; };
 		6517CBE715DCDE3D007BAB00 /* EQSTRClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EQSTRClipView.m; sourceTree = "<group>"; };
 		6517CBE815DCDE3D007BAB00 /* EQSTRScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EQSTRScrollView.h; sourceTree = "<group>"; };
@@ -301,6 +322,7 @@
 				4C15276215D604C3000F9E93 /* Security.framework in Frameworks */,
 				4CCB88BC15D3EDEF00231E13 /* WebKit.framework in Frameworks */,
 				4C8FAB2D15D24AF7004EBBC5 /* Cocoa.framework in Frameworks */,
+				4CF77A011601D56100082195 /* Growl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +424,7 @@
 				4C8AF48115FE2FF4001DF132 /* ComposeStatusViewController.xib */,
 				4C5F9AB715DBF66A00B804F1 /* macos */,
 				4C14EC4E15FFA39E00DAE776 /* RetweetStatusListCellView.xib */,
+				4CF77A081601DDEE00082195 /* Growl Registration Ticket.growlRegDict */,
 			);
 			name = Resources;
 			path = weibo;
@@ -506,6 +529,7 @@
 		4C8FAB2B15D24AF7004EBBC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4CF77A001601D56100082195 /* Growl.framework */,
 				4C8FAB2C15D24AF7004EBBC5 /* Cocoa.framework */,
 				4C8FAB4A15D24AF7004EBBC5 /* SenTestingKit.framework */,
 				4C8FAB2E15D24AF7004EBBC5 /* Other Frameworks */,
@@ -526,6 +550,8 @@
 		4C8FAB3215D24AF7004EBBC5 /* weibo */ = {
 			isa = PBXGroup;
 			children = (
+				4C53A2FC16022CC900576B70 /* NSDate+RelativeToNow.h */,
+				4C53A2FD16022CC900576B70 /* NSDate+RelativeToNow.m */,
 				4C6878FB15E0B28F000F0482 /* ImageDownloader.h */,
 				4C6878FC15E0B28F000F0482 /* ImageDownloader.m */,
 				4C15277815D69601000F9E93 /* SSKeychain.h */,
@@ -657,6 +683,7 @@
 				4C8FAB2415D24AF7004EBBC5 /* Sources */,
 				4C8FAB2515D24AF7004EBBC5 /* Frameworks */,
 				4C8FAB2615D24AF7004EBBC5 /* Resources */,
+				4CF77A061601DC7400082195 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -746,6 +773,7 @@
 				4C12CA1015FA4A240052E491 /* StatusListCellView.xib in Resources */,
 				4C8AF48315FE2FF4001DF132 /* ComposeStatusViewController.xib in Resources */,
 				4C14EC4F15FFA39E00DAE776 /* RetweetStatusListCellView.xib in Resources */,
+				4CF77A091601DDEE00082195 /* Growl Registration Ticket.growlRegDict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,6 +870,7 @@
 				4C8AF48215FE2FF4001DF132 /* ComposeStatusViewController.m in Sources */,
 				4C14EC4D15FF9D7200DAE776 /* NSImageView+Picker.m in Sources */,
 				4C14EC5215FFA40D00DAE776 /* RetweetStatusListCellView.m in Sources */,
+				4C53A2FE16022CC900576B70 /* NSDate+RelativeToNow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -944,6 +973,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "weibo/weibo-Prefix.pch";
 				INFOPLIST_FILE = "weibo/weibo-Info.plist";
@@ -956,6 +989,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "weibo/weibo-Prefix.pch";
 				INFOPLIST_FILE = "weibo/weibo-Info.plist";

@@ -56,6 +56,7 @@
 						<string key="NSFrame">{{3, 1}, {34, 34}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSImageCell" key="NSCell" id="625840672">
@@ -100,7 +101,7 @@
 											<string>WebURLsWithTitlesPboardType</string>
 											<string>public.url</string>
 										</set>
-										<string key="NSFrameSize">{305, 110}</string>
+										<string key="NSFrameSize">{301, 110}</string>
 										<reference key="NSSuperview" ref="640099360"/>
 										<reference key="NSWindow"/>
 										<reference key="NSNextKeyView" ref="436577931"/>
@@ -120,7 +121,7 @@
 												<nil key="NSDelegate"/>
 											</object>
 											<reference key="NSTextView" ref="47116658"/>
-											<double key="NSWidth">305</double>
+											<double key="NSWidth">301</double>
 											<int key="NSTCFlags">1</int>
 										</object>
 										<object class="NSTextViewSharedData" key="NSSharedData">
@@ -172,7 +173,7 @@
 										<nil key="NSDelegate"/>
 									</object>
 								</array>
-								<string key="NSFrame">{{1, 1}, {305, 110}}</string>
+								<string key="NSFrame">{{1, 1}, {301, 110}}</string>
 								<reference key="NSSuperview" ref="341252750"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="47116658"/>
@@ -337,7 +338,7 @@ wGw</bytes>
 							<object class="NSScroller" id="436577931">
 								<reference key="NSNextResponder" ref="341252750"/>
 								<int key="NSvFlags">256</int>
-								<string key="NSFrame">{{290, 1}, {16, 110}}</string>
+								<string key="NSFrame">{{286, 1}, {16, 110}}</string>
 								<reference key="NSSuperview" ref="341252750"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="144091849"/>
@@ -364,7 +365,7 @@ wGw</bytes>
 								<double key="NSPercent">0.94565218687057495</double>
 							</object>
 						</array>
-						<string key="NSFrame">{{0, 35}, {307, 112}}</string>
+						<string key="NSFrame">{{-1, 35}, {303, 112}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="972518161"/>
@@ -595,7 +596,17 @@ wGw</bytes>
 				<string key="20.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="21.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="33.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<object class="NSMutableAttributedString" key="33.notes">
+					<object class="NSMutableString" key="NSString">
+						<characters key="NS.bytes"/>
+					</object>
+				</object>
 				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<object class="NSMutableAttributedString" key="34.notes">
+					<object class="NSMutableString" key="NSString">
+						<characters key="NS.bytes"/>
+					</object>
+				</object>
 				<string key="35.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="36.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="38.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>

@@ -5,7 +5,7 @@
 //  Created by feng qijun on 9/1/12.
 //  Copyright (c) 2012 feng qijun. All rights reserved.
 //
-
+#import <Growl/Growl.h>
 #import "HomeTimelineController.h"
 #import "WBMessageTableCellView.h"
 #import "Status+CoreData.h"
@@ -16,6 +16,7 @@
 #import "WBFormatter.h"
 #import "NS(Attributed)String+Geometrics.h"
 #import "StatusListCellView.h"
+#import "NSDate+RelativeToNow.h"
 
 #define LISTVIEW_CELL_IDENTIFIER		@"StatusListCellView"
 
@@ -94,7 +95,13 @@
         
         [self statusArrayFromDatabase];
         
-        
+        [GrowlApplicationBridge notifyWithTitle:@"Refreshed"
+                                    description:@"home timeline refreshed"
+                               notificationName:@"weibo_refreshed"
+                                       iconData:nil
+                                       priority:0
+                                       isSticky:NO
+                                   clickContext:@"weibo"];
     }
 }
 
@@ -130,7 +137,7 @@
     for(NSTextCheckingResult *match in matches)
     {
         NSRange matchRange = [match range];
-        NSFont *font = [NSFont userFontOfSize:13];
+        NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:13];
         NSFont *boldFont = [[NSFontManager sharedFontManager] fontWithFamily:font.familyName
                                                                       traits:NSBoldFontMask weight:0 size:13];
         [rString addAttribute:NSFontAttributeName value:boldFont range:matchRange];
@@ -195,6 +202,7 @@
     Status *status = ((Status *)[self.timeline objectAtIndex:row]);
     
     cell.userName.stringValue = status.userScreenName;
+    cell.relativeTime.stringValue = [status.createdAt stringWithShortFormatToNow];
     
     if (status.author.profileImage) {
         cell.userProfileImage.image = status.author.profileImage;
@@ -228,9 +236,9 @@
         for (NSNumber *row in iconDownloader.rowsToUpdate) {
             
             StatusListCellView *result = (StatusListCellView *)[self.timelineListView cellForRowAtIndex:[row unsignedIntegerValue]];
-            if (result.window) {
+            //if (result.window) {
                 result.userProfileImage.image = user.profileImage;
-            }
+            //}
         }
     }
 }

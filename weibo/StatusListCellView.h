@@ -15,7 +15,7 @@
 }
 @property (weak) IBOutlet NSTextField *userName;
 @property (weak) IBOutlet NSImageView *userProfileImage;
-
+@property (weak) IBOutlet NSTextField *relativeTime;
 @property IBOutlet NSTextView *statusTextView;
 
 @end

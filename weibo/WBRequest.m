@@ -108,11 +108,11 @@
         
         for (id key in [params keyEnumerator]) 
 		{
-//			if (([[params valueForKey:key] isKindOfClass:[UIImage class]]) || ([[params valueForKey:key] isKindOfClass:[NSData class]]))
-//			{
-//				[dataDictionary setObject:[params valueForKey:key] forKey:key];
-//				continue;
-//			}
+			if (([[params valueForKey:key] isKindOfClass:[NSImage class]]) || ([[params valueForKey:key] isKindOfClass:[NSData class]]))
+			{
+				[dataDictionary setObject:[params valueForKey:key] forKey:key];
+				continue;
+			}
 			
 			[WBRequest appendUTF8Body:body dataString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n%@\r\n", key, [params valueForKey:key]]];
 			[WBRequest appendUTF8Body:body dataString:bodyPrefixString];
@@ -124,19 +124,22 @@
 			{
 				NSObject *dataParam = [dataDictionary valueForKey:key];
 				
-//				if ([dataParam isKindOfClass:[UIImage class]]) 
-//				{
-//					NSData* imageData = UIImagePNGRepresentation((UIImage *)dataParam);
-//					[WBRequest appendUTF8Body:body dataString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"file.png\"\r\n", key]];
-//					[WBRequest appendUTF8Body:body dataString:[NSString stringWithString:@"Content-Type: image/png\r\nContent-Transfer-Encoding: binary\r\n\r\n"]];
-//					[body appendData:imageData];
-//				} 
-//				else if ([dataParam isKindOfClass:[NSData class]]) 
-//				{
-//					[WBRequest appendUTF8Body:body dataString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n", key]];
-//					[WBRequest appendUTF8Body:body dataString:[NSString stringWithString:@"Content-Type: content/unknown\r\nContent-Transfer-Encoding: binary\r\n\r\n"]];
-//					[body appendData:(NSData*)dataParam];
-//				}
+				if ([dataParam isKindOfClass:[NSImage class]])
+				{
+					NSData* imageData = [(NSImage *)dataParam TIFFRepresentation];
+                    NSBitmapImageRep *bmprep = [NSBitmapImageRep imageRepWithData:imageData]; // PNG data from file
+                    NSDictionary *imageProperty = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithFloat:0.0], NSImageCompressionFactor, nil];
+                    NSData *pngImageData = [bmprep representationUsingType:NSPNGFileType properties:imageProperty];
+					[WBRequest appendUTF8Body:body dataString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"file.png\"\r\n", key]];
+					[WBRequest appendUTF8Body:body dataString:@"Content-Type: image/png\r\nContent-Transfer-Encoding: binary\r\n\r\n"];
+					[body appendData:pngImageData];
+				} 
+				else if ([dataParam isKindOfClass:[NSData class]]) 
+				{
+					[WBRequest appendUTF8Body:body dataString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n", key]];
+					[WBRequest appendUTF8Body:body dataString:@"Content-Type: content/unknown\r\nContent-Transfer-Encoding: binary\r\n\r\n"];
+					[body appendData:(NSData*)dataParam];
+				}
 				[WBRequest appendUTF8Body:body dataString:bodySuffixString];
 			}
 		}

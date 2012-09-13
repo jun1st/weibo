@@ -15,6 +15,8 @@
 {
     [NSAttributedStringToNSDataValueTransformer class];
     
+    [GrowlApplicationBridge setGrowlDelegate:self];
+    
     self.mainController = [[MainWindowController alloc] init];
     
     self.oauthController = [[OAuthWindowController alloc] init];
@@ -26,6 +28,19 @@
     }else{
         [self.mainController showWindow:nil];
     }
+}
+
+-(NSDictionary *)registrationDictionaryForGrowl{
+    NSArray *notifications;
+    notifications = [NSArray arrayWithObjects: @"weibo_sent", @"weibo_refreshed", nil];
+    
+    NSDictionary *dict;
+    
+    dict = [NSDictionary dictionaryWithObjectsAndKeys:
+            notifications, GROWL_NOTIFICATIONS_ALL,
+            notifications, GROWL_NOTIFICATIONS_DEFAULT, nil];
+    
+    return (dict);
 }
 
 @end
