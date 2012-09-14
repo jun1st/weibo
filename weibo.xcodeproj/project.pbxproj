@@ -37,6 +37,7 @@
 		4C5315E615E3D33B0004238A /* WBMessageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E515E3D33B0004238A /* WBMessageScrollView.m */; };
 		4C5315EA15E3E3620004238A /* WBMessageTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C5315E915E3E3620004238A /* WBMessageTextView.m */; };
 		4C53A2FE16022CC900576B70 /* NSDate+RelativeToNow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C53A2FD16022CC900576B70 /* NSDate+RelativeToNow.m */; };
+		4C53A3011602FD5B00576B70 /* RoundedNSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C53A3001602FD5B00576B70 /* RoundedNSTextView.m */; };
 		4C5F9ABB15DBF93000B804F1 /* drink_twitter.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4C5F9ABA15DBF93000B804F1 /* drink_twitter.icns */; };
 		4C6878FD15E0B28F000F0482 /* ImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6878FC15E0B28F000F0482 /* ImageDownloader.m */; };
 		4C68790115E0B864000F0482 /* WBUser+ProfileImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C68790015E0B864000F0482 /* WBUser+ProfileImage.m */; };
@@ -191,6 +192,8 @@
 		4C5315E915E3E3620004238A /* WBMessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageTextView.m; sourceTree = "<group>"; };
 		4C53A2FC16022CC900576B70 /* NSDate+RelativeToNow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RelativeToNow.h"; sourceTree = "<group>"; };
 		4C53A2FD16022CC900576B70 /* NSDate+RelativeToNow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RelativeToNow.m"; sourceTree = "<group>"; };
+		4C53A2FF1602FD5B00576B70 /* RoundedNSTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedNSTextView.h; sourceTree = "<group>"; };
+		4C53A3001602FD5B00576B70 /* RoundedNSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedNSTextView.m; sourceTree = "<group>"; };
 		4C5F9ABA15DBF93000B804F1 /* drink_twitter.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = drink_twitter.icns; sourceTree = "<group>"; };
 		4C6878FB15E0B28F000F0482 /* ImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloader.h; sourceTree = "<group>"; };
 		4C6878FC15E0B28F000F0482 /* ImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloader.m; sourceTree = "<group>"; };
@@ -422,8 +425,8 @@
 				4C8FABC415D2520F004EBBC5 /* MainMenu.xib */,
 				4C12CA0F15FA4A240052E491 /* StatusListCellView.xib */,
 				4C8AF48115FE2FF4001DF132 /* ComposeStatusViewController.xib */,
-				4C5F9AB715DBF66A00B804F1 /* macos */,
 				4C14EC4E15FFA39E00DAE776 /* RetweetStatusListCellView.xib */,
+				4C5F9AB715DBF66A00B804F1 /* macos */,
 				4CF77A081601DDEE00082195 /* Growl Registration Ticket.growlRegDict */,
 			);
 			name = Resources;
@@ -462,6 +465,8 @@
 				65A816E115F4A60400231A89 /* TitleBarView.m */,
 				4C14EC4B15FF9D7200DAE776 /* NSImageView+Picker.h */,
 				4C14EC4C15FF9D7200DAE776 /* NSImageView+Picker.m */,
+				4C53A2FF1602FD5B00576B70 /* RoundedNSTextView.h */,
+				4C53A3001602FD5B00576B70 /* RoundedNSTextView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -871,6 +876,7 @@
 				4C14EC4D15FF9D7200DAE776 /* NSImageView+Picker.m in Sources */,
 				4C14EC5215FFA40D00DAE776 /* RetweetStatusListCellView.m in Sources */,
 				4C53A2FE16022CC900576B70 /* NSDate+RelativeToNow.m in Sources */,
+				4C53A3011602FD5B00576B70 /* RoundedNSTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

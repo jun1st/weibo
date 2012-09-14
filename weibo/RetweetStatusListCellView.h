@@ -7,7 +7,18 @@
 //
 
 #import "PXListViewCell.h"
+#import "RoundedNSTextView.h"
 
 @interface RetweetStatusListCellView : PXListViewCell
+{
+    NSTextView *statusTextView;
+    RoundedNSTextView *retweetTextView;
+}
+@property (weak) IBOutlet NSImageView *userProfileImage;
+@property (weak) IBOutlet NSTextField *userName;
+
+@property IBOutlet NSTextView *statusTextView;
+@property IBOutlet RoundedNSTextView *retweetTextView;
+
 
 @end

@@ -30,7 +30,7 @@
     }
     
     
-//    //Draw the border and background
+    //Draw the border and background
 	NSBezierPath *roundedRect = [NSBezierPath bezierPathWithRoundedRect:[self bounds] xRadius:4.0 yRadius:4.0];
 	[roundedRect fill];
     

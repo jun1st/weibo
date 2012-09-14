@@ -16,9 +16,11 @@
 #import "WBFormatter.h"
 #import "NS(Attributed)String+Geometrics.h"
 #import "StatusListCellView.h"
+#import "RetweetStatusListCellView.h"
 #import "NSDate+RelativeToNow.h"
 
 #define LISTVIEW_CELL_IDENTIFIER		@"StatusListCellView"
+#define LISTVIEW_RETWEET_CELL_IDENTIFIER @"RetweetStatusListCellView"
 
 @interface HomeTimelineController()<WBEngineDelegate>
 
@@ -187,44 +189,97 @@
     status.attributedText = textRString;
     CGFloat height = [textRString heightForWidth:376.0f];
     
+    if (status.retweetText) {
+        NSAttributedString *retweetAString = [self attributedStringFromString:status.retweetText];
+        status.attributedRetweetText = retweetAString;
+        CGFloat rHeight = [retweetAString heightForWidth:376.0f];
+        
+        height = height + rHeight;
+    }
+    
     return height + 52 > 82 ? height + 52 : 82;
 
 }
 - (PXListViewCell*)listView:(PXListView*)aListView cellForRow:(NSUInteger)row
 {
-    StatusListCellView *cell = (StatusListCellView*)[aListView dequeueCellWithReusableIdentifier:LISTVIEW_CELL_IDENTIFIER];
-
-	if(!cell) {
-		cell = [StatusListCellView cellLoadedFromNibNamed:@"StatusListCellView"
-                                       reusableIdentifier:LISTVIEW_CELL_IDENTIFIER];
-	}
-    
     Status *status = ((Status *)[self.timeline objectAtIndex:row]);
-    
-    cell.userName.stringValue = status.userScreenName;
-    cell.relativeTime.stringValue = [status.createdAt stringWithShortFormatToNow];
-    
-    if (status.author.profileImage) {
-        cell.userProfileImage.image = status.author.profileImage;
-    }else
-    {
-        [self startUserProfileImageDownload:status.author forRow:row];
-    }
-    
-    CGFloat height = [status.attributedText heightForWidth:376.0f];
+    StatusListCellView *cell = nil;
+    RetweetStatusListCellView *retweetCell = nil;
+    if (!status.retweetText) {
+        
+        cell = (StatusListCellView*)[aListView dequeueCellWithReusableIdentifier:LISTVIEW_CELL_IDENTIFIER];
+        
+        if(!cell) {
+            cell = [StatusListCellView cellLoadedFromNibNamed:@"StatusListCellView"
+                                           reusableIdentifier:LISTVIEW_CELL_IDENTIFIER];
+        }
+        
+        cell.userName.stringValue = status.userScreenName;
+        cell.relativeTime.stringValue = [status.createdAt stringWithShortFormatToNow];
+        
+        if (status.author.profileImage) {
+            cell.userProfileImage.image = status.author.profileImage;
+        }else
+        {
+            [self startUserProfileImageDownload:status.author forRow:row];
+        }
+        
+        CGFloat height = [status.attributedText heightForWidth:376.0f];
+        
+        NSRect rect;
+        if (height >= 34) {
+            rect = NSMakeRect(58.0f, 31.0f - (height - 31.0f), 376.0f, height);
+        }
+        else{
+            rect = NSMakeRect(58.0f, 21.0f, 376.0f, 30);
+        }
+        [cell.statusTextView setFrame:rect];
+        
+        [cell.statusTextView.textStorage setAttributedString:status.attributedText];
+        
+        return cell;
 
-    NSRect rect;
-    if (height >= 34) {
-        rect = NSMakeRect(58.0f, 31.0f - (height - 31.0f), 376.0f, height);
     }
-    else{
-        rect = NSMakeRect(58.0f, 21.0f, 376.0f, 30);
+    else
+    {
+        retweetCell = (RetweetStatusListCellView*)[aListView dequeueCellWithReusableIdentifier:LISTVIEW_RETWEET_CELL_IDENTIFIER];
+        
+        if(!retweetCell) {
+            retweetCell = [RetweetStatusListCellView cellLoadedFromNibNamed:@"RetweetStatusListCellView"
+                                           reusableIdentifier:LISTVIEW_RETWEET_CELL_IDENTIFIER];
+        }
+        
+        retweetCell.userName.stringValue = status.userScreenName;
+        
+        if (status.author.profileImage)
+        {
+            retweetCell.userProfileImage.image = status.author.profileImage;
+        }
+        else
+        {
+            [self startUserProfileImageDownload: status.author forRow:row];
+        }
+        
+        CGFloat statusHeight = [status.attributedText heightForWidth:376.0f];
+        CGFloat retweetStatusHeight = [status.attributedRetweetText heightForWidth:376.0f];
+        
+        [retweetCell.retweetTextView setFrame: NSMakeRect(58.0f, 8 - (statusHeight-49) - (retweetStatusHeight-63), 376.0f, retweetStatusHeight)];
+        
+        [retweetCell.statusTextView setFrame: NSMakeRect(58.0f, 81 - (statusHeight-49), 376.0f, statusHeight)];
+        if (!status.text) {
+            [retweetCell.statusTextView removeFromSuperview];
+        }
+        else
+        {
+            [retweetCell.statusTextView.textStorage setAttributedString:status.attributedText];
+        }
+        //retweetCell.retweetTextView.layer.cornerRadius = 4.0f;
+        //retweetCell.retweetTextView.layer.clipsToBounds = YES;
+        [retweetCell.retweetTextView.textStorage setAttributedString:status.attributedRetweetText];
+        
+        return retweetCell;
     }
-    [cell.statusTextView setFrame:rect];
     
-    [cell.statusTextView.textStorage setAttributedString:status.attributedText];
-    
-    return cell;
 }
 
 #pragma ImageDoneLoading delegate
