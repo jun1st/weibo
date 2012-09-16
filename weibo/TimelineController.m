@@ -56,44 +56,4 @@
     return _urlRegularExpression;
 }
 
-
--(void)startUserProfileImageDownload:(User *)user forRow:(NSUInteger)row
-{
-    ImageDownloader *downloader = [self.imageDownloadsInProgress objectForKey:user.idstr];
-    
-    if (downloader == nil)
-    {
-        downloader = [[ImageDownloader alloc] init];
-        downloader.user = user;
-        [downloader.rowsToUpdate addObject:[NSNumber numberWithUnsignedInteger:row]];
-        downloader.delegate = self;
-        [self.imageDownloadsInProgress setObject:downloader forKey:user.idstr];
-        [downloader startDownload];
-        
-    }
-    else
-    {
-        [downloader.rowsToUpdate addObject:[NSNumber numberWithInteger:row]];
-        
-    }
-    
-}
-
-#pragma ImageDoneLoading delegate
--(void)doneLoadImageForUser:(User *)user
-{
-//    ImageDownloader *iconDownloader = [self.imageDownloadsInProgress objectForKey:user.idstr];
-//    if (iconDownloader != nil)
-//    {
-//        for (NSNumber *row in iconDownloader.rowsToUpdate) {
-//            
-//            NSTableRowView *result = [self.timelineTable rowViewAtRow:[row integerValue] makeIfNecessary:NO];
-//            
-//            TimelineCellView *cellView = [result viewAtColumn:0];
-//            
-//            cellView.userProfileImageView.image = user.profileImage;
-//        }
-//    }
-}
-
 @end

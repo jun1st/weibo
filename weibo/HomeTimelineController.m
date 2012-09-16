@@ -38,6 +38,7 @@
 {
     self = [super init];
     if (self) {
+        self.imageDownloadsInProgress = [[NSMutableDictionary alloc] init];
     }
     
     return self;
@@ -115,10 +116,14 @@
 
 -(void)statusArrayFromDatabase
 {
+    NSDate *latestStatusTime = nil;
+    if (_timeline && [_timeline count] > 0 ) {
+        latestStatusTime = [_timeline objectAtIndex:0];
+    }
     NSArray *status = [Status statusesFromContext:[WBManagedObjectContext sharedInstance].managedObjectContext
-                                       withOffSet:self.timeline.count];
+                                       createdFrom:latestStatusTime];
     
-    [self.timeline removeAllObjects];
+    //[self.timeline removeAllObjects];
     [self.timeline addObjectsFromArray:status];
     [self.timeline sortUsingDescriptors:[NSArray arrayWithObject:[[NSSortDescriptor alloc]
                                                                   initWithKey:@"createdAt" ascending:NO]]];
@@ -192,9 +197,9 @@
     if (status.retweetText) {
         NSAttributedString *retweetAString = [self attributedStringFromString:status.retweetText];
         status.attributedRetweetText = retweetAString;
-        CGFloat rHeight = [retweetAString heightForWidth:376.0f];
+        CGFloat rHeight = [retweetAString heightForWidth:368.0f];
         
-        height = height + rHeight;
+        height = height + rHeight + 8;
     }
     
     return height + 52 > 82 ? height + 52 : 82;
@@ -215,7 +220,7 @@
         }
         
         cell.userName.stringValue = status.userScreenName;
-        cell.relativeTime.stringValue = [status.createdAt stringWithShortFormatToNow];
+        cell.relativeTime.stringValue = [status.createdAt relativeTimeToNow];
         
         if (status.author.profileImage) {
             cell.userProfileImage.image = status.author.profileImage;
@@ -227,7 +232,7 @@
         CGFloat height = [status.attributedText heightForWidth:376.0f];
         
         NSRect rect;
-        if (height >= 34) {
+        if (height >= 31) {
             rect = NSMakeRect(58.0f, 31.0f - (height - 31.0f), 376.0f, height);
         }
         else{
@@ -236,7 +241,7 @@
         [cell.statusTextView setFrame:rect];
         
         [cell.statusTextView.textStorage setAttributedString:status.attributedText];
-        
+        //NSLog(@"%ld", row);
         return cell;
 
     }
@@ -250,7 +255,7 @@
         }
         
         retweetCell.userName.stringValue = status.userScreenName;
-        
+        retweetCell.relativeTime.stringValue = [status.createdAt relativeTimeToNow];
         if (status.author.profileImage)
         {
             retweetCell.userProfileImage.image = status.author.profileImage;
@@ -261,26 +266,41 @@
         }
         
         CGFloat statusHeight = [status.attributedText heightForWidth:376.0f];
-        CGFloat retweetStatusHeight = [status.attributedRetweetText heightForWidth:376.0f];
+        CGFloat retweetStatusHeight = [status.attributedRetweetText heightForWidth:368.0f];
         
-        [retweetCell.retweetTextView setFrame: NSMakeRect(58.0f, 8 - (statusHeight-49) - (retweetStatusHeight-63), 376.0f, retweetStatusHeight)];
+        //CGFloat statusToMoveY = statusHeight - 28;
         
-        [retweetCell.statusTextView setFrame: NSMakeRect(58.0f, 81 - (statusHeight-49), 376.0f, statusHeight)];
-        if (!status.text) {
-            [retweetCell.statusTextView removeFromSuperview];
-        }
-        else
-        {
-            [retweetCell.statusTextView.textStorage setAttributedString:status.attributedText];
-        }
-        //retweetCell.retweetTextView.layer.cornerRadius = 4.0f;
-        //retweetCell.retweetTextView.layer.clipsToBounds = YES;
+        [retweetCell.retweetTextView setFrame: NSMakeRect(58.0f, 11 - (statusHeight-28) - (retweetStatusHeight-28), 368.0f, retweetStatusHeight+4)];
+        [retweetCell.statusTextView setFrame: NSMakeRect(58.0f, 49 -(statusHeight-28), 376.0f, statusHeight)];
+        [retweetCell.statusTextView.textStorage setAttributedString:status.attributedText];
         [retweetCell.retweetTextView.textStorage setAttributedString:status.attributedRetweetText];
-        
         return retweetCell;
     }
     
 }
+
+-(void)startUserProfileImageDownload:(User *)user forRow:(NSUInteger)row
+{
+    ImageDownloader *downloader = [self.imageDownloadsInProgress objectForKey:user.idstr];
+    
+    if (downloader == nil)
+    {
+        downloader = [[ImageDownloader alloc] init];
+        downloader.user = user;
+        [downloader.rowsToUpdate addObject:[NSNumber numberWithUnsignedInteger:row]];
+        downloader.delegate = self;
+        [self.imageDownloadsInProgress setObject:downloader forKey:user.idstr];
+        [downloader startDownload];
+        
+    }
+    else
+    {
+        [downloader.rowsToUpdate addObject:[NSNumber numberWithInteger:row]];
+        
+    }
+    
+}
+
 
 #pragma ImageDoneLoading delegate
 -(void)doneLoadImageForUser:(User *)user
@@ -290,10 +310,16 @@
     {
         for (NSNumber *row in iconDownloader.rowsToUpdate) {
             
-            StatusListCellView *result = (StatusListCellView *)[self.timelineListView cellForRowAtIndex:[row unsignedIntegerValue]];
-            //if (result.window) {
-                result.userProfileImage.image = user.profileImage;
-            //}
+            
+            id result = [self.timelineListView cellForRowAtIndex:[row unsignedIntegerValue]];
+            if ([result isKindOfClass:[StatusListCellView class]]) {
+                ((StatusListCellView *)result).userProfileImage.image = user.profileImage;
+            }
+            else if([result isKindOfClass:[RetweetStatusListCellView class]])
+            {
+                //result.userProfileImage.image = user.profileImage;
+                ((RetweetStatusListCellView *)result).userProfileImage.image = user.profileImage;
+            }
         }
     }
 }

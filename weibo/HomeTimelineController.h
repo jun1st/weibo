@@ -10,8 +10,11 @@
 #import "TimelineController.h"
 #import "PXListView.h"
 
-@interface HomeTimelineController : TimelineController<PXListViewDelegate, TimeLineControllerDelegate>
+@interface HomeTimelineController : TimelineController<PXListViewDelegate, TimeLineControllerDelegate, ImageDownloading>
+
+@property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
 
 -(id)init;
+-(void)startUserProfileImageDownload:(User *)user forRow:(NSUInteger)row;
 
 @end

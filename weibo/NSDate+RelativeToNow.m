@@ -10,7 +10,7 @@
 
 @implementation NSDate (ShortFormatToNow)
 
--(NSString *)stringWithShortFormatToNow
+-(NSString *)relativeTimeToNow
 {
     NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self];
     

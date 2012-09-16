@@ -54,6 +54,9 @@
     self.userProfileImage.image = nil;
     //[self.statusTextView.textStorage setAttributedString:nil];
     
+    CGRect oldStatusFrame = NSMakeRect(64.0f, 21.0f, 374.0f, 30.0f);
+    [self.statusTextView setFrame:oldStatusFrame];
+    
     CGRect oldFrame = self.frame;
     oldFrame.size.height = 82.0f;
 //    

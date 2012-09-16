@@ -40,9 +40,7 @@
         status.createdAt = createdDate;
         
         NSString *text = [statusDict objectForKey:@"text"];
-        if ([text isEqualToString:@"转发微博"]) {
-            text = @"";
-        }
+        
         NSDictionary *retweetStatus = [statusDict objectForKey:@"retweeted_status"];
         if (retweetStatus) {
             NSString *retweetText = [retweetStatus objectForKey:@"text"];
@@ -57,7 +55,13 @@
         status.replyToStatusId = [statusDict objectForKey:@"in_reply_to_status_id"];
         status.author = [User saveFromDictionary:[statusDict objectForKey:@"user"] inContext:context];
         
-        [context save:nil];
+        NSError *error;
+        
+        [context save:&error];
+        
+        if (error) {
+            NSLog(@"%@", error);
+        }
         
     }
 
@@ -98,14 +102,16 @@
     return status;
 }
 
-+(NSArray *)statusesFromContext:(NSManagedObjectContext *)context withOffSet:(NSUInteger)offset
++(NSArray *)statusesFromContext:(NSManagedObjectContext *)context createdFrom:(NSDate *)startedFrom
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Status"];
+    if (startedFrom) {
+        request.predicate = [NSPredicate predicateWithFormat:@" createdAt > %@ ", startedFrom];
+    }
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                         initWithKey:@"createdAt" ascending:NO];
     [request setSortDescriptors:@[sortDescriptor]];
     request.fetchLimit = 30;
-    //request.fetchOffset = offset;
     
     NSError *error;
     NSArray *statuses = [context executeFetchRequest:request error:&error];

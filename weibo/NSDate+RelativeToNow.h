@@ -10,6 +10,6 @@
 
 @interface NSDate (ShortFormatToNow)
 
--(NSString *)stringWithShortFormatToNow;
+-(NSString *)relativeTimeToNow;
 
 @end

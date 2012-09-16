@@ -114,7 +114,7 @@
         result.userProfileImageView.image = mention.user.profileImage;
     }
     else{
-        [self startUserProfileImageDownload:mention.user forRow:row];
+        //[self startUserProfileImageDownload:mention.user forRow:row];
     }
     
     NSMutableAttributedString *rString =

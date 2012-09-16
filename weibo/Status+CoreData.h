@@ -14,6 +14,6 @@
 +(NSArray *)statusesAtUser:(NSString *)idstr inContext:(NSManagedObjectContext *)context;
 
 +(Status *)statusById:(NSString *)idstr fromContext:(NSManagedObjectContext *)context;
-+(NSArray *)statusesFromContext:(NSManagedObjectContext *)context withOffSet:(NSUInteger)offset;
++(NSArray *)statusesFromContext:(NSManagedObjectContext *)context createdFrom:(NSDate *)startedFrom;
 
 @end

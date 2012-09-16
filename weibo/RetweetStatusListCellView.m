@@ -48,8 +48,14 @@
     self.userProfileImage.image = nil;
     //[self.statusTextView.textStorage setAttributedString:nil];
     
+    CGRect oldStatusFrame = NSMakeRect(64, 49, 376, 30);
+    [self.statusTextView setFrame:oldStatusFrame];
+    
+    CGRect oldRetweetStatusFrame = NSMakeRect(64, 11, 376, 30);
+    [self.retweetTextView setFrame:oldRetweetStatusFrame];
+    
     CGRect oldFrame = self.frame;
-    oldFrame.size.height = 164.0f;
+    oldFrame.size.height = 105.0f;
     //
     [self setFrame:oldFrame];
 }
