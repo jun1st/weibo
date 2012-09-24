@@ -28,7 +28,8 @@
     if([matches count] == 0){
         status = [NSEntityDescription insertNewObjectForEntityForName:@"Status" inManagedObjectContext:context];
         
-        status.id = [statusDict objectForKey:@"idstr"];
+        status.idStr = [statusDict objectForKey:@"idstr"];
+        status.id = [NSNumber numberWithInt:[[statusDict objectForKey:@"id"] integerValue]];
         NSDictionary *userInfo = [statusDict objectForKey:@"user"];
         NSString *screen_name = [userInfo objectForKey:@"screen_name"];
         status.userScreenName = screen_name;
@@ -44,7 +45,10 @@
         NSDictionary *retweetStatus = [statusDict objectForKey:@"retweeted_status"];
         if (retweetStatus) {
             NSString *retweetText = [retweetStatus objectForKey:@"text"];
-            status.retweetText = retweetText;
+            NSDictionary *userInfo = [statusDict objectForKey:@"user"];
+            status.retweetText = [[[@"@" stringByAppendingString:[userInfo objectForKey:@"screen_name"]] stringByAppendingString:@":" ]stringByAppendingString:retweetText];
+            
+            status.replyToUserId = [userInfo objectForKey:@"idstr"];
         }
         
         status.text = text;
@@ -73,7 +77,7 @@
     request.predicate = [NSPredicate predicateWithFormat:@"replyToUserId = %@", idstr];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"createdAt" ascending:NO];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-    request.fetchLimit = 20;
+    request.fetchLimit = 50;
     
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];

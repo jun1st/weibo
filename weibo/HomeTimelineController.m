@@ -17,16 +17,19 @@
 #import "NS(Attributed)String+Geometrics.h"
 #import "StatusListCellView.h"
 #import "RetweetStatusListCellView.h"
+#import "LoadMoreCellView.h"
 #import "NSDate+RelativeToNow.h"
+#import "StatusDetailViewController.h"
 
 #define LISTVIEW_CELL_IDENTIFIER		@"StatusListCellView"
 #define LISTVIEW_RETWEET_CELL_IDENTIFIER @"RetweetStatusListCellView"
+#define LISTVIEW_LOAD_MORE_CELL_IDENTIFIER @"LoadMoreCellView"
 
 @interface HomeTimelineController()<WBEngineDelegate>
 
 @property (nonatomic)NSMutableArray *timeline;
-
 @property (assign) EQSTRScrollView *parentScrollView;
+@property (strong) StatusDetailViewController *detailViewConroller;
 
 @end
 
@@ -53,6 +56,8 @@
     };
     
     [self.timelineListView reloadData];
+    
+    //[self.navView pushViewController:self];
 }
 
 -(NSMutableArray *)timeline
@@ -73,10 +78,10 @@
 -(void)pullToRefreshInScrollView:(EQSTRScrollView *)scrollView
 {
     self.parentScrollView = scrollView;
-    
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:50], @"count", @"4116306678", @"source", nil];
     [self.engine loadRequestWithMethodName:@"statuses/home_timeline.json"
                            httpMethod:@"GET"
-                               params:nil
+                               params:parameters
                          postDataType:kWBRequestPostDataTypeNone
                      httpHeaderFields:nil];
 }
@@ -118,8 +123,9 @@
 {
     NSDate *latestStatusTime = nil;
     if (_timeline && [_timeline count] > 0 ) {
-        latestStatusTime = [_timeline objectAtIndex:0];
+        latestStatusTime = [(Status *)[_timeline objectAtIndex:0] createdAt];
     }
+    
     NSArray *status = [Status statusesFromContext:[WBManagedObjectContext sharedInstance].managedObjectContext
                                        createdFrom:latestStatusTime];
     
@@ -190,6 +196,15 @@
 {
     Status *status = ((Status *)[self.timeline objectAtIndex:row]);
     
+    if (self.timeline.count > row + 1) {
+        Status *preStatus = (Status *)[self.timeline objectAtIndex:row + 1];
+        
+        if ([status.createdAt timeIntervalSinceDate:preStatus.createdAt] > 5 * 60) {
+            return 46.0f;
+        }
+                             
+    }
+    
     NSAttributedString *textRString = [self attributedStringFromString:status.text];
     status.attributedText = textRString;
     CGFloat height = [textRString heightForWidth:376.0f];
@@ -208,6 +223,21 @@
 - (PXListViewCell*)listView:(PXListView*)aListView cellForRow:(NSUInteger)row
 {
     Status *status = ((Status *)[self.timeline objectAtIndex:row]);
+    
+    if (self.timeline.count > row + 1) {
+        Status *preStatus = (Status *)[self.timeline objectAtIndex:row + 1];
+        
+        if ([status.createdAt timeIntervalSinceDate:preStatus.createdAt] > 5 * 60) {
+            LoadMoreCellView *loadMoreCellView = (LoadMoreCellView *)[aListView dequeueCellWithReusableIdentifier:LISTVIEW_LOAD_MORE_CELL_IDENTIFIER];
+            
+            if (!loadMoreCellView) {
+                loadMoreCellView = [LoadMoreCellView cellLoadedFromNibNamed:@"LoadMoreCellView" reusableIdentifier:LISTVIEW_LOAD_MORE_CELL_IDENTIFIER];
+            }
+            
+            return  loadMoreCellView;
+        }
+        
+    }
     StatusListCellView *cell = nil;
     RetweetStatusListCellView *retweetCell = nil;
     if (!status.retweetText) {
@@ -301,6 +331,13 @@
     
 }
 
+-(void)listView:(PXListView *)aListView rowDoubleClicked:(NSUInteger)rowIndex
+{
+    self.detailViewConroller = [[StatusDetailViewController alloc] init];
+    self.detailViewConroller.homeViewController = self;
+    [self.navView pushViewController:self.detailViewConroller];
+}
+
 
 #pragma ImageDoneLoading delegate
 -(void)doneLoadImageForUser:(User *)user
@@ -309,7 +346,6 @@
     if (iconDownloader != nil)
     {
         for (NSNumber *row in iconDownloader.rowsToUpdate) {
-            
             
             id result = [self.timelineListView cellForRowAtIndex:[row unsignedIntegerValue]];
             if ([result isKindOfClass:[StatusListCellView class]]) {
@@ -320,6 +356,8 @@
                 //result.userProfileImage.image = user.profileImage;
                 ((RetweetStatusListCellView *)result).userProfileImage.image = user.profileImage;
             }
+            //NSLog(@"%ld", [row integerValue]);
+            //[result setNeedsDisplay:YES];
         }
     }
 }

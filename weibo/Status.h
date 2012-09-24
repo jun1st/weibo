@@ -2,7 +2,7 @@
 //  Status.h
 //  weibo
 //
-//  Created by derek on 9/6/12.
+//  Created by feng qijun on 9/18/12.
 //  Copyright (c) 2012 feng qijun. All rights reserved.
 //
 
@@ -18,7 +18,7 @@
 @property (nonatomic, retain) NSNumber * calculatedLineHeight;
 @property (nonatomic, retain) NSNumber * commentsCount;
 @property (nonatomic, retain) NSDate * createdAt;
-@property (nonatomic, retain) NSString * id;
+@property (nonatomic, retain) NSString * idStr;
 @property (nonatomic, retain) NSString * profileImageUrl;
 @property (nonatomic, retain) NSString * replyToStatusId;
 @property (nonatomic, retain) NSString * replyToUserId;
@@ -28,6 +28,8 @@
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * userIdStr;
 @property (nonatomic, retain) NSString * userScreenName;
+@property (nonatomic, retain) NSString * retweetUserIdStr;
+@property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) User *author;
 
 @end

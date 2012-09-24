@@ -22,7 +22,7 @@
 
 
 
-@interface TimelineController : NSObject<WBEngineDelegate>
+@interface TimelineController : NSViewController<WBEngineDelegate>
 {
 
 }

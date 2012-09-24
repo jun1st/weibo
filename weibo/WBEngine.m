@@ -20,7 +20,7 @@
 #import "WBUtil.h"
 
 #define OAuthConsumerKey @"4116306678"
-#define OAuthConsumerSecret @"630c48733d7f6c717ad6dec31bf50895"
+#define OAuthConsumerSecret @"c892d8e6dc6bde626f32e4a80bff84d9"
 
 #define kWBURLSchemePrefix              @"WB_"
 
