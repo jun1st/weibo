@@ -8,8 +8,9 @@
 
 #import "PXListViewCell.h"
 #import "RoundedNSTextView.h"
+#import "BasicListViewCell.h"
 
-@interface RetweetStatusListCellView : PXListViewCell
+@interface RetweetStatusListCellView : BasicListViewCell
 {
     NSTextView *statusTextView;
     RoundedNSTextView *retweetTextView;
@@ -19,7 +20,5 @@
 @property (weak) IBOutlet NSTextField *relativeTime;
 @property IBOutlet NSTextView *statusTextView;
 @property IBOutlet RoundedNSTextView *retweetTextView;
-@property (weak) IBOutlet NSButton *replyButton;
-
 
 @end

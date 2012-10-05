@@ -1,21 +1,22 @@
 //
-//  ReplyStatusViewController.m
+//  RepostStatusViewController.m
 //  weibo
 //
-//  Created by feng qijun on 10/4/12.
+//  Created by feng qijun on 10/5/12.
 //  Copyright (c) 2012 feng qijun. All rights reserved.
 //
 
-#import "ReplyStatusViewController.h"
+#import "RepostStatusViewController.h"
 #import "WBEngine.h"
 #import <Growl/Growl.h>
 
-@interface ReplyStatusViewController ()<WBEngineDelegate>
-    @property(strong, readonly)WBEngine *engine;
+@interface RepostStatusViewController ()<WBEngineDelegate>
+
+@property(strong, readonly)WBEngine *engine;
+
 @end
 
-@implementation ReplyStatusViewController
-
+@implementation RepostStatusViewController
 @synthesize engine = _engine;
 
 -(WBEngine *)engine
@@ -30,10 +31,7 @@
 
 -(id)init
 {
-    self = [super init];
-    if (self) {
-        self = [self initWithNibName:@"ReplyStatusViewController" bundle:nil];
-    }
+    self = [self initWithNibName:@"RepostStatusViewController" bundle:nil];
     
     return self;
 }
@@ -48,14 +46,12 @@
     return self;
 }
 
-- (IBAction)cancelComment:(id)sender
-{
+- (IBAction)cancel:(id)sender {
     [self.parentPopoverController closePopover:nil];
 }
 
-- (IBAction)postComment:(id)sender
-{
-    [self.engine postComment:self.commentTextView.string toStatusWithId:self.statusId];
+- (IBAction)sendRepost:(id)sender {
+    [self.engine repostStatusWithId:self.statusIdStr withComment:self.repostCommentTextView.string];
 }
 
 #pragma WBEngine delegate methods
@@ -67,7 +63,7 @@
 {
     [self.parentPopoverController closePopover:nil];
     [GrowlApplicationBridge notifyWithTitle:@"Weibo Sent"
-                                description:@"Your weibo has been sent"
+                                description:@"Repost succeeded"
                            notificationName:@"weibo_sent"
                                    iconData:nil
                                    priority:0

@@ -7,7 +7,18 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "INPopoverController.h"
 
 @interface ReplyStatusViewController : NSViewController
+{
+    NSTextView *_commentTextView;
+}
+
+- (IBAction)cancelComment:(id)sender;
+- (IBAction)postComment:(id)sender;
+
+@property (assign) INPopoverController *parentPopoverController;
+@property IBOutlet NSTextView *commentTextView;
+@property NSString *statusId;
 
 @end

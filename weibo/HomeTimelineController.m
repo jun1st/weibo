@@ -250,7 +250,8 @@
         
         cell.userName.stringValue = status.userScreenName;
         cell.relativeTime.stringValue = [status.createdAt relativeTimeToNow];
-        
+        cell.statusId = status.idStr;
+
         if (status.author.profileImage) {
             cell.userProfileImage.image = status.author.profileImage;
         }else
@@ -285,6 +286,7 @@
         
         retweetCell.userName.stringValue = status.userScreenName;
         retweetCell.relativeTime.stringValue = [status.createdAt relativeTimeToNow];
+        retweetCell.statusId = status.idStr;
         if (status.author.profileImage)
         {
             retweetCell.userProfileImage.image = status.author.profileImage;

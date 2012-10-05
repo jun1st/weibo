@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1080</int>
-		<string key="IBDocument.SystemVersion">12C54</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2840</string>
+		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2843</string>
 		<string key="IBDocument.AppKitVersion">1187.34</string>
 		<string key="IBDocument.HIToolboxVersion">625.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2840</string>
+			<string key="NS.object.0">2843</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSButton</string>
@@ -42,24 +42,49 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">301</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="NSButton" id="118292630">
+					<object class="NSButton" id="180293132">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">-2147483380</int>
-						<string key="NSFrame">{{367, 59}, {30, 15}}</string>
+						<string key="NSFrame">{{329, 59}, {30, 15}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="653672659"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="NSEnabled">YES</bool>
+						<object class="NSButtonCell" key="NSCell" id="621601223">
+							<int key="NSCellFlags">67108864</int>
+							<int key="NSCellFlags2">134217728</int>
+							<string key="NSContents">RT</string>
+							<object class="NSFont" key="NSSupport" id="27">
+								<string key="NSName">LucidaGrande-Bold</string>
+								<double key="NSSize">11</double>
+								<int key="NSfFlags">3357</int>
+							</object>
+							<string key="NSCellIdentifier">_NS:9</string>
+							<reference key="NSControlView" ref="180293132"/>
+							<int key="NSButtonFlags">-2038284288</int>
+							<int key="NSButtonFlags2">39</int>
+							<string key="NSAlternateContents"/>
+							<string key="NSKeyEquivalent"/>
+							<int key="NSPeriodicDelay">200</int>
+							<int key="NSPeriodicInterval">25</int>
+						</object>
+						<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+					</object>
+					<object class="NSButton" id="118292630">
+						<reference key="NSNextResponder" ref="1005"/>
+						<int key="NSvFlags">-2147483380</int>
+						<string key="NSFrame">{{297, 59}, {24, 15}}</string>
+						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="180293132"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="513636269">
 							<int key="NSCellFlags">67108864</int>
 							<int key="NSCellFlags2">134217728</int>
 							<string key="NSContents">R</string>
-							<object class="NSFont" key="NSSupport">
-								<string key="NSName">LucidaGrande-Bold</string>
-								<double key="NSSize">11</double>
-								<int key="NSfFlags">3357</int>
-							</object>
+							<reference key="NSSupport" ref="27"/>
 							<string key="NSCellIdentifier">_NS:9</string>
 							<reference key="NSControlView" ref="118292630"/>
 							<int key="NSButtonFlags">-2038284288</int>
@@ -119,6 +144,7 @@
 						<string key="NSFrame">{{64, 21}, {376, 30}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:13</string>
 						<object class="NSTextContainer" key="NSTextContainer" id="904790740">
 							<object class="NSLayoutManager" key="NSLayoutManager">
@@ -296,6 +322,22 @@
 					</object>
 					<int key="connectionID">42</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">repostWithComment:</string>
+						<reference key="source" ref="1005"/>
+						<reference key="destination" ref="180293132"/>
+					</object>
+					<int key="connectionID">48</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">repostButton</string>
+						<reference key="source" ref="1005"/>
+						<reference key="destination" ref="180293132"/>
+					</object>
+					<int key="connectionID">49</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -332,6 +374,7 @@
 							<reference ref="258653169"/>
 							<reference ref="653672659"/>
 							<reference ref="118292630"/>
+							<reference ref="180293132"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -392,6 +435,19 @@
 						<reference key="object" ref="513636269"/>
 						<reference key="parent" ref="118292630"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">45</int>
+						<reference key="object" ref="180293132"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="621601223"/>
+						</array>
+						<reference key="parent" ref="1005"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">46</int>
+						<reference key="object" ref="621601223"/>
+						<reference key="parent" ref="180293132"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -408,15 +464,53 @@
 				<string key="35.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="39.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="40.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="45.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="46.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">42</int>
+			<int key="maxID">49</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">BasicListViewCell</string>
+					<string key="superclassName">PXListViewCell</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="repostWithComment:">id</string>
+						<string key="showReplyDialog:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="repostWithComment:">
+							<string key="name">repostWithComment:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showReplyDialog:">
+							<string key="name">showReplyDialog:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="replyButton">NSButton</string>
+						<string key="repostButton">NSButton</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="replyButton">
+							<string key="name">replyButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="repostButton">
+							<string key="name">repostButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/BasicListViewCell.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">PXListViewCell</string>
 					<string key="superclassName">NSView</string>
@@ -427,21 +521,9 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">StatusListCellView</string>
-					<string key="superclassName">PXListViewCell</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">showReplyDialog:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">showReplyDialog:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">showReplyDialog:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
+					<string key="superclassName">BasicListViewCell</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="relativeTime">NSTextField</string>
-						<string key="replyButton">NSButton</string>
 						<string key="statusTextView">NSTextView</string>
 						<string key="userName">NSTextField</string>
 						<string key="userProfileImage">NSImageView</string>
@@ -450,10 +532,6 @@
 						<object class="IBToOneOutletInfo" key="relativeTime">
 							<string key="name">relativeTime</string>
 							<string key="candidateClassName">NSTextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="replyButton">
-							<string key="name">replyButton</string>
-							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="statusTextView">
 							<string key="name">statusTextView</string>

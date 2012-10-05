@@ -13,7 +13,7 @@
 
 @interface ComposeStatusViewController ()<WBEngineDelegate>
 
-@property(nonatomic, strong, readonly)WBEngine *engine;
+@property(strong, readonly)WBEngine *engine;
 
 @end
 

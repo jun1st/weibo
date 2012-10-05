@@ -8,8 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PXListViewCell.h"
+#import "BasicListViewCell.h"
 
-@interface StatusListCellView : PXListViewCell
+@interface StatusListCellView : BasicListViewCell
 {
     NSTextView *statusTextView;
 }
@@ -17,7 +18,9 @@
 @property (weak) IBOutlet NSImageView *userProfileImage;
 @property (weak) IBOutlet NSTextField *relativeTime;
 @property IBOutlet NSTextView *statusTextView;
-@property (weak) IBOutlet NSButton *replyButton;
-- (IBAction)showReplyDialog:(id)sender;
+
+
+
+
 
 @end

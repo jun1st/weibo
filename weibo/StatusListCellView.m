@@ -13,7 +13,7 @@
 @interface StatusListCellView ()
 
 @property (nonatomic, strong) NSTrackingArea *trackingArea;
-@property (strong) INPopoverController *popoverController;
+
 
 @end
 
@@ -65,6 +65,7 @@
     self.userProfileImage.image = nil;
     //[self.statusTextView.textStorage setAttributedString:nil];
     [self.replyButton setHidden:YES];
+    [self.repostButton setHidden:YES];
     CGRect oldStatusFrame = NSMakeRect(64.0f, 21.0f, 374.0f, 30.0f);
     [self.statusTextView setFrame:oldStatusFrame];
     
@@ -78,6 +79,7 @@
 {
     if (self.replyButton.isHidden) {
         [self.replyButton setHidden:NO];
+        [self.repostButton setHidden:NO];
         [self setNeedsDisplay:YES];
     }
     
@@ -87,6 +89,7 @@
 {
     if (!self.replyButton.isHidden) {
         [self.replyButton setHidden:YES];
+        [self.repostButton setHidden:YES];
         [self setNeedsDisplay:YES];
     }
 
@@ -122,23 +125,4 @@
     [super updateTrackingAreas]; // Needed, according to the NSView documentation
 }
 
-- (IBAction)showReplyDialog:(id)sender
-{
-    if (self.popoverController && self.popoverController.popoverIsVisible) {
-        [self.popoverController closePopover:nil];
-    }
-    else
-    {
-        ReplyStatusViewController *replyStatusViewController = [[ReplyStatusViewController alloc] init];
-        
-        self.popoverController = [[INPopoverController alloc] initWithContentViewController:replyStatusViewController];
-        
-        //replyStatusViewController.parentPopoverController = self.popoverController;
-        
-        //[self.composeWindowController showWindow:self];
-        self.popoverController.closesWhenPopoverResignsKey = NO;
-        [self.popoverController presentPopoverFromRect:[sender bounds] inView:sender preferredArrowDirection:INPopoverArrowDirectionUp anchorsToPositionView:YES];
-    }
-
-}
 @end

@@ -88,5 +88,6 @@
 
 //// Send a Weibo, to which you can attach an image.
 - (void)sendWeiBoWithText:(NSString *)text image:(NSImage *)image;
-
+- (void)postComment:(NSString *)comment toStatusWithId:(NSString *) statusId;
+- (void)repostStatusWithId:(NSString *)idStr  withComment:(NSString *)comment;
 @end

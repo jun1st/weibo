@@ -110,8 +110,33 @@
     }
 }
 
+-(void)postComment:(NSString *)comment toStatusWithId:(NSString *)statusId
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:2];
+    [params setObject:comment forKey:@"comment"];
+    [params setObject:statusId forKey:@"id"];
 
+    [self loadRequestWithMethodName:@"comments/create.json"
+                         httpMethod:@"POST"
+                             params:params
+                       postDataType:kWBRequestPostDataTypeNormal
+                   httpHeaderFields:nil];
+    
+}
 
+-(void)repostStatusWithId:(NSString *)idStr withComment:(NSString *)comment
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithCapacity:3];
+    [params setObject:comment forKey:@"status"];
+    [params setObject:idStr forKey:@"id"];
+    [params setObject:@"1" forKey:@"is_comment"];
+    NSLog(@"reposted called");
+    [self loadRequestWithMethodName:@"statuses/repost.json"
+                         httpMethod:@"POST"
+                             params:params
+                       postDataType:kWBRequestPostDataTypeNormal
+                   httpHeaderFields:nil];
+}
 
 #pragma mark - WBRequestDelegate Methods
 

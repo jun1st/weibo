@@ -60,6 +60,7 @@
     self.userProfileImage.image = nil;
     //[self.statusTextView.textStorage setAttributedString:nil];
     [self.replyButton setHidden:YES];
+    [self.repostButton setHidden:YES];
     CGRect oldStatusFrame = NSMakeRect(64, 49, 376, 30);
     [self.statusTextView setFrame:oldStatusFrame];
     
@@ -107,6 +108,7 @@
 {
     if (self.replyButton.isHidden) {
         [self.replyButton setHidden:FALSE];
+        [self.repostButton setHidden:FALSE];
         [self setNeedsDisplay:YES];
     }
 }
@@ -115,6 +117,7 @@
 {
     if (!self.replyButton.isHidden) {
         [self.replyButton setHidden:YES];
+        [self.repostButton setHidden:YES];
         [self setNeedsDisplay:YES];
     }
 }

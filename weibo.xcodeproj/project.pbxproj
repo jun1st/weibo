@@ -83,6 +83,9 @@
 		4CCB88DC15D5289500231E13 /* WBAuthorize.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88D815D5289400231E13 /* WBAuthorize.m */; };
 		4CCB88DD15D5289500231E13 /* WBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88DA15D5289400231E13 /* WBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4CF33BA215EFBC3100DBE88B /* Mention.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF33BA115EFBC3000DBE88B /* Mention.m */; };
+		4CF74E24161F23CD0078C960 /* BasicListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF74E23161F23CD0078C960 /* BasicListViewCell.m */; };
+		4CF74E29161F32660078C960 /* RepostStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CF74E27161F32660078C960 /* RepostStatusViewController.m */; };
+		4CF74E2A161F32660078C960 /* RepostStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CF74E28161F32660078C960 /* RepostStatusViewController.xib */; };
 		4CF77A011601D56100082195 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF77A001601D56100082195 /* Growl.framework */; };
 		4CF77A071601DD8000082195 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4CF77A001601D56100082195 /* Growl.framework */; };
 		4CF77A091601DDEE00082195 /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 4CF77A081601DDEE00082195 /* Growl Registration Ticket.growlRegDict */; };
@@ -248,9 +251,9 @@
 		4C9BFA161610991A0074F796 /* M3NavigationViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3NavigationViewControllerProtocol.h; sourceTree = "<group>"; };
 		4C9BFA171610991A0074F796 /* M3NavigationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M3NavigationView.m; sourceTree = "<group>"; };
 		4C9BFA181610991A0074F796 /* M3NavigationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M3NavigationView.h; sourceTree = "<group>"; };
-		4C9BFA1B16109B540074F796 /* StatusDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusDetailViewController.h; path = weibo/StatusDetailViewController.h; sourceTree = "<group>"; };
-		4C9BFA1C16109B540074F796 /* StatusDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusDetailViewController.m; path = weibo/StatusDetailViewController.m; sourceTree = "<group>"; };
-		4C9BFA1D16109B540074F796 /* StatusDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatusDetailViewController.xib; path = weibo/StatusDetailViewController.xib; sourceTree = "<group>"; };
+		4C9BFA1B16109B540074F796 /* StatusDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusDetailViewController.h; sourceTree = "<group>"; };
+		4C9BFA1C16109B540074F796 /* StatusDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusDetailViewController.m; sourceTree = "<group>"; };
+		4C9BFA1D16109B540074F796 /* StatusDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusDetailViewController.xib; sourceTree = "<group>"; };
 		4C9BFA201610A8500074F796 /* HomeTimelineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTimelineView.xib; sourceTree = "<group>"; };
 		4CA2CC6015EBCFCC00415031 /* WBManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBManagedObjectContext.h; sourceTree = "<group>"; };
 		4CA2CC6115EBCFCC00415031 /* WBManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBManagedObjectContext.m; sourceTree = "<group>"; };
@@ -284,6 +287,11 @@
 		4CCB88DB15D5289400231E13 /* WBSDKGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKGlobal.h; sourceTree = "<group>"; };
 		4CF33BA015EFBC3000DBE88B /* Mention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mention.h; sourceTree = "<group>"; };
 		4CF33BA115EFBC3000DBE88B /* Mention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mention.m; sourceTree = "<group>"; };
+		4CF74E22161F23CD0078C960 /* BasicListViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicListViewCell.h; sourceTree = "<group>"; };
+		4CF74E23161F23CD0078C960 /* BasicListViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicListViewCell.m; sourceTree = "<group>"; };
+		4CF74E26161F32660078C960 /* RepostStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepostStatusViewController.h; sourceTree = "<group>"; };
+		4CF74E27161F32660078C960 /* RepostStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepostStatusViewController.m; sourceTree = "<group>"; };
+		4CF74E28161F32660078C960 /* RepostStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepostStatusViewController.xib; sourceTree = "<group>"; };
 		4CF77A001601D56100082195 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
 		4CF77A081601DDEE00082195 /* Growl Registration Ticket.growlRegDict */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Growl Registration Ticket.growlRegDict"; sourceTree = "<group>"; };
 		6517CBE615DCDE3D007BAB00 /* EQSTRClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EQSTRClipView.h; sourceTree = "<group>"; };
@@ -366,14 +374,13 @@
 				4C12CA1F15FA4B8F0052E491 /* PXListDocumentView.h */,
 				4C12CA2015FA4B8F0052E491 /* PXListDocumentView.m */,
 				4C12CA1215FA4AC50052E491 /* StatusListCellView.h */,
-				4C190EFB161D5C500082CAA7 /* ReplyStatusViewController.h */,
-				4C190EFC161D5C500082CAA7 /* ReplyStatusViewController.m */,
-				4C190EFD161D5C500082CAA7 /* ReplyStatusViewController.xib */,
 				4C12CA1315FA4AC50052E491 /* StatusListCellView.m */,
 				4C14EC5015FFA40D00DAE776 /* RetweetStatusListCellView.h */,
 				4C14EC5115FFA40D00DAE776 /* RetweetStatusListCellView.m */,
 				4C14AE4816074E3800FACB69 /* LoadMoreCellView.h */,
 				4C14AE4916074E3900FACB69 /* LoadMoreCellView.m */,
+				4CF74E22161F23CD0078C960 /* BasicListViewCell.h */,
+				4CF74E23161F23CD0078C960 /* BasicListViewCell.m */,
 			);
 			name = PXListView;
 			sourceTree = "<group>";
@@ -439,8 +446,11 @@
 				4C8FABBF15D25005004EBBC5 /* OAuthWindow.xib */,
 				4C8FABC415D2520F004EBBC5 /* MainMenu.xib */,
 				4C12CA0F15FA4A240052E491 /* StatusListCellView.xib */,
+				4C9BFA1D16109B540074F796 /* StatusDetailViewController.xib */,
 				4C8AF48115FE2FF4001DF132 /* ComposeStatusViewController.xib */,
 				4C14EC4E15FFA39E00DAE776 /* RetweetStatusListCellView.xib */,
+				4C190EFD161D5C500082CAA7 /* ReplyStatusViewController.xib */,
+				4CF74E28161F32660078C960 /* RepostStatusViewController.xib */,
 				4C5F9AB715DBF66A00B804F1 /* macos */,
 				4CF77A081601DDEE00082195 /* Growl Registration Ticket.growlRegDict */,
 				4C14AE4516074BBF00FACB69 /* LoadMoreCellView.xib */,
@@ -489,14 +499,20 @@
 		4C6E977B15F26B4A007F6575 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4CF74E26161F32660078C960 /* RepostStatusViewController.h */,
+				4CF74E27161F32660078C960 /* RepostStatusViewController.m */,
 				4C8FABC115D25067004EBBC5 /* OAuthWindowController.h */,
 				4C8FABC215D25068004EBBC5 /* OAuthWindowController.m */,
 				4C15276915D67A1F000F9E93 /* MainWindowController.h */,
 				4C15276A15D67A1F000F9E93 /* MainWindowController.m */,
+				4C9BFA1B16109B540074F796 /* StatusDetailViewController.h */,
+				4C9BFA1C16109B540074F796 /* StatusDetailViewController.m */,
 				4C408A3815F179FF007CF089 /* HomeTimelineController.h */,
 				4C408A3915F179FF007CF089 /* HomeTimelineController.m */,
 				4C8AF47F15FE2FF4001DF132 /* ComposeStatusViewController.h */,
 				4C8AF48015FE2FF4001DF132 /* ComposeStatusViewController.m */,
+				4C190EFB161D5C500082CAA7 /* ReplyStatusViewController.h */,
+				4C190EFC161D5C500082CAA7 /* ReplyStatusViewController.m */,
 				4C147A2615F78CED00C87523 /* NS(Attributed)String+Geometrics.h */,
 				4C147A2715F78CED00C87523 /* NS(Attributed)String+Geometrics.m */,
 				65C45D9315F0A68A00BB7557 /* MentionTimelineController.h */,
@@ -526,9 +542,6 @@
 		4C8FAB1D15D24AF7004EBBC5 = {
 			isa = PBXGroup;
 			children = (
-				4C9BFA1B16109B540074F796 /* StatusDetailViewController.h */,
-				4C9BFA1C16109B540074F796 /* StatusDetailViewController.m */,
-				4C9BFA1D16109B540074F796 /* StatusDetailViewController.xib */,
 				6517CBEE15DCDED2007BAB00 /* QuartzCore.framework */,
 				4C15276115D604C3000F9E93 /* Security.framework */,
 				4CCB88BB15D3EDEF00231E13 /* WebKit.framework */,
@@ -797,6 +810,7 @@
 				4C9BFA1F16109B550074F796 /* StatusDetailViewController.xib in Resources */,
 				4C9BFA211610A8500074F796 /* HomeTimelineView.xib in Resources */,
 				4C190EFF161D5C500082CAA7 /* ReplyStatusViewController.xib in Resources */,
+				4CF74E2A161F32660078C960 /* RepostStatusViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +909,8 @@
 				4C9BFA191610991A0074F796 /* M3NavigationView.m in Sources */,
 				4C9BFA1E16109B540074F796 /* StatusDetailViewController.m in Sources */,
 				4C190EFE161D5C500082CAA7 /* ReplyStatusViewController.m in Sources */,
+				4CF74E24161F23CD0078C960 /* BasicListViewCell.m in Sources */,
+				4CF74E29161F32660078C960 /* RepostStatusViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
