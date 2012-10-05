@@ -19,6 +19,7 @@
 @property (weak) IBOutlet NSTextField *relativeTime;
 @property IBOutlet NSTextView *statusTextView;
 @property IBOutlet RoundedNSTextView *retweetTextView;
+@property (weak) IBOutlet NSButton *replyButton;
 
 
 @end

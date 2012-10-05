@@ -13,5 +13,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "-[M3NavigationView pushViewController:]:M3NavigationView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self bounds].size">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

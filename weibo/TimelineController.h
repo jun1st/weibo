@@ -12,6 +12,7 @@
 #import "PXListView.h"
 
 @class EQSTRScrollView;
+@class MainWindowController;
 
 @protocol TimeLineControllerDelegate
 
@@ -27,6 +28,7 @@
 
 }
 
+@property (nonatomic, assign) MainWindowController *rootViewController;
 @property (nonatomic, weak) IBOutlet PXListView* timelineListView;
 
 @property (nonatomic, strong) WBEngine *engine;

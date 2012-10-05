@@ -7,14 +7,25 @@
 //
 
 #import "StatusListCellView.h"
+#import "INPopoverController.h"
+#import "ReplyStatusViewController.h"
+
+@interface StatusListCellView ()
+
+@property (nonatomic, strong) NSTrackingArea *trackingArea;
+@property (strong) INPopoverController *popoverController;
+
+@end
 
 @implementation StatusListCellView
+
+@synthesize  statusTextView = _statusTextView;
 
 - (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code here.
+        [self createTrackingArea];
     }
     
     return self;
@@ -53,7 +64,7 @@
     self.userName.stringValue = @"";
     self.userProfileImage.image = nil;
     //[self.statusTextView.textStorage setAttributedString:nil];
-    
+    [self.replyButton setHidden:YES];
     CGRect oldStatusFrame = NSMakeRect(64.0f, 21.0f, 374.0f, 30.0f);
     [self.statusTextView setFrame:oldStatusFrame];
     
@@ -63,4 +74,71 @@
     [self setFrame:oldFrame];
 }
 
+-(void)mouseEntered:(NSEvent *)theEvent
+{
+    if (self.replyButton.isHidden) {
+        [self.replyButton setHidden:NO];
+        [self setNeedsDisplay:YES];
+    }
+    
+}
+
+-(void)mouseExited:(NSEvent *)theEvent
+{
+    if (!self.replyButton.isHidden) {
+        [self.replyButton setHidden:YES];
+        [self setNeedsDisplay:YES];
+    }
+
+}
+
+- (void) createTrackingArea
+{
+    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
+    _trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
+                                                 options:opts
+                                                   owner:self
+                                                userInfo:nil];
+    [self addTrackingArea:_trackingArea];
+    
+    NSPoint mouseLocation = [[self window] mouseLocationOutsideOfEventStream];
+    mouseLocation = [self convertPoint: mouseLocation
+                              fromView: nil];
+    
+    if (CGRectContainsPoint([self bounds], mouseLocation))
+    {
+        [self mouseEntered: nil];
+    }
+    else
+    {
+        [self mouseExited: nil];
+    }
+}
+
+- (void) updateTrackingAreas
+{
+    [self removeTrackingArea:_trackingArea];
+    [self createTrackingArea];
+    [super updateTrackingAreas]; // Needed, according to the NSView documentation
+}
+
+- (IBAction)showReplyDialog:(id)sender
+{
+    if (self.popoverController && self.popoverController.popoverIsVisible) {
+        [self.popoverController closePopover:nil];
+    }
+    else
+    {
+        ReplyStatusViewController *replyStatusViewController = [[ReplyStatusViewController alloc] init];
+        
+        self.popoverController = [[INPopoverController alloc] initWithContentViewController:replyStatusViewController];
+        
+        //replyStatusViewController.parentPopoverController = self.popoverController;
+        
+        //[self.composeWindowController showWindow:self];
+        self.popoverController.closesWhenPopoverResignsKey = NO;
+        [self.popoverController presentPopoverFromRect:[sender bounds] inView:sender preferredArrowDirection:INPopoverArrowDirectionUp anchorsToPositionView:YES];
+    }
+
+}
 @end

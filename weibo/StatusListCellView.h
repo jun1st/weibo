@@ -17,5 +17,7 @@
 @property (weak) IBOutlet NSImageView *userProfileImage;
 @property (weak) IBOutlet NSTextField *relativeTime;
 @property IBOutlet NSTextView *statusTextView;
+@property (weak) IBOutlet NSButton *replyButton;
+- (IBAction)showReplyDialog:(id)sender;
 
 @end

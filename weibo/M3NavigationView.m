@@ -68,7 +68,7 @@
 		prevViewController = [[self.viewStack lastObject] retain];
 		[self.viewStack removeLastObject];
 		currentViewController = [self.viewStack lastObject];
-		[[currentViewController view] setFrameSize:[self bounds].size];
+		//[[currentViewController view] setFrameSize:[self bounds].size];
 		
 		if ([currentViewController respondsToSelector:@selector(willStartAnimating)]) {
 			[currentViewController willStartAnimating];

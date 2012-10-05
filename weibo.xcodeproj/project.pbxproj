@@ -28,6 +28,8 @@
 		4C15277A15D69601000F9E93 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C15277915D69601000F9E93 /* SSKeychain.m */; };
 		4C17296A15EE745100E4B805 /* User+ProfileImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C17296915EE745100E4B805 /* User+ProfileImage.m */; };
 		4C1782F915E883660034EBFF /* WeiboMessages.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C1782F715E883660034EBFF /* WeiboMessages.xcdatamodeld */; };
+		4C190EFE161D5C500082CAA7 /* ReplyStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C190EFC161D5C500082CAA7 /* ReplyStatusViewController.m */; };
+		4C190EFF161D5C500082CAA7 /* ReplyStatusViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C190EFD161D5C500082CAA7 /* ReplyStatusViewController.xib */; };
 		4C1AB28A15F1F287008AE9C7 /* TimelineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1AB28915F1F287008AE9C7 /* TimelineController.m */; };
 		4C1BF99D15F634CD0066590E /* AttributedStringCodeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BF99C15F634CD0066590E /* AttributedStringCodeHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C1BF9A115F635A70066590E /* FontUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BF9A015F635A70066590E /* FontUtility.m */; };
@@ -65,6 +67,7 @@
 		4C9BFA191610991A0074F796 /* M3NavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BFA171610991A0074F796 /* M3NavigationView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4C9BFA1E16109B540074F796 /* StatusDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C9BFA1C16109B540074F796 /* StatusDetailViewController.m */; };
 		4C9BFA1F16109B550074F796 /* StatusDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C9BFA1D16109B540074F796 /* StatusDetailViewController.xib */; };
+		4C9BFA211610A8500074F796 /* HomeTimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C9BFA201610A8500074F796 /* HomeTimelineView.xib */; };
 		4CA2CC6215EBCFCC00415031 /* WBManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2CC6115EBCFCC00415031 /* WBManagedObjectContext.m */; };
 		4CB9277415F3880800DE4678 /* TimelineCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB9277315F3880800DE4678 /* TimelineCellView.m */; };
 		4CBB148615E11EF400E7F9C8 /* NSRoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB148515E11EF400E7F9C8 /* NSRoundedImageView.m */; };
@@ -176,6 +179,9 @@
 		4C17296815EE745100E4B805 /* User+ProfileImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+ProfileImage.h"; sourceTree = "<group>"; };
 		4C17296915EE745100E4B805 /* User+ProfileImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+ProfileImage.m"; sourceTree = "<group>"; };
 		4C1782F815E883660034EBFF /* WeiboMessages.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeiboMessages.xcdatamodel; sourceTree = "<group>"; };
+		4C190EFB161D5C500082CAA7 /* ReplyStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReplyStatusViewController.h; sourceTree = "<group>"; };
+		4C190EFC161D5C500082CAA7 /* ReplyStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReplyStatusViewController.m; sourceTree = "<group>"; };
+		4C190EFD161D5C500082CAA7 /* ReplyStatusViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReplyStatusViewController.xib; sourceTree = "<group>"; };
 		4C1AB28815F1F287008AE9C7 /* TimelineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineController.h; sourceTree = "<group>"; };
 		4C1AB28915F1F287008AE9C7 /* TimelineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineController.m; sourceTree = "<group>"; };
 		4C1BF99B15F634CD0066590E /* AttributedStringCodeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedStringCodeHelper.h; sourceTree = "<group>"; };
@@ -245,6 +251,7 @@
 		4C9BFA1B16109B540074F796 /* StatusDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusDetailViewController.h; path = weibo/StatusDetailViewController.h; sourceTree = "<group>"; };
 		4C9BFA1C16109B540074F796 /* StatusDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusDetailViewController.m; path = weibo/StatusDetailViewController.m; sourceTree = "<group>"; };
 		4C9BFA1D16109B540074F796 /* StatusDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatusDetailViewController.xib; path = weibo/StatusDetailViewController.xib; sourceTree = "<group>"; };
+		4C9BFA201610A8500074F796 /* HomeTimelineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTimelineView.xib; sourceTree = "<group>"; };
 		4CA2CC6015EBCFCC00415031 /* WBManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBManagedObjectContext.h; sourceTree = "<group>"; };
 		4CA2CC6115EBCFCC00415031 /* WBManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBManagedObjectContext.m; sourceTree = "<group>"; };
 		4CB9277215F3880800DE4678 /* TimelineCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCellView.h; sourceTree = "<group>"; };
@@ -359,6 +366,9 @@
 				4C12CA1F15FA4B8F0052E491 /* PXListDocumentView.h */,
 				4C12CA2015FA4B8F0052E491 /* PXListDocumentView.m */,
 				4C12CA1215FA4AC50052E491 /* StatusListCellView.h */,
+				4C190EFB161D5C500082CAA7 /* ReplyStatusViewController.h */,
+				4C190EFC161D5C500082CAA7 /* ReplyStatusViewController.m */,
+				4C190EFD161D5C500082CAA7 /* ReplyStatusViewController.xib */,
 				4C12CA1315FA4AC50052E491 /* StatusListCellView.m */,
 				4C14EC5015FFA40D00DAE776 /* RetweetStatusListCellView.h */,
 				4C14EC5115FFA40D00DAE776 /* RetweetStatusListCellView.m */,
@@ -425,6 +435,7 @@
 				65A816C315F4714F00231A89 /* FilterStarred.png */,
 				65A816C415F4714F00231A89 /* FilterUnread.png */,
 				4C15276B15D67A1F000F9E93 /* MainWindowController.xib */,
+				4C9BFA201610A8500074F796 /* HomeTimelineView.xib */,
 				4C8FABBF15D25005004EBBC5 /* OAuthWindow.xib */,
 				4C8FABC415D2520F004EBBC5 /* MainMenu.xib */,
 				4C12CA0F15FA4A240052E491 /* StatusListCellView.xib */,
@@ -784,6 +795,8 @@
 				4CF77A091601DDEE00082195 /* Growl Registration Ticket.growlRegDict in Resources */,
 				4C14AE4616074BBF00FACB69 /* LoadMoreCellView.xib in Resources */,
 				4C9BFA1F16109B550074F796 /* StatusDetailViewController.xib in Resources */,
+				4C9BFA211610A8500074F796 /* HomeTimelineView.xib in Resources */,
+				4C190EFF161D5C500082CAA7 /* ReplyStatusViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,6 +894,7 @@
 				4C12CCB91608980800708F50 /* Status.m in Sources */,
 				4C9BFA191610991A0074F796 /* M3NavigationView.m in Sources */,
 				4C9BFA1E16109B540074F796 /* StatusDetailViewController.m in Sources */,
+				4C190EFE161D5C500082CAA7 /* ReplyStatusViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

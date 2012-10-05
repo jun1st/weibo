@@ -8,7 +8,26 @@
 
 #import "RetweetStatusListCellView.h"
 
+@interface RetweetStatusListCellView()
+
+@property (nonatomic, retain) NSTrackingArea *trackingArea;
+
+@end
+
 @implementation RetweetStatusListCellView
+
+@synthesize retweetTextView = _retweetTextView;
+@synthesize statusTextView = _statusTextView;
+
+-(id)initWithFrame:(NSRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self createTrackingArea];
+    }
+    
+    return self;
+}
 
 - (void)drawRect:(NSRect)dirtyRect
 {
@@ -32,13 +51,6 @@
     
     [bottomBorderPath closePath];
     [bottomBorderPath stroke];
-    
-    //[self setWantsLayer:YES];
-    
-    //NSBezierPath *roundedTextViewRect = [NSBezierPath bezierPathWithRoundedRect:self.frame xRadius:4.0 yRadius:4.0];
-    
-    //[roundedTextViewRect fill];
-    
 }
 
 
@@ -47,7 +59,7 @@
     self.userName.stringValue = @"";
     self.userProfileImage.image = nil;
     //[self.statusTextView.textStorage setAttributedString:nil];
-    
+    [self.replyButton setHidden:YES];
     CGRect oldStatusFrame = NSMakeRect(64, 49, 376, 30);
     [self.statusTextView setFrame:oldStatusFrame];
     
@@ -58,6 +70,53 @@
     oldFrame.size.height = 105.0f;
     //
     [self setFrame:oldFrame];
+}
+
+- (void) createTrackingArea
+{
+    int opts = (NSTrackingMouseEnteredAndExited | NSTrackingActiveAlways);
+    _trackingArea = [ [NSTrackingArea alloc] initWithRect:[self bounds]
+                                                  options:opts
+                                                    owner:self
+                                                 userInfo:nil];
+    [self addTrackingArea:_trackingArea];
+    
+    NSPoint mouseLocation = [[self window] mouseLocationOutsideOfEventStream];
+    mouseLocation = [self convertPoint: mouseLocation
+                              fromView: nil];
+    
+    if (CGRectContainsPoint([self bounds], mouseLocation))
+    {
+        [self mouseEntered: nil];
+    }
+    else
+    {
+        [self mouseExited: nil];
+    }
+
+}
+
+- (void) updateTrackingAreas
+{
+    [self removeTrackingArea:_trackingArea];
+    [self createTrackingArea];
+    [super updateTrackingAreas]; // Needed, according to the NSView documentation
+}
+
+-(void)mouseEntered:(NSEvent *)theEvent
+{
+    if (self.replyButton.isHidden) {
+        [self.replyButton setHidden:FALSE];
+        [self setNeedsDisplay:YES];
+    }
+}
+
+-(void)mouseExited:(NSEvent *)theEvent
+{
+    if (!self.replyButton.isHidden) {
+        [self.replyButton setHidden:YES];
+        [self setNeedsDisplay:YES];
+    }
 }
 
 @end

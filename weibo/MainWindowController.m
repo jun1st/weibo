@@ -24,12 +24,24 @@
 
 @property(readonly, strong) WBUser *authorizingUser;
 @property(strong) INPopoverController *popoverController;
+@property(strong, readonly) HomeTimelineController *homeViewController;
 
 @end
 
 @implementation MainWindowController
 
 @synthesize authorizingUser = _authorizingUser;
+@synthesize homeViewController = _homeViewController;
+
+-(HomeTimelineController *)homeViewController
+{
+    if (!_homeViewController) {
+        _homeViewController = [[HomeTimelineController alloc] init];
+        _homeViewController.rootViewController = self;
+    }
+    
+    return _homeViewController;
+}
 
 -(WBUser *)authorizingUser
 {
@@ -74,6 +86,7 @@
     
     [aWindow.titleBarView addSubview:self.titleBar];
     
+    [self.homeNavView setViewController:self.homeViewController];
 }
 
 -(void)requestAuthorizingUserProfileImage

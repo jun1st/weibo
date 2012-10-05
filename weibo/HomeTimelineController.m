@@ -20,6 +20,7 @@
 #import "LoadMoreCellView.h"
 #import "NSDate+RelativeToNow.h"
 #import "StatusDetailViewController.h"
+#import "MainWindowController.h"
 
 #define LISTVIEW_CELL_IDENTIFIER		@"StatusListCellView"
 #define LISTVIEW_RETWEET_CELL_IDENTIFIER @"RetweetStatusListCellView"
@@ -39,7 +40,7 @@
 
 -(id)init
 {
-    self = [super init];
+    self = [super initWithNibName:@"HomeTimelineView" bundle:nil];
     if (self) {
         self.imageDownloadsInProgress = [[NSMutableDictionary alloc] init];
     }
@@ -56,8 +57,6 @@
     };
     
     [self.timelineListView reloadData];
-    
-    //[self.navView pushViewController:self];
 }
 
 -(NSMutableArray *)timeline
@@ -335,7 +334,7 @@
 {
     self.detailViewConroller = [[StatusDetailViewController alloc] init];
     self.detailViewConroller.homeViewController = self;
-    [self.navView pushViewController:self.detailViewConroller];
+    [self.rootViewController.homeNavView pushViewController:self.detailViewConroller];
 }
 
 

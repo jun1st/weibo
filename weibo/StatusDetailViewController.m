@@ -7,6 +7,7 @@
 //
 
 #import "StatusDetailViewController.h"
+#import "MainWindowController.h"
 
 @interface StatusDetailViewController ()
 
@@ -36,6 +37,7 @@
 }
 
 - (IBAction)popup:(id)sender {
-    [self.homeViewController.navView popViewController];
+    [self.homeViewController.rootViewController.homeNavView popViewController];
+    NSLog(@"clicked");
 }
 @end

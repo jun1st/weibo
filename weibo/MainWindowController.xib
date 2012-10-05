@@ -15,8 +15,6 @@
 			<string>NSButtonCell</string>
 			<string>NSCustomObject</string>
 			<string>NSCustomView</string>
-			<string>NSScrollView</string>
-			<string>NSScroller</string>
 			<string>NSTabView</string>
 			<string>NSTabViewItem</string>
 			<string>NSUserDefaultsController</string>
@@ -69,92 +67,23 @@
 									<object class="NSView" key="NSView" id="217171770">
 										<reference key="NSNextResponder" ref="1065493444"/>
 										<int key="NSvFlags">256</int>
-										<array class="NSMutableArray" key="NSSubviews">
-											<object class="NSScrollView" id="916654009">
-												<reference key="NSNextResponder" ref="217171770"/>
-												<int key="NSvFlags">292</int>
-												<array class="NSMutableArray" key="NSSubviews">
-													<object class="NSClipView" id="443346858">
-														<reference key="NSNextResponder" ref="916654009"/>
-														<int key="NSvFlags">2304</int>
-														<array class="NSMutableArray" key="NSSubviews">
-															<object class="NSView" id="696278064">
-																<reference key="NSNextResponder" ref="443346858"/>
-																<int key="NSvFlags">274</int>
-																<string key="NSFrameSize">{448, 670}</string>
-																<reference key="NSSuperview" ref="443346858"/>
-																<reference key="NSWindow"/>
-																<reference key="NSNextKeyView" ref="855822778"/>
-																<string key="NSReuseIdentifierKey">_NS:13</string>
-															</object>
-														</array>
-														<string key="NSFrame">{{1, 1}, {448, 670}}</string>
-														<reference key="NSSuperview" ref="916654009"/>
-														<reference key="NSWindow"/>
-														<reference key="NSNextKeyView" ref="696278064"/>
-														<string key="NSReuseIdentifierKey">_NS:11</string>
-														<reference key="NSDocView" ref="696278064"/>
-														<object class="NSColor" key="NSBGColor" id="859555857">
-															<int key="NSColorSpace">6</int>
-															<string key="NSCatalogName">System</string>
-															<string key="NSColorName">controlColor</string>
-															<object class="NSColor" key="NSColor">
-																<int key="NSColorSpace">3</int>
-																<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
-															</object>
-														</object>
-														<int key="NScvFlags">4</int>
-													</object>
-													<object class="NSScroller" id="790468526">
-														<reference key="NSNextResponder" ref="916654009"/>
-														<int key="NSvFlags">256</int>
-														<string key="NSFrame">{{433, 1}, {16, 670}}</string>
-														<reference key="NSSuperview" ref="916654009"/>
-														<reference key="NSWindow"/>
-														<string key="NSReuseIdentifierKey">_NS:15</string>
-														<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-														<reference key="NSTarget" ref="916654009"/>
-														<string key="NSAction">_doScroller:</string>
-														<double key="NSCurValue">1</double>
-														<double key="NSPercent">0.96363627910614014</double>
-													</object>
-													<object class="NSScroller" id="855822778">
-														<reference key="NSNextResponder" ref="916654009"/>
-														<int key="NSvFlags">256</int>
-														<string key="NSFrame">{{1, 655}, {448, 16}}</string>
-														<reference key="NSSuperview" ref="916654009"/>
-														<reference key="NSWindow"/>
-														<reference key="NSNextKeyView" ref="790468526"/>
-														<string key="NSReuseIdentifierKey">_NS:26</string>
-														<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
-														<int key="NSsFlags">1</int>
-														<reference key="NSTarget" ref="916654009"/>
-														<string key="NSAction">_doScroller:</string>
-														<double key="NSPercent">0.50602412223815918</double>
-													</object>
-												</array>
-												<string key="NSFrameSize">{450, 672}</string>
-												<reference key="NSSuperview" ref="217171770"/>
-												<reference key="NSWindow"/>
-												<reference key="NSNextKeyView" ref="443346858"/>
-												<string key="NSReuseIdentifierKey">_NS:9</string>
-												<int key="NSsFlags">133170</int>
-												<reference key="NSVScroller" ref="790468526"/>
-												<reference key="NSHScroller" ref="855822778"/>
-												<reference key="NSContentView" ref="443346858"/>
-												<double key="NSMinMagnification">0.25</double>
-												<double key="NSMaxMagnification">4</double>
-												<double key="NSMagnification">1</double>
-											</object>
-										</array>
+										<array class="NSMutableArray" key="NSSubviews"/>
 										<string key="NSFrameSize">{450, 672}</string>
 										<reference key="NSSuperview" ref="1065493444"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="916654009"/>
+										<reference key="NSNextKeyView" ref="1065493444"/>
 										<string key="NSReuseIdentifierKey">_NS:11</string>
 									</object>
 									<string key="NSLabel">homeTimeLine</string>
-									<reference key="NSColor" ref="859555857"/>
+									<object class="NSColor" key="NSColor" id="859555857">
+										<int key="NSColorSpace">6</int>
+										<string key="NSCatalogName">System</string>
+										<string key="NSColorName">controlColor</string>
+										<object class="NSColor" key="NSColor">
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
+										</object>
+									</object>
 									<reference key="NSTabView" ref="1065493444"/>
 								</object>
 								<object class="NSTabViewItem" id="1039455018">
@@ -163,6 +92,7 @@
 										<int key="NSvFlags">256</int>
 										<array class="NSMutableArray" key="NSSubviews"/>
 										<string key="NSFrameSize">{450, 672}</string>
+										<reference key="NSNextKeyView" ref="1065493444"/>
 									</object>
 									<string key="NSLabel">mentionTimeLine</string>
 									<reference key="NSColor" ref="859555857"/>
@@ -195,9 +125,6 @@
 			</object>
 			<object class="NSCustomObject" id="26346628">
 				<string key="NSClassName">MentionTimelineController</string>
-			</object>
-			<object class="NSCustomObject" id="477010106">
-				<string key="NSClassName">HomeTimelineController</string>
 			</object>
 			<object class="NSUserDefaultsController" id="986671410">
 				<bool key="NSSharedInstance">YES</bool>
@@ -259,14 +186,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">homeTimeLineController</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="477010106"/>
-					</object>
-					<int key="connectionID">863</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">mentionTimeLineController</string>
 						<reference key="source" ref="1001"/>
 						<reference key="destination" ref="26346628"/>
@@ -291,35 +210,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">homeNavView</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="217171770"/>
+					</object>
+					<int key="connectionID">1332</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="1005"/>
 						<reference key="destination" ref="1001"/>
 					</object>
 					<int key="connectionID">4</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">timelineListView</string>
-						<reference key="source" ref="477010106"/>
-						<reference key="destination" ref="916654009"/>
-					</object>
-					<int key="connectionID">1322</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">navView</string>
-						<reference key="source" ref="477010106"/>
-						<reference key="destination" ref="217171770"/>
-					</object>
-					<int key="connectionID">1331</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">delegate</string>
-						<reference key="source" ref="916654009"/>
-						<reference key="destination" ref="477010106"/>
-					</object>
-					<int key="connectionID">1318</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -389,9 +292,7 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">593</int>
 						<reference key="object" ref="217171770"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="916654009"/>
-						</array>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="432873715"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -414,42 +315,12 @@
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">855</int>
-						<reference key="object" ref="477010106"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">1156</int>
 						<reference key="object" ref="308283788"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="340934583"/>
 						</array>
 						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1300</int>
-						<reference key="object" ref="916654009"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="696278064"/>
-							<reference ref="855822778"/>
-							<reference ref="790468526"/>
-						</array>
-						<reference key="parent" ref="217171770"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1301</int>
-						<reference key="object" ref="696278064"/>
-						<reference key="parent" ref="916654009"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1302</int>
-						<reference key="object" ref="855822778"/>
-						<reference key="parent" ref="916654009"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1303</int>
-						<reference key="object" ref="790468526"/>
-						<reference key="parent" ref="916654009"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">1327</int>
@@ -476,12 +347,6 @@
 				<string key="1.IBWindowTemplateEditedContentRect">{{357, 418}, {480, 270}}</string>
 				<integer value="1" key="1.NSWindowTemplate.visibleAtLaunch"/>
 				<string key="1156.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1300.CustomClassName">PXListView</string>
-				<string key="1300.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1301.CustomClassName">PXListDocumentView</string>
-				<string key="1301.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1302.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="1303.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1327.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1328.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="2.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -501,13 +366,12 @@
 				<string key="733.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="734.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="770.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="855.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1331</int>
+			<int key="maxID">1332</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -517,25 +381,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/EQSTRScrollView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">HomeTimelineController</string>
-					<string key="superclassName">TimelineController</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">navView</string>
-						<string key="NS.object.0">M3NavigationView</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">navView</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">navView</string>
-							<string key="candidateClassName">M3NavigationView</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/HomeTimelineController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -578,7 +423,7 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="authorizingUserProfileImage">NSImageView</string>
-						<string key="homeTimeLineController">HomeTimelineController</string>
+						<string key="homeNavView">M3NavigationView</string>
 						<string key="homeTimelineList">PXListView</string>
 						<string key="mentionTimeLineController">MentionTimelineController</string>
 						<string key="mentionsTimeLineScrollView">EQSTRScrollView</string>
@@ -590,9 +435,9 @@
 							<string key="name">authorizingUserProfileImage</string>
 							<string key="candidateClassName">NSImageView</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="homeTimeLineController">
-							<string key="name">homeTimeLineController</string>
-							<string key="candidateClassName">HomeTimelineController</string>
+						<object class="IBToOneOutletInfo" key="homeNavView">
+							<string key="name">homeNavView</string>
+							<string key="candidateClassName">M3NavigationView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="homeTimelineList">
 							<string key="name">homeTimelineList</string>
@@ -626,14 +471,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/MentionTimelineController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PXListDocumentView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PXListDocumentView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

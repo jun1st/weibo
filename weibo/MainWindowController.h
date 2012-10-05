@@ -21,10 +21,12 @@
 @property (weak) IBOutlet NSImageView *authorizingUserProfileImage;
 @property (weak) IBOutlet NSTabView *timelineTabs;
 
-@property (strong) IBOutlet HomeTimelineController *homeTimeLineController;
+
 @property (strong) IBOutlet MentionTimelineController *mentionTimeLineController;
 @property (assign) IBOutlet NSView *titleBar;
 @property (weak) IBOutlet PXListView *homeTimelineList;
+
+@property (nonatomic, weak) IBOutlet M3NavigationView *homeNavView;
 
 - (IBAction)showMentionTimeline:(id)sender;
 - (IBAction)showHomeTimeline:(id)sender;

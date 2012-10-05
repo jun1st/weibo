@@ -16,7 +16,7 @@
     ImageDownloading, M3NavigationViewControllerProtocol>
 
 @property (nonatomic, strong) NSMutableDictionary *imageDownloadsInProgress;
-@property (nonatomic, weak) IBOutlet M3NavigationView *navView;
+
 
 -(id)init;
 -(void)startUserProfileImageDownload:(User *)user forRow:(NSUInteger)row;
