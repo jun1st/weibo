@@ -29,6 +29,15 @@
     return self;
 }
 
+-(void)awakeFromNib
+{
+    // all links should get our handy cursor.
+    [_statusTextView setLinkTextAttributes:[NSDictionary dictionaryWithObject:[NSCursor pointingHandCursor] forKey:NSCursorAttributeName]];
+    
+    // all links should get our handy cursor.
+    [_retweetTextView setLinkTextAttributes:[NSDictionary dictionaryWithObject:[NSCursor pointingHandCursor] forKey:NSCursorAttributeName]];
+}
+
 - (void)drawRect:(NSRect)dirtyRect
 {
     if([self isSelected]) {

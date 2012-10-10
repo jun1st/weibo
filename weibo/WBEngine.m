@@ -130,7 +130,6 @@
     [params setObject:comment forKey:@"status"];
     [params setObject:idStr forKey:@"id"];
     [params setObject:@"1" forKey:@"is_comment"];
-    NSLog(@"reposted called");
     [self loadRequestWithMethodName:@"statuses/repost.json"
                          httpMethod:@"POST"
                              params:params

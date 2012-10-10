@@ -31,6 +31,12 @@
     return self;
 }
 
+-(void)awakeFromNib
+{
+    // all links should get our handy cursor.
+    [_statusTextView setLinkTextAttributes:[NSDictionary dictionaryWithObject:[NSCursor pointingHandCursor] forKey:NSCursorAttributeName]];
+}
+
 - (void)drawRect:(NSRect)dirtyRect
 {
     if([self isSelected]) {
@@ -108,7 +114,7 @@
     mouseLocation = [self convertPoint: mouseLocation
                               fromView: nil];
     
-    if (CGRectContainsPoint([self bounds], mouseLocation))
+    if (NSPointInRect(mouseLocation, [self bounds]))
     {
         [self mouseEntered: nil];
     }

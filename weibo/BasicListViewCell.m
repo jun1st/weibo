@@ -60,4 +60,33 @@
     }
 }
 
+#pragma NSTextViewDelegate
+
+-(BOOL)textView:(NSTextView *)textView clickedOnLink:(id)link atIndex:(NSUInteger)charIndex
+{
+    // sometimes aLink will not be an nsstring.  This is a quick hack to get around that:
+    
+    if (![link isKindOfClass:[NSString class]]) {
+        link = [link description];
+    }
+    
+    if ([link hasPrefix:@"hashtag://"]) {
+        NSRange range = [link rangeOfString:link];
+        NSString *name = [[link substringFromIndex:NSMaxRange(range)]
+                          stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDetailNotification" object:name];
+        return YES;
+    }
+    else if ([link hasPrefix:@"username://"]) {
+        NSRange range = [link rangeOfString:link];
+        NSString *name = [[link substringFromIndex:NSMaxRange(range)]
+                          stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"UserDetailNotification" object:name];
+
+        return YES;
+    }
+    
+    return NO; // let appkit take care of the link
+}
+
 @end

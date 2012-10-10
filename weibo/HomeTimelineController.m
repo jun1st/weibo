@@ -20,6 +20,7 @@
 #import "LoadMoreCellView.h"
 #import "NSDate+RelativeToNow.h"
 #import "StatusDetailViewController.h"
+#import "UserDetailViewController.h"
 #import "MainWindowController.h"
 
 #define LISTVIEW_CELL_IDENTIFIER		@"StatusListCellView"
@@ -31,6 +32,9 @@
 @property (nonatomic)NSMutableArray *timeline;
 @property (assign) EQSTRScrollView *parentScrollView;
 @property (strong) StatusDetailViewController *detailViewConroller;
+@property (strong) UserDetailViewController *userDetailViewController;
+
+-(void)pushUserDetailViewController;
 
 @end
 
@@ -77,7 +81,7 @@
 -(void)pullToRefreshInScrollView:(EQSTRScrollView *)scrollView
 {
     self.parentScrollView = scrollView;
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:50], @"count", @"4116306678", @"source", nil];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:@"50", @"count", nil];
     [self.engine loadRequestWithMethodName:@"statuses/home_timeline.json"
                            httpMethod:@"GET"
                                params:parameters
@@ -152,6 +156,8 @@
         NSFont *font = [NSFont fontWithName:@"Lucida Grande" size:13];
         NSFont *boldFont = [[NSFontManager sharedFontManager] fontWithFamily:font.familyName
                                                                       traits:NSBoldFontMask weight:0 size:13];
+        NSString *subString = [text substringWithRange:matchRange];
+        [rString addAttribute:NSLinkAttributeName value:[@"username://" stringByAppendingString:subString] range:matchRange];
         [rString addAttribute:NSFontAttributeName value:boldFont range:matchRange];
         [rString addAttribute:NSForegroundColorAttributeName value:[NSColor darkGrayColor] range:matchRange];
     }
@@ -165,7 +171,7 @@
         NSString *subString = [text substringWithRange:matchRange];
         
         [rString addAttribute:NSLinkAttributeName value:subString range:matchRange];
-        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor colorWithCalibratedRed:62 green:152 blue:216 alpha:0]
+        [rString addAttribute:NSForegroundColorAttributeName value:[NSColor brownColor]
                         range:matchRange];
         [rString addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInt:NSSingleUnderlineStyle] range:matchRange];
     }
@@ -173,7 +179,9 @@
     //match topics
     matches = [[WBFormatter topicRegularExpression] matchesInString:text options:0 range:NSMakeRange(0, text.length)];
     for (NSTextCheckingResult *match in matches) {
-        NSRange matchRange = match.range;        
+        NSRange matchRange = match.range;
+        NSString *subString = [text substringWithRange:matchRange];
+        [rString addAttribute:NSLinkAttributeName value:[NSString stringWithFormat:@"hashtag://%@",subString] range:matchRange];
         [rString addAttribute:NSForegroundColorAttributeName value:[NSColor grayColor] range:matchRange];
     }
     
@@ -223,20 +231,20 @@
 {
     Status *status = ((Status *)[self.timeline objectAtIndex:row]);
     
-    if (self.timeline.count > row + 1) {
-        Status *preStatus = (Status *)[self.timeline objectAtIndex:row + 1];
-        
-        if ([status.createdAt timeIntervalSinceDate:preStatus.createdAt] > 5 * 60) {
-            LoadMoreCellView *loadMoreCellView = (LoadMoreCellView *)[aListView dequeueCellWithReusableIdentifier:LISTVIEW_LOAD_MORE_CELL_IDENTIFIER];
-            
-            if (!loadMoreCellView) {
-                loadMoreCellView = [LoadMoreCellView cellLoadedFromNibNamed:@"LoadMoreCellView" reusableIdentifier:LISTVIEW_LOAD_MORE_CELL_IDENTIFIER];
-            }
-            
-            return  loadMoreCellView;
-        }
-        
-    }
+//    if (self.timeline.count > row + 1) {
+//        Status *preStatus = (Status *)[self.timeline objectAtIndex:row + 1];
+//        
+//        if ([status.createdAt timeIntervalSinceDate:preStatus.createdAt] > 5 * 60) {
+//            LoadMoreCellView *loadMoreCellView = (LoadMoreCellView *)[aListView dequeueCellWithReusableIdentifier:LISTVIEW_LOAD_MORE_CELL_IDENTIFIER];
+//            
+//            if (!loadMoreCellView) {
+//                loadMoreCellView = [LoadMoreCellView cellLoadedFromNibNamed:@"LoadMoreCellView" reusableIdentifier:LISTVIEW_LOAD_MORE_CELL_IDENTIFIER];
+//            }
+//            
+//            return  loadMoreCellView;
+//        }
+//        
+//    }
     StatusListCellView *cell = nil;
     RetweetStatusListCellView *retweetCell = nil;
     if (!status.retweetText) {
@@ -260,9 +268,9 @@
         }
         
         CGFloat height = [status.attributedText heightForWidth:376.0f];
-        
+
         NSRect rect;
-        if (height >= 31) {
+        if (height > 33) {
             rect = NSMakeRect(58.0f, 31.0f - (height - 31.0f), 376.0f, height);
         }
         else{
@@ -271,7 +279,6 @@
         [cell.statusTextView setFrame:rect];
         
         [cell.statusTextView.textStorage setAttributedString:status.attributedText];
-        //NSLog(@"%ld", row);
         return cell;
 
     }
@@ -336,9 +343,15 @@
 {
     self.detailViewConroller = [[StatusDetailViewController alloc] init];
     self.detailViewConroller.homeViewController = self;
-    [self.rootViewController.homeNavView pushViewController:self.detailViewConroller];
+    [self.rootViewController pushViewController:self.detailViewConroller];
 }
 
+-(void)pushUserDetailViewController
+{
+    self.userDetailViewController = [[UserDetailViewController alloc] init];
+    self.userDetailViewController.homeViewController = self;
+    [self.rootViewController pushViewController:self.userDetailViewController];
+}
 
 #pragma ImageDoneLoading delegate
 -(void)doneLoadImageForUser:(User *)user

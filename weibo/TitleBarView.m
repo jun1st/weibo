@@ -25,4 +25,17 @@
     
 }
 
+- (IBAction)showComposeDialog:(id)sender {
+    [self.hostWindowController showComposeWindow:sender];
+}
+
+- (IBAction)back:(id)sender {
+    [self.hostWindowController popViewController];
+}
+
+-(void)setBackButtonHidden:(BOOL)hidden
+{
+    [self.backButton setHidden:hidden];
+}
+
 @end

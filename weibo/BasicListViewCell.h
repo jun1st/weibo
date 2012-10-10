@@ -8,7 +8,7 @@
 
 #import "PXListViewCell.h"
 
-@interface BasicListViewCell : PXListViewCell
+@interface BasicListViewCell : PXListViewCell<NSTextViewDelegate>
 
 @property (strong)NSString *statusId;
 @property (weak) IBOutlet NSButton *replyButton;

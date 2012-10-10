@@ -15,15 +15,18 @@
 #import "MentionTimelineController.h"
 #import "PXListView.h"
 
+@class  TitleBarView;
+
 @interface MainWindowController : NSWindowController
 
 @property (weak) IBOutlet EQSTRScrollView *mentionsTimeLineScrollView;
 @property (weak) IBOutlet NSImageView *authorizingUserProfileImage;
 @property (weak) IBOutlet NSTabView *timelineTabs;
 
+@property (assign) IBOutlet TitleBarView *titleBar;
 
 @property (strong) IBOutlet MentionTimelineController *mentionTimeLineController;
-@property (assign) IBOutlet NSView *titleBar;
+
 @property (weak) IBOutlet PXListView *homeTimelineList;
 
 @property (nonatomic, weak) IBOutlet M3NavigationView *homeNavView;
@@ -32,5 +35,10 @@
 - (IBAction)showHomeTimeline:(id)sender;
 
 -(IBAction)showComposeWindow:(id)sender;
+
+-(void)pushViewController:(NSViewController<M3NavigationViewControllerProtocol> *)viewController;
+
+//pop the current view controller out of stack
+-(IBAction)popViewController;
 
 @end

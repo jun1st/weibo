@@ -69,8 +69,11 @@
 		4C9BFA1F16109B550074F796 /* StatusDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C9BFA1D16109B540074F796 /* StatusDetailViewController.xib */; };
 		4C9BFA211610A8500074F796 /* HomeTimelineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C9BFA201610A8500074F796 /* HomeTimelineView.xib */; };
 		4CA2CC6215EBCFCC00415031 /* WBManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2CC6115EBCFCC00415031 /* WBManagedObjectContext.m */; };
-		4CB9277415F3880800DE4678 /* TimelineCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CB9277315F3880800DE4678 /* TimelineCellView.m */; };
 		4CBB148615E11EF400E7F9C8 /* NSRoundedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB148515E11EF400E7F9C8 /* NSRoundedImageView.m */; };
+		4CBE08F01621DCC500E3E1C2 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE08EE1621DCC500E3E1C2 /* UserDetailViewController.m */; };
+		4CBE08F11621DCC500E3E1C2 /* UserDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CBE08EF1621DCC500E3E1C2 /* UserDetailViewController.xib */; };
+		4CBE08F41621DDDD00E3E1C2 /* WBMessageTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE08F31621DDDD00E3E1C2 /* WBMessageTableCellView.m */; };
+		4CBE08F71621DE0100E3E1C2 /* TimelineCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBE08F61621DE0000E3E1C2 /* TimelineCellView.m */; };
 		4CCB88B315D3EA6F00231E13 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88B115D3EA6F00231E13 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4CCB88B615D3EA9D00231E13 /* WBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB88B515D3EA9D00231E13 /* WBUtil.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4CCB88BC15D3EDEF00231E13 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CCB88BB15D3EDEF00231E13 /* WebKit.framework */; };
@@ -94,7 +97,6 @@
 		6517CBEF15DCDED2007BAB00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6517CBEE15DCDED2007BAB00 /* QuartzCore.framework */; };
 		6580BB3715F4B5A70089BDA3 /* home_w.png in Resources */ = {isa = PBXBuildFile; fileRef = 6580BB3615F4B5A70089BDA3 /* home_w.png */; };
 		6580BB3A15F4B6BA0089BDA3 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 6580BB3915F4B6BA0089BDA3 /* home.png */; };
-		65A425BF15DB908C00861D3B /* WBMessageTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */; };
 		65A5304E15EF3FFD004D6FDE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304D15EF3FFD004D6FDE /* User.m */; };
 		65A5305115EF4059004D6FDE /* Status+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5304F15EF4059004D6FDE /* Status+CoreData.m */; };
 		65A5306815F064E80019F71B /* Mention+CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A5306715F064E80019F71B /* Mention+CoreData.m */; };
@@ -257,10 +259,18 @@
 		4C9BFA201610A8500074F796 /* HomeTimelineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTimelineView.xib; sourceTree = "<group>"; };
 		4CA2CC6015EBCFCC00415031 /* WBManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBManagedObjectContext.h; sourceTree = "<group>"; };
 		4CA2CC6115EBCFCC00415031 /* WBManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBManagedObjectContext.m; sourceTree = "<group>"; };
-		4CB9277215F3880800DE4678 /* TimelineCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCellView.h; sourceTree = "<group>"; };
-		4CB9277315F3880800DE4678 /* TimelineCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineCellView.m; sourceTree = "<group>"; };
+		4CA89EF516206E7100DDF529 /* WBMessageTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageTextView.h; sourceTree = "<group>"; };
+		4CA89EF616206E7100DDF529 /* WBMessageTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageTextView.m; sourceTree = "<group>"; };
 		4CBB148415E11EF400E7F9C8 /* NSRoundedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSRoundedImageView.h; sourceTree = "<group>"; };
 		4CBB148515E11EF400E7F9C8 /* NSRoundedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSRoundedImageView.m; sourceTree = "<group>"; };
+		4CBE08EB16215E5800E3E1C2 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		4CBE08ED1621DCC500E3E1C2 /* UserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailViewController.h; sourceTree = "<group>"; };
+		4CBE08EE1621DCC500E3E1C2 /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
+		4CBE08EF1621DCC500E3E1C2 /* UserDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserDetailViewController.xib; sourceTree = "<group>"; };
+		4CBE08F21621DDDD00E3E1C2 /* WBMessageTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageTableCellView.h; sourceTree = "<group>"; };
+		4CBE08F31621DDDD00E3E1C2 /* WBMessageTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageTableCellView.m; sourceTree = "<group>"; };
+		4CBE08F51621DE0000E3E1C2 /* TimelineCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCellView.h; sourceTree = "<group>"; };
+		4CBE08F61621DE0000E3E1C2 /* TimelineCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineCellView.m; sourceTree = "<group>"; };
 		4CCB88B015D3EA6F00231E13 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		4CCB88B115D3EA6F00231E13 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		4CCB88B215D3EA6F00231E13 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
@@ -301,8 +311,6 @@
 		6517CBEE15DCDED2007BAB00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6580BB3615F4B5A70089BDA3 /* home_w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_w.png; sourceTree = "<group>"; };
 		6580BB3915F4B6BA0089BDA3 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
-		65A425BD15DB908C00861D3B /* WBMessageTableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBMessageTableCellView.h; sourceTree = "<group>"; };
-		65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBMessageTableCellView.m; sourceTree = "<group>"; };
 		65A5304C15EF3FFD004D6FDE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		65A5304D15EF3FFD004D6FDE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		65A5304F15EF4059004D6FDE /* Status+CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Status+CoreData.m"; sourceTree = "<group>"; };
@@ -361,6 +369,10 @@
 		4C12CA2515FA4B950052E491 /* PXListView */ = {
 			isa = PBXGroup;
 			children = (
+				4CBE08F51621DE0000E3E1C2 /* TimelineCellView.h */,
+				4CBE08F61621DE0000E3E1C2 /* TimelineCellView.m */,
+				4CBE08F21621DDDD00E3E1C2 /* WBMessageTableCellView.h */,
+				4CBE08F31621DDDD00E3E1C2 /* WBMessageTableCellView.m */,
 				4C12CA1515FA4B8E0052E491 /* PXListView+Private.h */,
 				4C12CA1615FA4B8E0052E491 /* PXListView+UserInteraction.h */,
 				4C12CA1715FA4B8E0052E491 /* PXListView+UserInteraction.m */,
@@ -381,6 +393,8 @@
 				4C14AE4916074E3900FACB69 /* LoadMoreCellView.m */,
 				4CF74E22161F23CD0078C960 /* BasicListViewCell.h */,
 				4CF74E23161F23CD0078C960 /* BasicListViewCell.m */,
+				4CA89EF516206E7100DDF529 /* WBMessageTextView.h */,
+				4CA89EF616206E7100DDF529 /* WBMessageTextView.m */,
 			);
 			name = PXListView;
 			sourceTree = "<group>";
@@ -451,6 +465,7 @@
 				4C14EC4E15FFA39E00DAE776 /* RetweetStatusListCellView.xib */,
 				4C190EFD161D5C500082CAA7 /* ReplyStatusViewController.xib */,
 				4CF74E28161F32660078C960 /* RepostStatusViewController.xib */,
+				4CBE08EF1621DCC500E3E1C2 /* UserDetailViewController.xib */,
 				4C5F9AB715DBF66A00B804F1 /* macos */,
 				4CF77A081601DDEE00082195 /* Growl Registration Ticket.growlRegDict */,
 				4C14AE4516074BBF00FACB69 /* LoadMoreCellView.xib */,
@@ -476,16 +491,12 @@
 				6517CBED15DCDE42007BAB00 /* ScrollToRefreshView */,
 				65C45D9715F0AB8200BB7557 /* MentionTableCellView.h */,
 				65C45D9815F0AB8200BB7557 /* MentionTableCellView.m */,
-				65A425BD15DB908C00861D3B /* WBMessageTableCellView.h */,
-				65A425BE15DB908C00861D3B /* WBMessageTableCellView.m */,
 				4CBB148415E11EF400E7F9C8 /* NSRoundedImageView.h */,
 				4CBB148515E11EF400E7F9C8 /* NSRoundedImageView.m */,
 				4C5315E415E3D33B0004238A /* WBMessageScrollView.h */,
 				4C5315E515E3D33B0004238A /* WBMessageScrollView.m */,
 				4C5315E815E3E3620004238A /* WBMessageTextView.h */,
 				4C5315E915E3E3620004238A /* WBMessageTextView.m */,
-				4CB9277215F3880800DE4678 /* TimelineCellView.h */,
-				4CB9277315F3880800DE4678 /* TimelineCellView.m */,
 				65A816E015F4A60300231A89 /* TitleBarView.h */,
 				65A816E115F4A60400231A89 /* TitleBarView.m */,
 				4C14EC4B15FF9D7200DAE776 /* NSImageView+Picker.h */,
@@ -499,6 +510,8 @@
 		4C6E977B15F26B4A007F6575 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4CBE08ED1621DCC500E3E1C2 /* UserDetailViewController.h */,
+				4CBE08EE1621DCC500E3E1C2 /* UserDetailViewController.m */,
 				4CF74E26161F32660078C960 /* RepostStatusViewController.h */,
 				4CF74E27161F32660078C960 /* RepostStatusViewController.m */,
 				4C8FABC115D25067004EBBC5 /* OAuthWindowController.h */,
@@ -542,6 +555,7 @@
 		4C8FAB1D15D24AF7004EBBC5 = {
 			isa = PBXGroup;
 			children = (
+				4CBE08EB16215E5800E3E1C2 /* libicucore.dylib */,
 				6517CBEE15DCDED2007BAB00 /* QuartzCore.framework */,
 				4C15276115D604C3000F9E93 /* Security.framework */,
 				4CCB88BB15D3EDEF00231E13 /* WebKit.framework */,
@@ -811,6 +825,7 @@
 				4C9BFA211610A8500074F796 /* HomeTimelineView.xib in Resources */,
 				4C190EFF161D5C500082CAA7 /* ReplyStatusViewController.xib in Resources */,
 				4CF74E2A161F32660078C960 /* RepostStatusViewController.xib in Resources */,
+				4CBE08F11621DCC500E3E1C2 /* UserDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -861,7 +876,6 @@
 				4C15276815D619CD000F9E93 /* WBEngine.m in Sources */,
 				4C15276C15D67A1F000F9E93 /* MainWindowController.m in Sources */,
 				4C15277A15D69601000F9E93 /* SSKeychain.m in Sources */,
-				65A425BF15DB908C00861D3B /* WBMessageTableCellView.m in Sources */,
 				6517CBEA15DCDE3D007BAB00 /* EQSTRClipView.m in Sources */,
 				6517CBEB15DCDE3D007BAB00 /* EQSTRScrollView.m in Sources */,
 				4C13ECC615DE8ADA00996029 /* INAppStoreWindow.m in Sources */,
@@ -884,7 +898,6 @@
 				65C45D9915F0AB8200BB7557 /* MentionTableCellView.m in Sources */,
 				4C408A3A15F179FF007CF089 /* HomeTimelineController.m in Sources */,
 				4C1AB28A15F1F287008AE9C7 /* TimelineController.m in Sources */,
-				4CB9277415F3880800DE4678 /* TimelineCellView.m in Sources */,
 				65A816E215F4A60400231A89 /* TitleBarView.m in Sources */,
 				4C1BF99D15F634CD0066590E /* AttributedStringCodeHelper.m in Sources */,
 				4C1BF9A115F635A70066590E /* FontUtility.m in Sources */,
@@ -911,6 +924,9 @@
 				4C190EFE161D5C500082CAA7 /* ReplyStatusViewController.m in Sources */,
 				4CF74E24161F23CD0078C960 /* BasicListViewCell.m in Sources */,
 				4CF74E29161F32660078C960 /* RepostStatusViewController.m in Sources */,
+				4CBE08F01621DCC500E3E1C2 /* UserDetailViewController.m in Sources */,
+				4CBE08F41621DDDD00E3E1C2 /* WBMessageTableCellView.m in Sources */,
+				4CBE08F71621DE0100E3E1C2 /* TimelineCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

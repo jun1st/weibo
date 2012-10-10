@@ -45,7 +45,7 @@
         NSDictionary *retweetStatus = [statusDict objectForKey:@"retweeted_status"];
         if (retweetStatus) {
             NSString *retweetText = [retweetStatus objectForKey:@"text"];
-            NSDictionary *userInfo = [statusDict objectForKey:@"user"];
+            NSDictionary *userInfo = [retweetStatus objectForKey:@"user"];
             status.retweetText = [[[@"@" stringByAppendingString:[userInfo objectForKey:@"screen_name"]] stringByAppendingString:@":" ]stringByAppendingString:retweetText];
             
             status.replyToUserId = [userInfo objectForKey:@"idstr"];
@@ -115,7 +115,7 @@
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                         initWithKey:@"createdAt" ascending:NO];
     [request setSortDescriptors:@[sortDescriptor]];
-    request.fetchLimit = 30;
+    request.fetchLimit = 50;
     
     NSError *error;
     NSArray *statuses = [context executeFetchRequest:request error:&error];
@@ -141,6 +141,8 @@
         NSFont *font = [NSFont userFontOfSize:13];
         NSFont *boldFont = [[NSFontManager sharedFontManager] fontWithFamily:font.familyName
                                                                       traits:NSBoldFontMask weight:0 size:13];
+        NSString *subString = [text substringWithRange:matchRange];
+        [rString addAttribute:NSLinkAttributeName value:[@"@" stringByAppendingString:subString] range:matchRange];
         [rString addAttribute:NSFontAttributeName value:boldFont range:matchRange];
         [rString addAttribute:NSForegroundColorAttributeName value:[NSColor darkGrayColor] range:matchRange];
     }

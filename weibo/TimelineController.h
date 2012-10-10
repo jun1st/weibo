@@ -14,6 +14,7 @@
 @class EQSTRScrollView;
 @class MainWindowController;
 
+#pragma TimeLineController needs to responds to scroll view pull down
 @protocol TimeLineControllerDelegate
 
 @required

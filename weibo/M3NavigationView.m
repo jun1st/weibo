@@ -32,8 +32,6 @@
 
 @interface M3NavigationView ()
 - (void)addAnimationToView:(NSView *)view;
-
-@property (strong, readonly) NSMutableArray *viewStack;
 @end
 
 

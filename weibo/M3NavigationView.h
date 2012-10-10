@@ -39,6 +39,9 @@
 }
 
 @property (readonly) NSViewController *currentViewController;
+
+@property (strong, readonly) NSMutableArray *viewStack;
+
 - (void)popViewController;
 - (void)pushViewController:(NSViewController<M3NavigationViewControllerProtocol> *)controller;
 - (void)setViewController:(NSViewController<M3NavigationViewControllerProtocol> *)controller;

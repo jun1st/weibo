@@ -37,7 +37,6 @@
 }
 
 - (IBAction)popup:(id)sender {
-    [self.homeViewController.rootViewController.homeNavView popViewController];
-    NSLog(@"clicked");
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"PopupViewControllerNotification" object:nil];
 }
 @end

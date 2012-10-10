@@ -7,7 +7,16 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "MainWindowController.h"
 
 @interface TitleBarView : NSView
+
+@property (assign) MainWindowController *hostWindowController;
+@property (weak) IBOutlet NSButton *backButton;
+
+- (IBAction)showComposeDialog:(id)sender;
+- (IBAction)back:(id)sender;
+
+-(void)setBackButtonHidden:(BOOL)hidden;
 
 @end

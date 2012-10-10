@@ -35,10 +35,6 @@
     {
         return [NSString stringWithFormat:@"%dh", (int)(delta / HOUR)];
     }
-    if (delta < 2 * DAY)
-    {
-        return @"yesterday";
-    }
     if (delta < MONTH)
     {
         return [NSString stringWithFormat:@"%dd", (int)(delta / DAY)];

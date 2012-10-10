@@ -16,9 +16,12 @@
 #import "TimeLineController.h"
 #import "ComposeStatusViewController.h"
 #import "INPopoverController.h"
+#import "TitleBarView.h"
 
 #define OAuthConsumerKey @"4116306678"
 #define OAuthConsumerSecret @"630c48733d7f6c717ad6dec31bf50895"
+
+#define POPUP_VIEW_CONTROLLER_NOTIFICATION @"PopupViewControllerNotification"
 
 @interface MainWindowController ()
 
@@ -58,6 +61,10 @@
                                             selector:@selector(userAuthorized)
                                                      name:@"authorized" object:nil];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(popViewController)
+                                                     name:POPUP_VIEW_CONTROLLER_NOTIFICATION object:nil];
+        
     }
     
     return self;
@@ -76,17 +83,25 @@
 -(void)windowWillLoad{
 }
 
-- (void)windowDidLoad
-{    
-    [super windowDidLoad];
-    
+-(void)awakeFromNib
+{
     INAppStoreWindow *aWindow = (INAppStoreWindow*)[self window];
     aWindow.titleBarHeight = 40.0;
 	aWindow.trafficLightButtonsLeftMargin = 13.0;
     
     [aWindow.titleBarView addSubview:self.titleBar];
     
+    self.titleBar.hostWindowController = self;
+}
+
+- (void)windowDidLoad
+{    
+    [super windowDidLoad];
     [self.homeNavView setViewController:self.homeViewController];
+    
+    if ([self.homeNavView.viewStack count] <= 1) {
+        [self.titleBar setBackButtonHidden:YES];
+    }
 }
 
 -(void)requestAuthorizingUserProfileImage
@@ -128,6 +143,22 @@
         //[self.composeWindowController showWindow:self];
         self.popoverController.closesWhenPopoverResignsKey = NO;
         [self.popoverController presentPopoverFromRect:[sender bounds] inView:sender preferredArrowDirection:INPopoverArrowDirectionUp anchorsToPositionView:YES];
+    }
+}
+
+-(void)pushViewController:(NSViewController<M3NavigationViewControllerProtocol> *)viewController
+{
+    [self.homeNavView pushViewController:viewController];
+    if ([self.homeNavView.viewStack count] > 1) {
+        [self.titleBar setBackButtonHidden:NO];
+    }
+}
+
+-(void)popViewController
+{
+    [self.homeNavView popViewController];
+    if ([self.homeNavView.viewStack count] <= 1) {
+        [self.titleBar setBackButtonHidden:YES];
     }
 }
 
